@@ -8,7 +8,7 @@ pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KF5'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(qt6wayland gcc-libs
+depends=(qt6-wayland gcc-libs
          glibc
          kconfig
          kcoreaddons
