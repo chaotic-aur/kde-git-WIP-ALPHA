@@ -1,0 +1,54 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kgamma
+pkgver=5.27.80
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='Adjust your monitor gamma settings'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         kcmutils
+         kconfig
+         kcoreaddons
+         ki18n
+         libx11
+         libxxf86vm
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+conflicts=(kgamma5)
+replaces=(kgamma5)
+groups=(plasma)
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('613f3615505c6901a8c4feda08defeb8d399d38466bf789e95366d08fc3559ab'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

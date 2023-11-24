@@ -1,0 +1,65 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=falkon
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='Cross-platform QtWebEngine browser'
+arch=(x86_64)
+url='https://www.falkon.org/'
+license=(GPL3)
+depends=(gcc-libs
+         glibc
+         karchive5
+         libxcb
+         openssl
+         qt5-base
+         qt5-declarative
+         qt5-webchannel
+         qt5-webengine
+         qt5-x11extras)
+makedepends=(extra-cmake-modules
+             kio5
+             libgnome-keyring
+             purpose5
+             pyside2
+             qt5-tools
+             shiboken2)
+optdepends=('kcoreaddons5: KDE integration'
+            'kcrash5: KDE integration'
+            'kio5: KDE integration'
+            'kjobwidgets5: KDE integration'
+            'kwallet5: KDE integration'
+            'libgnome-keyring: gnome keyring integration'
+            'purpose5: KDE integration'
+            'pyside2: Python plugins')
+groups=(kde-applications
+        kde-network)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('f31483a124843ea3c89a69cdc3d645453718c65e8f4b3bfc38852e44f7cf08ac'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

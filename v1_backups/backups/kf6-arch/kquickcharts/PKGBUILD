@@ -1,0 +1,33 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kquickcharts
+pkgver=5.240.0.20231014
+pkgrel=1
+pkgdesc='A QtQuick plugin providing high-performance charts'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             qt6-shadertools)
+groups=(kf6)
+#source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
+makedepends+=(git)
+_commit=34bbef032a99336826a1341c69f988fe7ec11287
+source=(git+https://invent.kde.org/frameworks/$pkgname#commit=$_commit)
+sha256sums=('SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

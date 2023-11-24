@@ -1,0 +1,60 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+pkgname=purpose
+pkgver=5.110.0
+pkgrel=1
+pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+#depends=(kaccounts-integration kirigami accounts-qml-module)
+#makedepends=(git extra-cmake-modules intltool)
+#optdepends=('kdeconnect: sharing to smartphone via KDE Connect'
+#            'telegram-desktop: sharing via Telegram'
+#            'bluedevil: sharing via Bluetooth'
+#            'prison: QR code plugin')
+depends=(gcc-libs
+         glibc
+         kconfig
+         kcoreaddons
+         ki18n
+         kio
+         kirigami
+         knotifications
+         kservice
+         qt6-base
+         qt6-declarative)
+makedepends=(intltool git
+             extra-cmake-modules)
+optdepends=('bluedevil: sharing via Bluetooth'
+            'kdeclarative: Nextcloud and YouTube plugins'
+            'kdeconnect: sharing to smartphone via KDE Connect'
+            'prison: QR code plugin'
+            'telegram-desktop: sharing via Telegram')
+groups=(kf6)
+#source(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('4ce763bec127bbdd1cb2526a4d615ab6f420ab2c2a700cb09571b0220fc4865a'
+#            'SKIP')
+#validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+source=(git+https://github.com/KDE/${pkgname})
+

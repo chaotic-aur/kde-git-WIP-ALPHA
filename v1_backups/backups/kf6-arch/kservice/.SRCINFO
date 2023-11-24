@@ -1,0 +1,25 @@
+pkgbase = kservice
+	pkgdesc = Advanced plugin and service introspection
+	pkgver = 5.240.0.20231014
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf6
+	license = LGPL
+	makedepends = doxygen
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = qt6-base
+	source = git+https://invent.kde.org/frameworks/kservice#commit=e8800f124279a0fa266ed93b662fdd9f0a560599
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = SKIP
+
+pkgname = kservice

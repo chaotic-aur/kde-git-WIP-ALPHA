@@ -1,0 +1,60 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=plasma-meta
+pkgver=6.0
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='Meta package to install KDE Plasma'
+arch=(any)
+license=(None)
+url='https://kde.org/plasma-desktop/'
+depends=(bluedevil
+         breeze-gtk
+         discover
+         drkonqi
+         kde-gtk-config
+         kdeplasma-addons
+         kgamma
+         kinfocenter
+         kscreen
+         ksshaskpass
+         kwallet-pam
+         kwrited
+         ocean-sound-theme
+         oxygen
+         oxygen-sounds
+         plasma-browser-integration
+         plasma-desktop
+         plasma-disks
+         plasma-firewall
+         plasma-nm
+         plasma-workspace-wallpapers
+         plasma-pa
+         plasma-systemmonitor
+         plasma-thunderbolt
+         plasma-vault
+         plasma-welcome
+         powerdevil
+         print-manager
+         sddm-kcm
+         xdg-desktop-portal-kde
+)
+optdepends=('breeze-grub: Breeze theme for GRUB'
+            'breeze-plymouth: Breeze theme for Plymouth'
+            'flatpak-kcm: Manage Flatpak applications from systemsettings'
+            'plymouth-kcm: Configure Plymouth from systemsettings'
+            'plasma-sdk: Development tools')
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

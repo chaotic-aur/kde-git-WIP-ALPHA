@@ -1,0 +1,32 @@
+pkgbase = knewstuff
+	pkgdesc = Support for downloading application assets from the network
+	pkgver = 5.240.0.20231014
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf6
+	license = LGPL
+	makedepends = doxygen
+	makedepends = extra-cmake-modules
+	makedepends = qt6-declarative
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	makedepends = git
+	depends = attica
+	depends = gcc-libs
+	depends = glibc
+	depends = karchive
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kpackage
+	depends = kwidgetsaddons
+	depends = qt6-base
+	depends = syndication
+	optdepends = kirigami: QML components
+	optdepends = qt6-declarative: QML components
+	source = git+https://invent.kde.org/frameworks/knewstuff#commit=61efe997f36019a5cc8b3b47db4127d553028b8a
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = SKIP
+
+pkgname = knewstuff

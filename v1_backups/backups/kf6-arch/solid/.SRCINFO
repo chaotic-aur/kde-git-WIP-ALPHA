@@ -1,0 +1,30 @@
+pkgbase = solid
+	pkgdesc = Hardware integration and detection
+	pkgver = 5.240.0.20231014
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf6
+	license = LGPL
+	makedepends = doxygen
+	makedepends = extra-cmake-modules
+	makedepends = qt6-declarative
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libimobiledevice
+	depends = libplist
+	depends = media-player-info
+	depends = qt6-base
+	depends = systemd-libs
+	depends = udisks2
+	depends = upower
+	depends = util-linux-libs
+	optdepends = qt5-declarative: QML bindings
+	source = git+https://invent.kde.org/frameworks/solid#commit=9425065d660595bcf67ede0148db2c085d422f2c
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = SKIP
+
+pkgname = solid

@@ -1,0 +1,57 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kglobalacceld
+pkgver=5.27.80
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         kconfig
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         kio
+         kjobwidgets
+         kservice
+         kwindowsystem
+         libx11
+         libxcb
+         qt6-base
+         xcb-util-keysyms)
+makedepends=(extra-cmake-modules)
+groups=(plasma)
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('06744d79e9a6c0d6abbcc863a5ad35573e95d219adefb8fef9bb25b0eb5ad5c7'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

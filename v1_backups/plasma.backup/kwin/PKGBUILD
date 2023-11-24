@@ -1,0 +1,48 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kwin
+pkgver=5.27.8
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='An easy to use, but flexible, composited Window Manager'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils breeze qt6-sensors
+	kirigami kpipewire kdecoration kxmlgui kwindowsystem kwidgetsaddons kwayland ksvg kservice krunner kpackage knotifications knewstuff kidletime ki18n kdoctools
+	kdeclarative kcrash kcoreaddons kconfigwidgets kconfig kactivities breeze-icons libdisplay-info
+	pipewire-session-manager libqaccessibilityclient lcms2 libxcvt kglobalaccel kglobalacceld)
+makedepends=(git extra-cmake-modules qt6-tools kdoctools krunner wayland-protocols plasma-wayland-protocols python)
+optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
+replaces=(kwayland-server)
+groups=(plasma)
+#source(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+install=$pkgname.install
+#sha256sums=('e726cd68648805af3ce98b6b360eadd7ba681e6cf4358b1ab57863cd270732e9'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+	cmake -B build -S $pkgname \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib \
+		-DBUILD_TESTING=OFF
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+source=(git+https://github.com/KDE/${pkgname})

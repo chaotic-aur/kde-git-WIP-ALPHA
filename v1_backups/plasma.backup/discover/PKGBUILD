@@ -1,0 +1,46 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org> 
+
+pkgname=discover
+pkgver=5.27.8
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='KDE and Plasma resources management GUI'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(knewstuff kidletime qt6-declarative qt6-shadertools appstream-qt archlinux-appstream-data
+         kirigami discount kuserfeedback purpose qt6-webview kstatusnotifieritem appstream-qt)
+makedepends=(git extra-cmake-modules plasma-framework packagekit-qt6 flatpak fwupd)
+optdepends=('packagekit-qt6: to manage packages from Arch Linux repositories (not recommended, use at your own risk)'
+            'flatpak: Flatpak packages support'
+            'fwupd: firmware update support')
+groups=(plasma)
+#source(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('f1c5fcbbae52bdcba4745c154ef2a900fb7eafbe88d2d769837bb38ad9020fd3'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+source=(git+https://github.com/KDE/${pkgname})
+

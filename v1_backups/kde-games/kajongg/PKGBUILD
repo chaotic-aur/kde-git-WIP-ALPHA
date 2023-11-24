@@ -1,0 +1,63 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kajongg
+pkgver=23.08.1
+pkgrel=1
+pkgdesc='The ancient Chinese board game for 4 players'
+url='https://apps.kde.org/kajongg/'
+arch=(any)
+license=(GPL LGPL FDL)
+groups=(kde-applications kde-games)
+depends=(python-twisted python-qtpy qt6-python-bindings libkmahjongg hicolor-icon-theme)
+makedepends=(git git git extra-cmake-modules kdoctools)
+optdepends=('vorbis-tools: for playing sounds')
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('54d9be306a007faa049675c6e9afa6bbc1b32efd79d5d82a95363cd38665db97'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+#source(git+https://github.com/KDE/${pkgname})
+
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+#source(git+https://github.com/KDE/${pkgname})
+
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+source=(git+https://github.com/KDE/${pkgname})
+

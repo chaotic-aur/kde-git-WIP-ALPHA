@@ -1,0 +1,56 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=ksvg
+pkgver=5.245.0
+pkgrel=1
+pkgdesc='Components for handling SVGs'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         karchive
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kguiaddons
+         qt6-base
+         qt6-svg)
+makedepends=(doxygen
+             extra-cmake-modules
+             kirigami
+             qt6-declarative
+             qt6-doc
+             qt6-tools)
+optdepends=('kirigami: QML bindings'
+            'qt6-declarative: QML bindings')
+groups=(kf6)
+#source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('fc5fd0420638afdfe37e5cc2e4b2942b82cfd6808990b12e6056913ad39de391'
+#            'SKIP')
+#validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
+#              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+        
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+        
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+        

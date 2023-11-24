@@ -1,0 +1,81 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=cantor
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='KDE Frontend to Mathematical Software'
+url='https://apps.kde.org/cantor/'
+arch=(x86_64)
+license=(GPL LGPL FDL)
+depends=(gcc-libs
+         glibc
+         karchive5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         ki18n5
+         kiconthemes5
+         kio5
+         knewstuff5
+         kparts5
+         ktexteditor5
+         ktextwidgets5
+         kwidgetsaddons5
+         kxmlgui5
+         libqalculate
+         libspectre
+         poppler-qt5
+         qt5-base
+         qt5-svg
+         qt5-tools
+         qt5-webengine
+         qt5-xmlpatterns
+         syntax-highlighting5)
+makedepends=(extra-cmake-modules
+             julia
+             kdoctools5
+             luajit
+             python
+             r)
+optdepends=('maxima: Maxima backend'
+            'octave: Octave backend'
+            'r: R backend'
+            'luajit: LUA backend'
+            'python: Python backend'
+            'sagemath: SageMath backend'
+            'julia: Julia backend')
+groups=(kde-applications
+        kde-education)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('eaab1b6c5a2f0c40c4773231a6b6b396aaed3c3bf049dcfe0b4d9093e046d1ec'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

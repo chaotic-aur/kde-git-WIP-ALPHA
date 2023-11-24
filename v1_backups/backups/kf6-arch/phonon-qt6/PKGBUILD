@@ -1,0 +1,58 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgbase=phonon
+pkgname=(phonon-qt5 phonon-qt6)
+pkgdesc='The multimedia framework by KDE'
+pkgver=4.11.1.20231012
+pkgrel=0
+arch=(x86_64)
+url='https://community.kde.org/Phonon'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         libpulse)
+makedepends=(extra-cmake-modules
+             qt5-base
+             qt5-tools
+             qt6-5compat
+             qt6-base
+             qt6-tools)
+optdepends=('pulseaudio: PulseAudio support')
+#source=(https://download.kde.org/stable/$pkgbase/$pkgver/$pkgbase-$pkgver.tar.xz{,.sig})
+_commit=5a84ee4f72f16a66de65c33c2e72b45e45fb82cd
+makedepends+=(git)
+source=(git+https://invent.kde.org/libraries/$pkgbase#commit=$_commit)
+sha256sums=('SKIP')
+validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
+
+build() {
+  cmake -B build5 -S $pkgbase \
+    -DCMAKE_BUILD_TYPE=None \
+    -DPHONON_BUILD_QT6=OFF
+  cmake --build build5
+
+  cmake -B build6 -S $pkgbase \
+    -DCMAKE_BUILD_TYPE=None \
+    -DPHONON_BUILD_QT5=OFF \
+    -DPHONON_BUILD_SETTINGS=OFF
+  cmake --build build6
+}
+
+package_phonon-qt5(){
+  depends+=(phonon-qt5-backend
+            qt5-base)
+  optdepends+=('qt5-tools: Designer plugin')
+
+  DESTDIR="$pkgdir" cmake --install build5
+}
+
+package_phonon-qt6(){
+  depends+=(#phonon-qt6-backend
+            qt6-5compat
+            qt6-base)
+  optdepends+=('qt6-tools: Designer plugin')
+
+  DESTDIR="$pkgdir" cmake --install build6
+  rm -r "$pkgdir"/usr/share/locale
+}

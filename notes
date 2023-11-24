@@ -1,0 +1,45 @@
+git ls-remote  https://github.com/KDE/kconfig.git HEAD | awk '{ print substr($1,1,7) }'
+
+
+notes:
+	* add -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6 to PKGBUILDS
+
+
+special:
+	* ksvg
+	* polkit-qt6
+	* kcolorscheme
+	* kstatusnotifieritem
+	* kuserfeedback
+	* plasma5support
+	* phonon-qt6
+	* kglobalacceld
+	* kirigami-addons
+	* kmoretools
+	* kpmcore
+
+
+	
+script -> 	plasma-framework (add kcmutils, ksvg, plasma-wayland-protocols dep)
+			kcmutils (add kactivities dep)
+			syntax-highlighting (remove qt6-xmlpatterns)
+			krunner (add kitemmodels dep)
+			breeze (qt5 and qt6 package)
+			xdg-desktop-portal-kde (add kstatusnotifieritem dep)
+			kscreenlocker (add dep ksvg kwindowsystem kwidgetsaddons plasma-framework)
+			plasma-integration (kconfig kcoreaddons kguiaddons kcolorscheme kio kjobwidgets kservice kstatusnotifieritem kwayland kwidgetsaddons kxmlgui breeze xdg-desktop-portal-kde)
+			plasma-workspace (cd folder; remove pam file install; plasma5support, phonon-qt6 dep, remove "accountsservice kio-extras kio-fuse qt6-tools oxygen-sounds", one of those is installing phonon-qt5)
+			kwin (add dep kglobalacceld and a ton of other deps)
+			drkonqi (add statusnotifier dep python-pip)
+			kde-cli-tools (rm ln from install)
+			kwayland-integration (deps and configure cmake to use qt6)
+			plasma-nm (add qcoro-qt6 to deps)
+			plasma-welcome (add kirigami-addons)
+			oxygen and oxygen-sounds (remove pkgver from build)
+			plasma-sdk (add deps plasma5support)
+			kapidox (fix cd build)
+			kjobwidgets (add dep knotifications)
+			ksvg (source wrong? was directing to invent.kde.org)
+			plasma-monitor (add kirigami-addons dep)
+			kio-admin (add polkit-qt6 dep)
+			partition-manager (add polkit-qt6 kpmcore dep)

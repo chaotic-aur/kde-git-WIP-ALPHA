@@ -1,0 +1,49 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kio-extras
+pkgver=23.08.1
+pkgrel=1
+pkgdesc='Additional components to increase the functionality of KIO'
+arch=(x86_64)
+url='https://www.kde.org/'
+license=(LGPL)
+#smbclient kdsoap-ws-discovery-client
+depends=(kio kdnssd libssh libmtp libkexiv2 phonon-qt6 syntax-highlighting libxcursor qcoro-qt6 kcmutils ktextwidgets)
+makedepends=(git extra-cmake-modules kdoctools gperf taglib libappimage openexr kactivities-stats)
+optdepends=('qt6-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
+	'kimageformats: thumbnails for additional image formats' 'taglib: audio file thumbnails'
+	'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
+	'openexr: EXR format thumbnails' 'kactivities-stats: recently used kioslave')
+groups=(kde-applications kde-network)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('1c5b559f54ca3736988ba0fae2dcfc4227a195aa442da254dd6cc2e738cd61d9'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+	cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6 \
+		-DLIBAPPIMAGE_LIBRARIES=libappimage.so \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib \
+		-DBUILD_TESTING=OFF
+	cmake --build build
+}
+#		-DKDE_INSTALL_KSERVICESDIR=lib \
+#		-DKDE_INSTALL_KSERVICETYPESDIR=lib \
+#		-DBUILD_KDSoapWSDiscoveryClient=OFF \
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+source=(git+https://github.com/KDE/${pkgname}#branch=kf6)

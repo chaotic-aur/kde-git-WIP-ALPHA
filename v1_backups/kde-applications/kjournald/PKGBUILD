@@ -1,0 +1,39 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kjournald
+pkgver=23.08.1
+pkgrel=1
+pkgdesc='Framework for interacting with systemd-journald'
+url='https://invent.kde.org/system/kjournald'
+arch=(x86_64)
+license=(GPL3)
+groups=(kde-applications kde-system)
+depends=(systemd kcoreaddons ki18n kirigami)
+makedepends=(git extra-cmake-modules)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('942807098e8c8f738a47ee82e4b241fb58a54ee007b59263919d887539d85b7b'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DBUILD_QT5=OFF \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+source=(git+https://github.com/KDE/${pkgname})
+

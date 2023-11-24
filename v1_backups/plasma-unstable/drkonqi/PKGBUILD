@@ -1,0 +1,70 @@
+# Maintainer:Antonio Rojas <arojas@archlinux.org>
+
+pkgname=drkonqi
+pkgver=5.27.80
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='The KDE crash handler'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(GPL2)
+depends=(gcc-libs
+         gdb
+         glibc
+         kconfig
+         kcoreaddons
+         kcrash
+         ki18n
+         kidletime
+         kio
+         kirigami # QML
+         kitemmodels # QML
+         knotifications
+         kservice
+         kstatusnotifieritem
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         python
+         python-psutil
+         python-pygdbmi
+         python-sentry_sdk
+         qt6-base
+         qt6-declarative
+         syntax-highlighting
+         systemd-libs)
+makedepends=(extra-cmake-modules)
+groups=(plasma)
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('0e8b5efb0dff9b3d24252cc62b4ffe5fd879b3bc9d6a42406f360ac9168b206a'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DWITH_GDB12=ON \
+    -DWITH_PYTHON_VENDORING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+        
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+        
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+        

@@ -1,0 +1,75 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=libksysguard
+pkgver=5.27.80
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1
+pkgdesc='Library to retrieve information on the current status of computer hardware'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         kauth
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kglobalaccel
+         ki18n
+         kio
+         kjobwidgets
+         knewstuff # QML
+         kpackage
+         kservice
+         kwidgetsaddons
+         kwindowsystem
+         libnl
+         libpcap
+         libx11
+         libxres
+         lm_sensors
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-webchannel
+         qt6-webengine
+         solid
+         zlib)
+makedepends=(extra-cmake-modules
+             qt6-tools)
+groups=(plasma)
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+install=libksysguard.install
+#sha256sums=('be3be48c13c92ff65a68ad42f792f3f4685a568b3d6c73b2f0550ba28778f15b'
+#            'SKIP')
+#validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+#              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+#              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+#              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

@@ -1,0 +1,21 @@
+pkgbase = kglobalaccel
+	pkgdesc = Add support for global workspace shortcuts
+	pkgver = 5.240.0.20231014
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf6
+	license = LGPL
+	makedepends = doxygen
+	makedepends = extra-cmake-modules
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	source = git+https://invent.kde.org/frameworks/kglobalaccel#commit=bf0397ad81b9e77b393770404647c0986a45c1b5
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = SKIP
+
+pkgname = kglobalaccel

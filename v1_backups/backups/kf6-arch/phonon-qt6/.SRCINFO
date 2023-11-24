@@ -1,0 +1,39 @@
+pkgbase = phonon
+	pkgdesc = The multimedia framework by KDE
+	pkgver = 4.11.1.20231012
+	pkgrel = 0
+	url = https://community.kde.org/Phonon
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = qt6-5compat
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	optdepends = pulseaudio: PulseAudio support
+	source = git+https://invent.kde.org/libraries/phonon#commit=5a84ee4f72f16a66de65c33c2e72b45e45fb82cd
+	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
+	sha256sums = SKIP
+
+pkgname = phonon-qt5
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	depends = phonon-qt5-backend
+	depends = qt5-base
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = qt5-tools: Designer plugin
+
+pkgname = phonon-qt6
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	depends = qt6-5compat
+	depends = qt6-base
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = qt6-tools: Designer plugin

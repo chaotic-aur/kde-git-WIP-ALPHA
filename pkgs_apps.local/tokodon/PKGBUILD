@@ -1,0 +1,62 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=tokodon
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='A Mastodon client for Plasma'
+url='https://apps.kde.org/tokodon/'
+arch=(x86_64)
+license=(GPL LGPL FDL)
+depends=(gcc-libs
+         glibc
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         kio
+         kirigami
+         kirigami-addons # QML
+         kitemmodels # QML
+         knotifications
+         kwindowsystem
+         mpv
+         purpose
+         qqc2-desktop-style
+         qt6-base
+         qt6-declarative
+         qt6-websockets
+         qt6-webview
+         qtkeychain-qt6)
+makedepends=(extra-cmake-modules)
+groups=(kde-applications 
+        kde-network)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('f94531409751e8c272b193df1c97fbacb363b075799afd0060d95cafa00bf6ac'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

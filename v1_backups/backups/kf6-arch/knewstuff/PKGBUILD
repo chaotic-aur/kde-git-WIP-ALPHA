@@ -1,0 +1,47 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=knewstuff
+pkgver=5.240.0.20231014
+pkgrel=1
+pkgdesc='Support for downloading application assets from the network'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(attica
+         gcc-libs
+         glibc
+         karchive
+         kconfig
+         kcoreaddons
+         ki18n
+         kpackage
+         kwidgetsaddons
+         qt6-base
+         syndication)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-declarative
+             qt6-doc
+             qt6-tools)
+optdepends=('kirigami: QML components'
+            'qt6-declarative: QML components')
+groups=(kf6)
+#source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
+makedepends+=(git)
+_commit=61efe997f36019a5cc8b3b47db4127d553028b8a
+source=(git+https://invent.kde.org/frameworks/$pkgname#commit=$_commit)
+sha256sums=('SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

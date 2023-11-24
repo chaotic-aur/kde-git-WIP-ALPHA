@@ -1,0 +1,30 @@
+
+pkgname=kcolorscheme
+pkgver=5.240.0_r121.g1fba09a
+pkgrel=1
+pkgdesc='Classes to read and interact with KColorScheme'
+arch=($CARCH)
+url='https://invent.kde.org/frameworks/kcolorscheme'
+license=(LGPL)
+depends=(kconfig kguiaddons ki18n)
+makedepends=(git extra-cmake-modules)
+groups=(kf6)
+source=(git+https://invent.kde.org/frameworks/kcolorscheme.git)
+sha256sums=('SKIP')
+
+build() {
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+

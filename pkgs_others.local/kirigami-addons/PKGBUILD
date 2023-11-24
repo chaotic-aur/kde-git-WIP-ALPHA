@@ -1,0 +1,46 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kirigami-addons
+pkgver=0.11.76
+pkgrel=1
+pkgdesc='Add-ons for the Kirigami framework'
+url='https://invent.kde.org/libraries/kirigami-addons'
+arch=(x86_64)
+license=(GPL LGPL)
+depends=(gcc-libs
+         glibc
+         kirigami
+         ksvg
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules)
+#source(https://download.kde.org/unstable/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e66efe30677be999ac6727a7c16d4e2b9e8811695b493f982dce71837135fcf3'
+#            'SKIP')
+#validpgpkeys=(0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D  # Bhushan Shah (mykolab address) <bshah@mykolab.com>
+              39FFA93CAE9C6AFC212AD00202325448204E452A) # Carl Schwan <carl@carlschwan.eu>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/share # Conflicts with KF5 version
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

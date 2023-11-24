@@ -1,0 +1,64 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=tokodon
+pkgver=23.08.1
+pkgrel=1
+pkgdesc='A Mastodon client for Plasma'
+url='https://apps.kde.org/tokodon/'
+arch=(x86_64)
+license=(GPL LGPL FDL)
+groups=(kde-applications kde-network)
+depends=(qqc2-desktop-style kirigami-addons kdbusaddons knotifications kitemmodels kio qtkeychain-qt6 qt6-websockets mpv purpose qt6-webview)
+makedepends=(git git git git extra-cmake-modules)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('3b66af0bb4c8263236aeb60162695975a8e7d19a60ef88d5a17fecf25963c77e'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+	cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6 \
+		-DBUILD_TESTING=OFF
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+#source(git+https://github.com/KDE/${pkgname})
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+#source(git+https://github.com/KDE/${pkgname})
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+#source(git+https://github.com/KDE/${pkgname})
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+source=(git+https://github.com/KDE/${pkgname})

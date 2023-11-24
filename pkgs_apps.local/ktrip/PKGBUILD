@@ -1,0 +1,58 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=ktrip
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='Public Transport Assistance for Mobile Devices'
+url='https://apps.kde.org/ktrip/'
+arch=(x86_64)
+license=(GPL LGPL)
+depends=(gcc-libs
+         glibc
+         kconfig
+         kcoreaddons
+         ki18n
+         kirigami-addons # QML
+         kpublictransport
+         qqc2-desktop-style
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             python)
+groups=(kde-applications
+        kde-utilities)
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        kitemmodels.patch)
+#sha256sums=('4a9007c6aca61d79a61fdef33733603ac54bac83e959847f34b25123b5136447'
+#            'SKIP'
+#            'fd633f41729f860bb659d5372944d60b212337b00a9285c5b7b41da2ba2dacaf')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < kitemmodels.patch
+}
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

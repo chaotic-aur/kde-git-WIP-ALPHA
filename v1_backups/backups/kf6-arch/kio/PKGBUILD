@@ -1,0 +1,71 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kio
+pkgver=5.240.0.20231014
+pkgrel=1
+pkgdesc='Resource and network access abstraction'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(acl
+         gcc-libs
+         glibc
+         karchive
+         kauth
+         kbookmarks
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kguiaddons
+         ki18n
+         kiconthemes
+         kitemviews
+         kjobwidgets
+         knotifications
+         krb5
+         kservice
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         libxml2
+         libxslt
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         solid
+         util-linux-libs)
+makedepends=(doxygen
+             extra-cmake-modules
+             kdoctools
+             qt6-doc
+             qt6-tools)
+optdepends=('kded: proxy management and cookie storage'
+            'kdoctools: for the help kioslave'
+            'kio-extras: extra protocols support (sftp, fish and more)'
+            'kio-fuse: to mount remote filesystems via FUSE'
+            'switcheroo-control: hybrid GPU support')
+groups=(kf6)
+#source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
+makedepends+=(git)
+_commit=d79917b4934e793dc1c51da147b45ebc2137f119
+source=(git+https://invent.kde.org/frameworks/$pkgname#commit=$_commit)
+sha256sums=('SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

@@ -1,0 +1,38 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kcoreaddons
+pkgver=5.110.0
+pkgrel=1
+pkgdesc='Addons to QtCore'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt6-base)
+makedepends=(git extra-cmake-modules qt6-tools qt6-doc clang doxygen)
+groups=(kf6)
+source=(git+https://github.com/KDE/${pkgname})
+#sha256sums=('6e8de80ccc003606af7f89c354719d012bdab5dde156c5505df32861e0158d75'
+#            'SKIP')
+#validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -D_KDE4_DEFAULT_HOME_POSTFIX=4 \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+

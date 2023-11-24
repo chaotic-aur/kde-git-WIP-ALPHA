@@ -1,0 +1,74 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kdevelop-python
+pkgver=23.08.1
+pkgrel=1
+pkgdesc='Python language and documentation plugin for KDevelop'
+arch=(x86_64)
+url='https://www.kdevelop.org/'
+license=(GPL)
+depends=(kdevelop python)
+makedepends=(git git git git extra-cmake-modules)
+optdepends=('python-pycodestyle: for Python style checking')
+groups=(kde-applications kdevelop)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/kdev-python-$pkgver.tar.xz{,.sig})
+#sha256sums=('a4d3bc8c86a1d67d709c31a7aad8436b2c958f13f8ad290264044c7cd78b45de'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S kdev-python -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6  \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+#source(git+https://github.com/KDE/${pkgname})
+
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+#source(git+https://github.com/KDE/${pkgname})
+
+
+#sha256sums('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+#source(git+https://github.com/KDE/${pkgname})
+
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+
+source=(git+https://github.com/KDE/${pkgname})
+

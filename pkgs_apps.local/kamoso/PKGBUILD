@@ -1,0 +1,65 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: birdflesh <antkoul at gmail dot com>
+# Contributor: said
+# Contributor: Panagiotis Papadopoulos <pano_90 AT gmx DOT net>
+
+pkgname=kamoso
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='A webcam recorder from KDE community'
+url='https://apps.kde.org/kamoso/'
+arch=(x86_64)
+license=(GPL)
+depends=(gcc-libs
+         glib2
+         glibc
+         gst-plugins-bad
+         gst-plugins-base-libs
+         gst-plugins-good
+         gstreamer
+         kconfig5
+         kcoreaddons5
+         ki18n5
+         kio5
+         kirigami2
+         kitemviews5
+         knotifications5
+         purpose5 # QML
+         qt5-base
+         qt5-declarative)
+makedepends=(extra-cmake-modules
+             kdoctools5
+             python)
+groups=(kde-applications
+        kde-multimedia)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('bbeea995784ce87ebb9edcb5ea4bec8b54955eef92fccb2c8dc7a149658edd49'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF 
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+    

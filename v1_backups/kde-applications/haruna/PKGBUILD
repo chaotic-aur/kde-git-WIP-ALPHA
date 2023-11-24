@@ -1,0 +1,56 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: prg <prg _at_ xannode _dot_ com>
+# Contributor: Nico <d3sox at protonmail dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+
+pkgname=haruna
+pkgver=0.12.1
+pkgrel=1
+pkgdesc='Video player built with Qt/QML on top of libmpv'
+arch=(x86_64)
+url='https://apps.kde.org/haruna/'
+license=(GPL3)
+depends=(ffmpeg
+	gcc-libs
+	glibc
+	kconfig
+	kconfigwidgets
+	kcoreaddons
+	kdeclarative
+	kfilemetadata
+	ki18n
+	kio
+	kirigami
+	kwindowsystem
+	kiconthemes
+	mpv
+	qt6-base
+	qt6-declarative
+	qt6-quickcontrols2
+	breeze
+)
+makedepends=(git extra-cmake-modules kdoctools)
+optdepends=('yt-dlp: YouTube support')
+#source(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('0435b336d9a19097920f1d92fe5df2e352a9431bd84ce6a34fe225930ea38ede'
+#            'SKIP')
+#validpgpkeys=(4E421C6554B89766DF9B7A37E12AB207C8755905) # George Florea Bănuș <georgefb899@gmail.com>
+
+build() {
+	cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6 \
+		-DBUILD_TESTING=OFF
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+}
+
+source=(git+https://github.com/KDE/${pkgname})

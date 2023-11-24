@@ -1,0 +1,51 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kwallet
+pkgver=5.240.0.20231014
+pkgrel=1
+pkgdesc='Secure and unified container for user passwords'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         gpgme
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         knotifications
+         kwidgetsaddons
+         kwindowsystem
+         libgcrypt
+         qca-qt6
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             kdoctools
+             kservice
+             qt6-doc
+             qt6-tools)
+optdepends=('kwalletmanager: Configuration GUI')
+provides=(org.freedesktop.secrets)
+groups=(kf6)
+#source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
+makedepends+=(git)
+_commit=7a2c863a5242b5d4c49489e0a0c557c6d8915982
+source=(git+https://invent.kde.org/frameworks/$pkgname#commit=$_commit)
+sha256sums=('SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
