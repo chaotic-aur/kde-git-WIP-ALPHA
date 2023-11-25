@@ -8,7 +8,7 @@ pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(GPL LGPL)
-depends=(qt6wayland gcc-libs
+depends=(qt6-wayland gcc-libs
          glibc
          qt6-base
          qt6-wayland
