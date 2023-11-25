@@ -4,7 +4,7 @@
 
 pkgname=frameworkintegration
 pkgver=5.245.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -49,8 +49,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+
