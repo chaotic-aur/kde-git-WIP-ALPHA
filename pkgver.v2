@@ -1,0 +1,7 @@
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+}
+
+
