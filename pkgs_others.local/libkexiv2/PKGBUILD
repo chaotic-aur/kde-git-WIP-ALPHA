@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build5 -S $pkgname \
     -DBUILD_TESTING=OFF
   cmake --build build5
 
