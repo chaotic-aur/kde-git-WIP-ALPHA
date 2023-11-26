@@ -46,12 +46,12 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-^source=(git+https://github.com/KDE/${pkgname}-1)
+source=(git+https://github.com/KDE/${pkgname}-1)
     
 # pkgver-already-applied
 
 pkgver() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}-1
 	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
 
