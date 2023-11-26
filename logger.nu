@@ -1,6 +1,6 @@
-#!/run/current-system/sw/bin/env -S nu -n --no-std-lib
+#!/usr/bin/env -S nu -n --no-std-lib
 
-use ~/work-kde-git/lib.nu *
+use lib.nu *
 
 export def main [
 ] {
@@ -11,8 +11,9 @@ export def main [
 export def "main errors" [
     --filter: string
 ] {
+    #cd $"(daily_temp_folder)"
     let error = '==> ERROR: A failure occurred in build().'
-    engine (list-all --filter $filter | each {|l| grep $error -l -i $l} | lines)
+    engine (grep $error -l -i (list-all) | lines)
 }
 
 
@@ -20,8 +21,9 @@ export def "main errors" [
 export def "main errors db" [
     --filter: string
 ] {
+    #cd $"(daily_temp_folder)"
     let error = 'error: failed to prepare transaction (invalid or corrupted database)\|error: failed retrieving file'
-    engine (list-all --filter $filter | each {|l| grep $error -l -i $l} | lines)
+    engine (grep $error -l -i (list-all) | lines)
 }
 
 
@@ -47,7 +49,8 @@ def engine [
     if ($list | is-empty) {print "nothing to show!"; return}
     mut selected_file = ($list | input list -f 'Select which log to show')
     while not ($selected_file | is-empty) {
-        hx $"(daily_temp_folder)/($selected_file)"
+        #hx $"(daily_temp_folder)/($selected_file)"
+        hx $"($selected_file)"
 	    $selected_file = ($list | input list -f 'Select which log to show')
     }
     echo "Quitting"
@@ -65,8 +68,8 @@ def list_conflicts [] {
 def list-all [
     --filter: string
 ] {
-    cd $"(daily_temp_folder)"
-	  let _list = (ls */*/*.log | sort-by -r modified | get name)
+    #cd $"(daily_temp_folder)"
+	let _list = (ls $"(daily_temp_folder)/*/*/*.log" | sort-by -r modified | get name)
     if ($filter | is-empty) {return $_list} else {($_list | find $filter)}
 }
 
