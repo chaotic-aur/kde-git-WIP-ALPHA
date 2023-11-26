@@ -1,38 +1,18 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=knights
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Chess board by KDE with XBoard protocol support'
 arch=(x86_64)
 url='https://apps.kde.org/knights/'
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         kcompletion
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash
-         ki18n
-         kplotting
-         ksvg
-         ktextwidgets
-         kwallet
-         kwidgetsaddons
-         kxmlgui
-         libkdegames
-         plasma-framework
-         qt6-5compat
-         qt6-base
-         qt6-speech)
+groups=(kde-applications kde-games)
+depends=(libkdegames kplotting5 plasma-framework5 hicolor-icon-theme)
 optdepends=('gnuchess: for playing against the computer')
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-games)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('857f74fd988dc542ac1aaf7d333374e2e848913d913697e2c64b98a8697eface'
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d2ece71ab74acca2debfd1644513ce5a7f1eab74add1fd4d8177c8ef317f517a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -55,8 +35,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

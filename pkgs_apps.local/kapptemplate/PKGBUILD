@@ -3,29 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kapptemplate
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='KDE Template Generator'
 url='https://apps.kde.org/kapptemplate/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         karchive
-         kcompletion
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         ki18n
-         kio
-         kwidgetsaddons
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kdesdk)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('989c1fa70be47f60768b25da7f952b567d379c41d333aee25d01d2e5a6f20de5'
+groups=(kde-applications kdesdk)
+depends=(kio5 hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('ed15e0b90cc3459b823a4897edd8c9f2cb6915c937c8b1a3f28726c8a683eb43'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -48,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

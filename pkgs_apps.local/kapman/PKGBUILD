@@ -3,31 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kapman
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='A clone of the well known game Pac-Man'
 url='https://apps.kde.org/kapman/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash 
-         kdbusaddons
-         ki18n
-         kwidgetsaddons
-         kxmlgui
-         libkdegames
-         qt6-base
-         qt6-svg)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-games)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('00193807468f342b5bf7d740dac58e57ade4c3fa693f101056ea19055394706c'
+groups=(kde-applications kde-games)
+depends=(libkdegames hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('a9cbac7af84102b3326a87d7d11cfa7d26d1f481e8552211a38eb7e1627511ca'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -50,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

@@ -9,41 +9,28 @@ license=(GPL)
 url='https://invent.kde.org/libraries/kweathercore'
 depends=(gcc-libs
          glibc
-         kholidays
-         ki18n
-         qt6-base
-         qt6-positioning)
+         kholidays5
+         ki18n5
+         qt5-base
+         qt5-location)
 makedepends=(doxygen
              extra-cmake-modules
-             qt6-tools)
-#source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
-#        https://invent.kde.org/libraries/kweathercore/-/commit/207eff94.patch
-#        https://invent.kde.org/libraries/kweathercore/-/commit/6d7e43f1.patch
-#        https://invent.kde.org/libraries/kweathercore/-/commit/0b6bfc05.patch)
+             qt5-tools)
+#source(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
 #sha256sums=('04dde83ae543163735776dc50edab3510247d4825432840a78fade9b237a79fd'
-#            'SKIP'
-#            '8331863eeb7b6bbb5133b76198b9156b042edb71bde30b41371327f2666c1b71'
-#            '629f6ac0a2b0aa3c050c40997202c0c5c8121ca58612f4423a479b4ce8137cd0'
-#            '619ffec63b2b1fe2fbb066c5570b80b3e7a9b8fa9cd8e83025e9effed4b8fc11')
+#            'SKIP')
 #validpgpkeys=(0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D) # Bhushan Shah (mykolab address) <bshah@mykolab.com>
-
-#prepare() {
-#  patch -d $pkgname-$pkgver -p1 < 207eff94.patch # Support Qt6
-#  patch -d $pkgname-$pkgver -p1 < 6d7e43f1.patch # Support Qt6
-#  patch -d $pkgname-$pkgver -p1 < 0b6bfc05.patch # Support Qt6
-#}
 
 build() {
   cmake -B build -S $pkgname \
     -DBUILD_TESTING=OFF \
-    -DQT_MAJOR_VERSION=6 \
     -DBUILD_QCH=ON
   cmake --build build
 }
 
-#package() {
-#  DESTDIR="$pkgdir" cmake --install build
-#}
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
 
 # sums-already-applied
 sha256sums=('SKIP')
@@ -52,8 +39,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

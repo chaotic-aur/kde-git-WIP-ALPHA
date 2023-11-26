@@ -24,7 +24,6 @@ groups=(kf5)
 build() {
   cmake -B build -S $_name-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DBUILD_INDEXER_SERVICE=OFF \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_QCH=ON
   cmake --build build
@@ -41,8 +40,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

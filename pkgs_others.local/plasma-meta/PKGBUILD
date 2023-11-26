@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=6.0
+pkgver=5.27
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
@@ -10,18 +10,14 @@ arch=(any)
 license=(None)
 url='https://kde.org/plasma-desktop/'
 depends=(bluedevil
-         breeze-gtk
-         discover
          drkonqi
          kde-gtk-config
          kdeplasma-addons
-         kgamma
+         khotkeys
          kinfocenter
          kscreen
          ksshaskpass
-         kwallet-pam
          kwrited
-         ocean-sound-theme
          oxygen
          oxygen-sounds
          plasma-browser-integration
@@ -35,9 +31,13 @@ depends=(bluedevil
          plasma-thunderbolt
          plasma-vault
          plasma-welcome
-         powerdevil
-         print-manager
+         kwayland-integration
+         kwallet-pam
+         kgamma5
          sddm-kcm
+         breeze-gtk
+         powerdevil
+         discover
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
@@ -53,8 +53,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

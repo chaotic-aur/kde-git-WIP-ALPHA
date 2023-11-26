@@ -1,48 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=spectacle
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
 arch=(x86_64)
 url='https://apps.kde.org/spectacle/'
 license=(GPL)
-depends=(gcc-libs
-         glibc
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kdbusaddons
-         kglobalaccel
-         kguiaddons
-         ki18n
-         kio
-         kirigami
-         kjobwidgets
-         knotifications
-         kpipewire
-         kservice
-         kwidgetsaddons
-         kwindowsystem
-         kxmlgui
-         layer-shell-qt
-         libxcb
-         purpose
-         qt6-base
-         qt6-declarative
-         qt6-multimedia # QML
-         qt6-wayland
-         wayland
-         xcb-util
-         xcb-util-cursor
-         xcb-util-image)
-makedepends=(extra-cmake-modules
-             kdoctools
-             plasma-wayland-protocols)
-groups=(kde-applications
-        kde-graphics)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0c2d62a33d2769e2838fb757b6f14f72773b97c3558fe193b3a691917dc39f54'
+depends=(xcb-util-cursor purpose5 knewstuff5 qt5-tools kpipewire)
+makedepends=(extra-cmake-modules kdoctools5 plasma-wayland-protocols)
+groups=(kde-applications kde-graphics)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('bd45d41b5eb451363b8c927adbb53b27c4dcee952b6bb576aec08ebcb9da24db'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -66,8 +35,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

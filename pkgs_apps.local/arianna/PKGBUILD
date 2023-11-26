@@ -1,34 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=arianna
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='EPub Reader for mobile devices'
 url='https://apps.kde.org/arianna/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(baloo
-         gcc-libs
-         glibc
-         karchive
-         kconfig
-         kcoreaddons
-         kdbusaddons
-         kfilemetadata
-         ki18n
-         kirigami-addons
-         kquickcharts
-         kwindowsystem
-         qqc2-desktop-style
-         qt6-base
-         qt6-declarative
-         qt6-httpserver
-         qt6-webengine)
+groups=(kde-applications kde-graphics)
+depends=(kirigami-addons5 qqc2-desktop-style5 baloo5 qt5-webengine qt5-websockets kquickcharts5)
 makedepends=(extra-cmake-modules)
-groups=(kde-applications
-        kde-graphics)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('a27fbe6ab76075ae1cd5e66361bcd4eec5386677283400e08492624db6954dd0'
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('ee170139e2574d91b8a7c020732f00d789a43028e5006a349788d3fab9562eb7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -51,8 +34,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

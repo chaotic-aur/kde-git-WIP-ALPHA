@@ -3,31 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=killbots
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='A simple game of evading killer robots'
 url='https://apps.kde.org/killbots/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         kcompletion
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash
-         kdbusaddons
-         ki18n
-         kwidgetsaddons
-         kxmlgui
-         libkdegames
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-games)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0eb1e32e6bf5fdcd1a11c92b6e9f85789e61cadcb83656614d70d7276e7670d1'
+groups=(kde-applications kde-games)
+depends=(libkdegames hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('89c5e30dce6eec6d53825db12bda418e74f9a7a2e4b238865f2187cd365d5f6c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -50,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

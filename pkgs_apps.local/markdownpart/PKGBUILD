@@ -1,26 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=markdownpart
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='KPart for rendering Markdown content'
 arch=(x86_64)
 url='https://apps.kde.org/markdownpart/'
 license=(GPL)
-depends=(gcc-libs
-         glibc
-         kconfigwidgets
-         kcoreaddons
-         ki18n
-         kio
-         kparts
-         kxmlgui
-         qt6-base)
+depends=(kparts5)
 makedepends=(extra-cmake-modules)
-groups=(kde-applications
-        kde-utilities)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9a68b21db911359ae6d6f0ac9408b81819b3bffe320b196395df67f805f2c92f'
+groups=(kde-applications kde-utilities)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('b776325b0b9ef5cb865a00f6489bbe95a59f05038f165ca957430a38eac988db'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -43,8 +34,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

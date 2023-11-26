@@ -3,22 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=kcachegrind
-pkgname=(kcachegrind
-         kcachegrind-common
-         qcachegrind)
-pkgver=24.01.75
+pkgname=(kcachegrind kcachegrind-common qcachegrind)
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Visualization of Performance Profiling Data'
 url='https://apps.kde.org/kcachegrind/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-makedepends=(extra-cmake-modules
-             kdoctools
-             kio
-             kxmlgui
-             qt6-tools)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c8e96f7aa5b00b7d7a0078f5952208f8fa63b2bae2a244648763bd08889dbc1b'
+makedepends=(extra-cmake-modules kdoctools5 qt5-tools kio5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('9fee92cfbb89a3bc9e6f12f4022fa9eeb41d4a6ba4cc2b2d4206e015c675c27f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -26,27 +20,13 @@ makedepends=(extra-cmake-modules
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF \
-    -DQT_MAJOR_VERSION=6
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
 package_kcachegrind() {
-  groups=(kde-applications
-          kdesdk)
-  depends=(gcc-libs
-           glibc
-           karchive
-           kcachegrind-common
-           kconfig
-           kconfigwidgets
-           kcoreaddons
-           kdbusaddons
-           ki18n
-           kio
-           kwidgetsaddons
-           kxmlgui
-           qt6-base)
+  groups=(kde-applications kdesdk)
+  depends=(kio5 kcachegrind-common)
   optdepends=('graphviz: for plotting support')
 
   DESTDIR="$pkgdir" cmake --install build
@@ -56,8 +36,7 @@ package_kcachegrind() {
 package_kcachegrind-common() {
   pkgdesc+=' (common files)'
   depends=(hicolor-icon-theme)
-  optdepends=('perl: for dprof2calltree, memprof2calltree and op2calltree'
-              'php: for pprof2calltree')
+  optdepends=('php: for pprof2calltree' 'perl: for dprof2calltree, memprof2calltree and op2calltree')
 
   DESTDIR="$pkgdir" cmake --install build
   rm -r "$pkgdir"/usr/{bin/kcachegrind,share/{kcachegrind,applications,metainfo}} # provided by kcachegrind
@@ -69,10 +48,7 @@ package_kcachegrind-common() {
 
 package_qcachegrind() {
   pkgdesc+=' (pure Qt version)'
-  depends=(gcc-libs
-           glibc
-           kcachegrind-common
-           qt6-base)
+  depends=(qt5-base kcachegrind-common)
   optdepends=('graphviz: for plotting support')
 
   install -Dm755 build/bin/qcachegrind -t "$pkgdir"/usr/bin/
@@ -86,8 +62,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

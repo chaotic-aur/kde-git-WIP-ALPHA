@@ -1,40 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='A simple music player aiming to provide a nice experience for its users'
 url='https://apps.kde.org/elisa/'
 arch=(x86_64)
 license=(LGPL3)
 groups=(kde-applications kde-multimedia)
-depends=(baloo
-         gcc-libs
-         glibc
-         kcolorscheme
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash
-         kdbusaddons
-         kfilemetadata
-         ki18n
-         kiconthemes
-         kio
-         kirigami # QML
-         kitemviews
-         kxmlgui
-         qqc2-desktop-style
-         qt6-base
-         qt6-declarative
-         qt6-multimedia
-         vlc)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-multimedia)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('776914805696831a49670f5ba66e64d61ba01877fa527144fd5fe025b16cef9a'
+depends=(baloo5 kirigami2 vlc) # upnp-player-qt
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e5db807b24cb9682eb9c0d38843351e6d2444987de63754b6348aa8425d366d9'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -57,8 +34,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

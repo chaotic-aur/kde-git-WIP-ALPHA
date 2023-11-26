@@ -3,38 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwalletmanager
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Wallet management tool'
 arch=(x86_64)
 url='https://apps.kde.org/kwalletmanager5/'
 license=(LGPL)
-depends=(gcc-libs
-         glibc
-         karchive
-         kauth
-         kcmutils
-         kcodecs
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash
-         kdbusaddons
-         ki18n
-         kio
-         kitemviews
-         kstatusnotifieritem
-         kwallet
-         kwidgetsaddons
-         kwindowsystem
-         kxmlgui
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-utilities)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ca8561ee897994d367435ed4dfbbec7de434a58c3e3e010a3ff247b71a4de4d9'
+depends=(kio5 hicolor-icon-theme)
+makedepends=(extra-cmake-modules kcmutils5 kdoctools5)
+groups=(kde-applications kde-utilities)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('778c26773f7f671c2e81df7f75ae6ed966c096bdbb867606c78b6151cb37b472'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -58,8 +37,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+
