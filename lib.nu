@@ -43,24 +43,31 @@ export def is_updated_source [group: string, package: string] [string, string] -
 	let upstream_commit = if ($url | $in =~ "#branch=") {
 		let index = ($url | str index-of "#branch=")
 		let branch = ($url | str substring ($index + 8)..)
-		GIT_ASKPASS=echo git ls-remote ($url | str substring 0..$index) $branch | str substring 0..5
+		GIT_ASKPASS=echo git ls-remote ($url | str substring 0..$index) $branch | str substring 0..(version-commit-string-length)
 	} else {
-		GIT_ASKPASS=echo git ls-remote $url HEAD | str substring 0..5
+		GIT_ASKPASS=echo git ls-remote $url HEAD | str substring 0..(version-commit-string-length)
 	}
 	#print $upstream_commit
 	
 	let archive_folder = (open /etc/xdg/repoctl/config.toml | get repo | path dirname)
 	#print $archive_folder	
 	let pkgrel = (find_pkgrel_from_package $package)
-	let commit_pkgrel = $"($upstream_commit).($pkgrel)"
+	#let commit_pkgrel = $"($upstream_commit).($pkgrel)"
 	#print $commit_pkgrel
 	let built_packages = (ls $archive_folder | get name | find $package | find -v ".sig" | find $upstream_commit | ansi strip)
-    
+    #print $built_packages
+		#print $upstream_commit
     let up_to_date = if ($built_packages | is-empty) {false} else {($built_packages | any {|p|
-        let index_end = ($p | str index-of "-1-")
+        #print $p
+				#let index_end = ($p | str index-of "-1-")
+				#let index_end = (($p | str index-of $upstream_commit) + (version-commit-string-length) + 2)
+				let index_commit = ($p | str index-of $upstream_commit)
+				#print $index_commit
+				let index_end = (($p | str substring $index_commit.. | str index-of "-") + $index_commit + 2)
+				#print $index_end
         let index_beg = ($index_end - 1)
         let rel = ($p | str substring $index_beg..$index_end)
-	#print $"pkgrel: ($pkgrel) | pkg: ($rel)"
+				#print $"pkgrel: ($pkgrel) | pkg: ($rel)"
         try { (($rel | into int) >= ($pkgrel | into int)) }
     })}
 	#print $"(ls ($archive_folder) | get name | find ($package) | find ($commit_pkgrel) | ansi strip)"
@@ -72,21 +79,23 @@ export def is_updated_source [group: string, package: string] [string, string] -
 
 export def is_updated_commit [group: string, package: string] [string, string] -> string {
 	cd (group_folder $group)
-	let upstream_commit = ((find_commit_from_package $package) | str substring 0..7)
+	let upstream_commit = ((find_commit_from_package $package) | str substring 0..(version-commit-string-length))
 
 	let archive_folder = (open /etc/xdg/repoctl/config.toml | get repo | path dirname)
 	#print $archive_folder	
 	let pkgrel = (find_pkgrel_from_package $package)
 	let commit_pkgrel = $"($upstream_commit).($pkgrel)"
-	print $commit_pkgrel
+	#print $commit_pkgrel
 	let built_packages = (ls $archive_folder | get name | find $package | find -v ".sig" | find $upstream_commit | ansi strip)
-	print ($built_packages)
+	#print ($built_packages)
 
     let up_to_date = if ($built_packages | is-empty) {false} else {($built_packages | any {|p|
-        let index_end = ($p | str index-of "-1-")
+        #let index_end = ($p | str index-of "-1-")
+				let index_commit = ($p | str index-of $upstream_commit)
+				let index_end = (($p | str substring $index_commit.. | str index-of "-") + $index_commit + 2)
         let index_beg = ($index_end - 1)
         let rel = ($p | str substring $index_beg..$index_end)
-	print $"pkgrel: ($pkgrel) | pkg: ($rel)"
+				#print $"pkgrel: ($pkgrel) | pkg: ($rel)"
         try { (($rel | into int) >= ($pkgrel | into int)) }
     })}
 	#print $"(ls ($archive_folder) | get name | find ($package) | find ($commit_pkgrel) | ansi strip)"
@@ -96,6 +105,8 @@ export def is_updated_commit [group: string, package: string] [string, string] -
 	return $up_to_date
 }
 
+
+def version-commit-string-length [] {return 7}
 
 def find_source_from_package [
     package: string
