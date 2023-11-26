@@ -3,41 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=juk
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='A jukebox, tagger and music collection manager'
 url='https://apps.kde.org/juk/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         kglobalaccel5
-         ki18n5
-         kiconthemes5
-         kio5
-         kjobwidgets5
-         knotifications5
-         ktextwidgets5
-         kwallet5
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
-         phonon-qt5
-         qt5-base
-         qt5-svg
-         taglib)
-makedepends=(extra-cmake-modules
-             kdoctools5)
-groups=(kde-applications
-        kde-multimedia)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7dd04b07fcbbbc391e34a76e3236da261f347794e83997c3853cb430d9179830'
+groups=(kde-applications kde-multimedia)
+depends=(kio5 taglib phonon-qt5 hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('32d079b6ae554f8f6b4194552ad6430c8825ab3af3d331b85c7fb4bb69749cf8'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -60,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

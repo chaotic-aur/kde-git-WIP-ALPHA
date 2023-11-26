@@ -3,29 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcron
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Configure and schedule tasks'
 url='https://apps.kde.org/kcron/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(cron
-         gcc-libs
-         glibc
-         kauth
-         kconfigwidgets
-         kcoreaddons
-         kcmutils
-         ki18n
-         kio
-         kwidgetsaddons
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-system)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b9bcdb30154f454fdb028d7ffbb90bf2ce786d1c3677ed0937d0d36d53f75978'
+groups=(kde-applications kde-system)
+depends=(kio5 cron)
+makedepends=(extra-cmake-modules kdoctools5 kcmutils5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('8301d93a4405c230a41146dd2d4916195adef44f4a897317ff6f956b9eb87eed'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -48,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

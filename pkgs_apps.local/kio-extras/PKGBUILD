@@ -3,74 +3,28 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-extras
-pkgver=24.01.75
-pkgrel=2
+pkgver=23.08.3
+pkgrel=1
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
 license=(LGPL)
-depends=(gcc-libs
-         glibc
-         kactivities
-         kactivities-stats
-         kactivitymanagerd
-         karchive
-         kcmutils
-         kconfig
-         kcoreaddons
-         kdbusaddons
-         kdnssd
-         kdsoap-qt6
-         kdsoap-ws-discovery-client
-         ki18n
-         kio
-         kservice
-         ktextwidgets
-         kwidgetsaddons
-         libimobiledevice
-         libkexiv2
-         libmtp
-         libplist
-         libssh
-         libxcursor
-         phonon-qt6
-         qt6-5compat
-         qt6-base
-         qt6-svg
-         smbclient
-         solid
-         syntax-highlighting)
-makedepends=(extra-cmake-modules
-             gperf
-             kactivities-stats
-             kdoctools
-             libappimage
-             openexr
-             qcoro-qt6
-             taglib)
-optdepends=('icoutils: Windows executable thumbnails'
-            'kactivities-stats: recently used kioslave'
-            'kimageformats: thumbnails for additional image formats'
-            'libappimage: AppImage thumbnails'
-            'openexr: EXR format thumbnails'
-            'perl: info kioslave'
-            #'qt5-imageformats: thumbnails for additional image formats'
-            'taglib: audio file thumbnails')
-groups=(kde-applications
-        kde-network)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-kf6-$pkgver.tar.xz{,.sig})
-#sha256sums=('bd0487a5d35a09f9c539307da563e60f42364eb0780bae587ed1a61d308d4c76'
+depends=(kio5 kdnssd5 libssh smbclient libmtp libkexiv2 phonon-qt5 syntax-highlighting5 libxcursor kdsoap-qt5)
+makedepends=(extra-cmake-modules kdoctools5 gperf taglib libappimage openexr kactivities-stats5)
+optdepends=('qt5-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
+            'kimageformats5: thumbnails for additional image formats' 'taglib: audio file thumbnails'
+            'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
+            'openexr: EXR format thumbnails' 'kactivities-stats5: recently used kioslave')
+groups=(kde-applications kde-network)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('06464d0e3868c961dcc2b2ccbb0e66c743a7ac250b3555147e3b171048d8d6da'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
-#prepare() {
-#  sed -e 's|KF6ActivitiesStats ${KF_MIN_VERSION}|KF6ActivitiesStats|' -i $pkgname/CMakeLists.txt # Fix finding kactivities-stats
-#}
-
 build() {
-  cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON \
+  cmake -B build -S $pkgname \
     -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
@@ -79,8 +33,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  #rm "$pkgdir"/usr/share/applications/kcm_trash.desktop # Conflicts with kio5
 }
 
 # sums-already-applied
@@ -90,8 +42,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

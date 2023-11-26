@@ -3,29 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmag
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Screen Magnifier'
 url='https://apps.kde.org/kmag/'
 license=(GPL FDL)
-depends=(gcc-libs
-         glibc
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         ki18n
-         kio
-         kwidgetsaddons
-         kxmlgui
-         libqaccessibilityclient-qt6
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-groups=(kde-applications
-        kde-accessibility)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('606bfa0a1b0efa669862f69393f5d86383d0256dd1b2b3368a653d777988d29f'
+groups=(kde-applications kde-accessibility)
+depends=(kio5 libqaccessibilityclient hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('dd09ae45863a015b60b1db7bc90717429a752f628748d1a64c8da5907b442769'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -48,8 +36,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

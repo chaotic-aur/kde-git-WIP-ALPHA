@@ -1,0 +1,60 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org> 
+
+pkgname=isoimagewriter
+pkgver=24.01.75
+pkgrel=1
+pkgdesc='Program to write hybrid ISO files onto USB disks'
+arch=(x86_64)
+url='https://apps.kde.org/isoimagewriter/'
+license=(GPL)
+depends=(gcc-libs
+         glibc
+         gpgme
+         karchive
+         kcoreaddons
+         kcrash
+         ki18n
+         kiconthemes
+         kwidgetsaddons
+         qgpgme-qt6
+         qt6-base
+         solid)
+makedepends=(extra-cmake-modules)
+groups=(kde-applications
+        kde-utilities)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('c6e310837d18ec8b63383efd30d1bece35eb2912b53d9a5ff83341b82013f72e'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  sed -e 's|QGpgme_FOUND|QGpgmeQt6_FOUND|' -i $pkgname-$pkgver/isoimagewriter/CMakeLists.txt
+}
+
+build() { 
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname})
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+}
+
+

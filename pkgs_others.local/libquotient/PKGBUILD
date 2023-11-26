@@ -9,12 +9,7 @@ pkgdesc='A Qt library to write cross-platform clients for Matrix'
 license=(LGPL)
 arch=(x86_64)
 url='https://matrix.org/docs/projects/sdk/quotient'
-depends=(gcc-libs
-         glibc
-         libolm
-         openssl
-         qt6-base
-         qtkeychain-qt6)
+depends=(qt5-multimedia qtkeychain-qt5 libolm)
 makedepends=(cmake)
 #source(https://github.com/quotient-im/libQuotient/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 #sha256sums('5e5539fe9616c9f63985b0aabfab1858f1626e3d71a14709eeedd85af0471c7c')
@@ -24,7 +19,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_WITH_QT6=ON \
     -DQuotient_ENABLE_E2EE=ON
   cmake --build build
 }
@@ -40,8 +34,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

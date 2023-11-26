@@ -2,27 +2,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=baloo-widgets
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Widgets for Baloo'
 arch=(x86_64)
 url='https://www.kde.org/'
 license=(LGPL)
-depends=(gcc-libs
-         glibc
-         baloo
-         kconfig
-         kcoreaddons
-         kfilemetadata
-         ki18n
-         kio
-         kservice
-         kwidgetsaddons
-         qt6-base)
-makedepends=(extra-cmake-modules
-             kdoctools)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('fc2ea6cc74a81ed5a3c4f094cad0360ea588c2c3d9ad6c195f7af895af4ca5b2'
+depends=(baloo5)
+makedepends=(extra-cmake-modules kdoctools5)
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('bf025334bfab24a1c1e763a1b6914c59ce3b0e6c6324a41fb660a9d51bbb8cdc'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -30,8 +19,7 @@ makedepends=(extra-cmake-modules
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_WITH_QT6=ON
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
@@ -47,8 +35,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

@@ -3,34 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkdegames
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Common code and data for many KDE games'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
-         glibc
-         karchive
-         kcolorscheme
-         kcompletion
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kdnssd
-         kguiaddons
-         ki18n
-         knewstuff
-         kwidgetsaddons
-         kxmlgui
-         libsndfile
-         openal
-         qt6-base
-         qt6-declarative
-         qt6-svg)
+depends=(kdnssd5 knewstuff5)
 makedepends=(extra-cmake-modules)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('294389082cafd3f7774d6e73e3fed9152283abdcbe9e28381cfd32d4a22cae85'
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('079d8adb5046551aaf0427b042ba9f09dfdad7bacfdeebfba3c5e593e3daea93'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -53,8 +35,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

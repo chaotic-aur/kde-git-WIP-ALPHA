@@ -3,35 +3,18 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kalgebra
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 pkgdesc='Graph Calculator'
 url='https://apps.kde.org/kalgebramobile/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(analitza
-         gcc-libs
-         glibc
-         kcolorscheme
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         ki18n
-         kio
-         kwidgetsaddons
-         kxmlgui
-         qt6-base
-         qt6-declarative
-         qt6-webengine
-         readline)
-makedepends=(extra-cmake-modules
-             kdoctools
-             plasma-framework)
-optdepends=('kirigami: for KAlgebra Mobile')
-groups=(kde-applications
-        kde-education)
+groups=(kde-applications kde-education)
+depends=(analitza5 kio5 qt5-webengine)
+makedepends=(extra-cmake-modules kdoctools5 plasma-framework5)
+optdepends=('kirigami2: for KAlgebra Mobile')
 #source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0fa49446e1eac663af44459951a5773ef752f2ebfa4249046e75ec13c3f59611'
+#sha256sums=('3355914ecee826fe042c95beeca680fe3c5229556390d5fcc7f00906d48e9680'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -54,8 +37,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+

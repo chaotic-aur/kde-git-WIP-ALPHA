@@ -3,48 +3,18 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole
-pkgver=24.01.75
+pkgver=23.08.3
 pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator'
 license=(GPL LGPL FDL)
-groups=(kde-applications
-        kde-utilities)
-depends=(bash
-         glibc
-         gcc-libs
-         icu
-         kbookmarks
-         kcolorscheme
-         kconfig
-         kconfigwidgets
-         kcoreaddons
-         kcrash
-         kdbusaddons
-         kglobalaccel
-         kguiaddons
-         ki18n
-         kiconthemes
-         kio
-         knewstuff
-         knotifications
-         knotifyconfig
-         kparts
-         kpty
-         kservice
-         ktextwidgets
-         kwidgetsaddons
-         kwindowsystem
-         kxmlgui
-         qt6-5compat
-         qt6-base
-         qt6-multimedia)
-makedepends=(extra-cmake-modules
-             kdoctools)
+groups=(kde-applications kde-utilities)
+depends=(knotifyconfig5 kpty5 kparts5 knewstuff5)
+makedepends=(extra-cmake-modules kdoctools5)
 optdepends=('keditbookmarks: to manage bookmarks')
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7d0385978c608a748e678612bb72f78d1c8636afcca3d2014ee720f12a2ce43d'
+#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e20c3430ad1fd468590d6f34f93d1ef5ca41bbe1827fa0453a1ba41118d85323'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -67,8 +37,10 @@ sha256sums=('SKIP')
 source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
+
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD).${pkgrel}"
+	cd ${srcdir}/${pkgname}
+	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
-    
+
+
