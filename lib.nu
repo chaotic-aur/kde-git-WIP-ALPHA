@@ -165,5 +165,5 @@ export def find_package_latest_commit_upstream [package: string] {
 }
 
 export def chaotic-db-error-texts [] {
-	return ['error: failed to prepare transaction (invalid or corrupted database)' 'error: failed retrieving file']
+	return ['error: failed to prepare transaction (invalid or corrupted database)' 'error: failed retrieving file' 'error: could not open file /var/lib/pacman/sync/']
 }
