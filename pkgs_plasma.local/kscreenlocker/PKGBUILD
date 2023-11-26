@@ -46,9 +46,9 @@ groups=(plasma)
 ##        kde.pam
 ##        kde-fingerprint.pam
 ##        kde-smartcard.pam)
-        kde.pam
-        kde-fingerprint.pam 
-        kde-smartcard.pam)
+#        kde.pam
+#        kde-fingerprint.pam 
+#        kde-smartcard.pam)
 #sha256sums=('e60002f53aedd492346d67e30e60853714d6f4abfe3174109613eeab6d36b22a'
 #            'SKIP'
 #            'adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b'
@@ -75,10 +75,13 @@ package() {
 }
 
 # sums-already-applied
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#
+        kde.pam
+        kde-fingerprint.pam 
+        kde-smartcard.pam)
     
 # pkgver-already-applied
 
