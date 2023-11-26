@@ -46,7 +46,7 @@ source=(git+https://github.com/KDE/${pkgname})
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=9 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
 
 
