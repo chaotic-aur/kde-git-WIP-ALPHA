@@ -33,20 +33,19 @@ export def is_updated [group: string, package: string] [string, string] -> strin
 }
 
 export def is_updated_source [group: string, package: string] [string, string] -> string {
-
 	cd (group_folder $group)
 
 	#let url = (open $"($package)/PKGBUILD" | find "source=" | ansi strip | find "#source" --invert | str substring 12..-1 | str replace "${pkgname}" $package | get 0)
 	let url = (find_source_from_package $package --keepbranch true)
 
-    if not ($url | find ".tar." | is-empty) {return true}
+  if not ($url | find ".tar." | is-empty) {return true}
 
 	let upstream_commit = if ($url | $in =~ "#branch=") {
 		let index = ($url | str index-of "#branch=")
 		let branch = ($url | str substring ($index + 8)..)
-		GIT_ASKPASS=echo git ls-remote ($url | str substring 0..$index) $branch | str substring 0..7
+		GIT_ASKPASS=echo git ls-remote ($url | str substring 0..$index) $branch | str substring 0..5
 	} else {
-		GIT_ASKPASS=echo git ls-remote $url HEAD | str substring 0..7
+		GIT_ASKPASS=echo git ls-remote $url HEAD | str substring 0..5
 	}
 	#print $upstream_commit
 	
@@ -72,15 +71,14 @@ export def is_updated_source [group: string, package: string] [string, string] -
 
 
 export def is_updated_commit [group: string, package: string] [string, string] -> string {
-
 	cd (group_folder $group)
-	let upstream_commit = ((find_commit_from_package $package) | str substring 0..8)
+	let upstream_commit = ((find_commit_from_package $package) | str substring 0..7)
 
 	let archive_folder = (open /etc/xdg/repoctl/config.toml | get repo | path dirname)
 	#print $archive_folder	
 	let pkgrel = (find_pkgrel_from_package $package)
 	let commit_pkgrel = $"($upstream_commit).($pkgrel)"
-	#print $commit_pkgrel
+	print $commit_pkgrel
 	let built_packages = (ls $archive_folder | get name | find $package | find -v ".sig" | find $upstream_commit | ansi strip)
 	print ($built_packages)
 
