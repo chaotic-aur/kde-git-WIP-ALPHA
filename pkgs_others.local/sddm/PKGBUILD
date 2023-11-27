@@ -4,13 +4,13 @@
 
 pkgname=sddm
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
 license=(GPL)
-depends=(qt5-declarative xorg-xauth xorg-server ttf-font)
-makedepends=(extra-cmake-modules python-docutils qt5-tools)
+depends=(qt6-declarative xorg-xauth xorg-server ttf-font)
+makedepends=(git extra-cmake-modules python-docutils qt6-tools)
 backup=('usr/share/sddm/scripts/Xsetup'
         'usr/share/sddm/scripts/Xstop'
         'etc/pam.d/sddm'
@@ -21,7 +21,7 @@ provides=(display-manager)
 #sha256sums('467c8bd91e0d4f76d4bc4e57ab334f1f48a33478482ba9476d93b0b3d7ace9fb')
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DQT_MAJOR_VERSION=6 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
