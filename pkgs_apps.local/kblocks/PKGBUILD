@@ -3,17 +3,31 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kblocks
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='The classic falling blocks game'
 url='https://apps.kde.org/kblocks/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ac328be4be8f38004009c29d6295f5d2c34b298fab63663a216958bbdb45dc8f'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kwidgetsaddons
+         kxmlgui
+         libkdegames
+         qt6-base
+         qt6-svg)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('991bb9d7e9868a2569f40a39afb5b1fe0cca402f835e592a62ab249cd92dcf62'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

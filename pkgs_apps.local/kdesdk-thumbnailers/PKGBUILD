@@ -3,17 +3,24 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesdk-thumbnailers
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Plugins for the thumbnailing system'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kdesdk)
-depends=(kio5 gettext)
+depends=(gcc-libs
+         gettext
+         glibc
+         kconfig
+         kcoreaddons
+         kio
+         qt6-base)
 makedepends=(extra-cmake-modules)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('6502bc4474a3bb31e01329afa5f2c1d3317bf78b85a0190883f5702d623f0d26'
+groups=(kde-applications
+        kdesdk)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('34356bd7a0714238c370beaf3e5b3c1a43a6e1f391ecf80ed5bd0d8d931ca911'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -21,7 +28,8 @@ makedepends=(extra-cmake-modules)
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
 }
 

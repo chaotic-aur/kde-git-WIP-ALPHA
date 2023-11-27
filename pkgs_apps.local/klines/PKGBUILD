@@ -3,17 +3,30 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=klines
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A simple but highly addictive one player game'
 url='https://apps.kde.org/klines/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('5224b6542c1e1972124963972a880ff431e88c4a32463da60ee9abd072365ce1'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kwidgetsaddons
+         kxmlgui
+         libkdegames
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('209bdc8c779f6915be719e5dffb3e31a93f625501b38f0347533df7c59e0f2a4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

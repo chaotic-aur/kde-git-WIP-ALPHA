@@ -3,17 +3,34 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 pkgname=partitionmanager
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A KDE utility that allows you to manage disks, partitions, and file systems'
 arch=(x86_64)
 url='https://apps.kde.org/partitionmanager/'
 license=(GPL2)
-depends=(kpmcore hicolor-icon-theme kio5)
-makedepends=(extra-cmake-modules kdoctools5)
-groups=(kde-applications kde-system)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('836939d649f8903aeb1cdf0aba9cae2ddbe95bbee1bee0efdbe4620f73a4932c'
+depends=(gcc-libs
+         glibc
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         kdbusaddons5
+         ki18n5
+         kio5
+         kjobwidgets5
+         kpmcore
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         polkit-qt5
+         qt5-base)
+makedepends=(extra-cmake-modules
+             kdoctools5)
+groups=(kde-applications
+        kde-system)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('02fb90cc85275b21932b8e96a55fad174158bd10d61b82540c9df1d0728746ad'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

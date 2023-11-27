@@ -3,17 +3,36 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=palapeli
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A single-player jigsaw puzzle game'
 url='https://apps.kde.org/palapeli/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames qhull hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9848a27ee9c96fd554d05d182a7330ab77a452443a3ed383c0891ddcac386b4b'
+depends=(gcc-libs
+         glibc
+         karchive
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kio
+         kitemviews
+         knotifications
+         kwidgetsaddons
+         kxmlgui
+         libkdegames
+         qhull
+         qt6-base
+         qt6-svg)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('9fa2bf25fed2467a1e903553071da882b5f5c6908ecebb9596ad3eeb1717003f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

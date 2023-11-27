@@ -3,19 +3,45 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ark
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Archiving Tool'
 arch=(x86_64)
 url='https://apps.kde.org/ark/'
 license=(GPL)
-depends=(kparts5 kpty5 libarchive libzip hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-optdepends=('p7zip: 7Z format support' 'unrar: RAR decompression support' 'unarchiver: RAR format support'
-            'lzop: LZO format support' 'lrzip: LRZ format support' 'arj: ARJ format support')
-groups=(kde-applications kde-utilities)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d32fb43a10665381d1998b9b04b3e7afbfd5251b3a838049ee71716649d2326f'
+depends=(gcc-libs
+         glibc
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         kdbusaddons5
+         ki18n5
+         kio5
+         kjobwidgets5
+         kparts5
+         kpty5
+         kservice5
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         libarchive
+         libzip
+         qt5-base
+         zlib)
+makedepends=(extra-cmake-modules
+             kdoctools5)
+optdepends=('arj: ARJ format support'
+            'lrzip: LRZ format support'
+            'lzop: LZO format support'
+            'p7zip: 7Z format support'
+            'unarchiver: RAR format support'
+            'unrar: RAR decompression support')
+groups=(kde-applications
+        kde-utilities)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('996319501ff38b748fef9af2f728407c35f90c715c17d635f34b6d2f9a120407'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

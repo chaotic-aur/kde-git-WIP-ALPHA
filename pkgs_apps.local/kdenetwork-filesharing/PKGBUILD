@@ -3,17 +3,28 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdenetwork-filesharing
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Properties dialog plugin to share a directory with the local network'
 url='https://apps.kde.org/kdenetwork_filesharing/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-network)
-depends=(samba kio5)
-makedepends=(extra-cmake-modules qcoro-qt5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('a2a62ff532f0e6b5aa5f6cd3472d5f0c130d266e6ec42602a04806385e7a65ec'
+depends=(gcc-libs
+         glibc
+         kauth5
+         kcoreaddons5
+         ki18n5
+         kio5
+         kwidgetsaddons5
+         qt5-base
+         qt5-declarative
+         samba)
+makedepends=(extra-cmake-modules
+             qcoro-qt5)
+groups=(kde-applications
+        kde-network)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('40ef911bccda5941442fb363ea98c33c757a6a736b4fbe69f561bb129e7bced3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

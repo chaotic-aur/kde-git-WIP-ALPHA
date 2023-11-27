@@ -3,17 +3,33 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kolf
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A miniature golf game with 2d top-down view'
 url='https://apps.kde.org/kolf/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3215c0d1a7a60c012fafdb91d669549b6aa59992cfe3755d10e45d10f979519b'
+depends=(gcc-libs
+         glibc
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kio
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
+         libkdegames
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('4a1ff33d8467979c3cbb4134b49a327e9a5d05b048f6e2cc9f26161fdfaf11ab'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

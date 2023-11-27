@@ -3,25 +3,42 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdegraphics-thumbnailers
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Thumbnailers for various graphics file formats'
 url='https://apps.kde.org/kdegraphics_thumbnailers/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(libkexiv2 libkdcraw5 kio5 ghostscript kdegraphics-mobipocket)
+depends=(gcc-libs
+         ghostscript
+         glibc
+         karchive
+         kcoreaddons
+         kdegraphics-mobipocket
+         kio
+         libkdcraw
+         libkexiv2
+         qt6-base)
 makedepends=(extra-cmake-modules)
-groups=(kde-applications kde-graphics)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f5a0a589ea1df5ad2e67a47a70795c05052f3b69a738e8ac150f892fa8b802c0'
-#            'SKIP')
+groups=(kde-applications
+        kde-graphics)
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        fix-raw-build.patch)
+#sha256sums=('754fbca23d124bef0dbd36c87f9f0f5786faba8eb9a6a31604aa1bb517b45a94'
+#            'SKIP'
+#            '19110876ae5d2ba5b553f5c7c4645d0c51ed53cabeebd1c8ddf87125a2316ef1')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < fix-raw-build.patch
+}
+
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
 }
 

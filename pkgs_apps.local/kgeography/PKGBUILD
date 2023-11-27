@@ -3,17 +3,30 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kgeography
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Geography Trainer'
 url='https://apps.kde.org/kgeography/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-education)
-depends=(kxmlgui5 hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5 python)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4ff0209e776cec11a5bd3a8c5a48c95a5f0e308f7a018f1b83e988670e9307a3'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kitemviews
+         kwidgetsaddons
+         kxmlgui
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools
+             python)
+groups=(kde-applications
+        kde-education)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('ea3f20d445ace7c36332ee94b880a6a06c012db4feac97c617206befe3f95f0e'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

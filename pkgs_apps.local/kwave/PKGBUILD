@@ -3,18 +3,49 @@
 # Contributor: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A sound editor'
 arch=(x86_64)
 url='https://apps.kde.org/kwave/'
 license=(GPL)
-depends=(kio5 audiofile libmad libsamplerate hicolor-icon-theme id3lib fftw)
-makedepends=(extra-cmake-modules kdoctools5 doxygen librsvg opus)
+depends=(alsa-lib
+         audiofile
+         flac
+         fftw
+         gcc-libs
+         glibc
+         id3lib
+         karchive5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         kdbusaddons5
+         ki18n5
+         kiconthemes5
+         kio5
+         ktextwidgets5
+         kwidgetsaddons5
+         kxmlgui5
+         libmad
+         libogg
+         libpulse
+         libsamplerate
+         libvorbis
+         qt5-base
+         qt5-multimedia)
+makedepends=(doxygen
+             extra-cmake-modules
+             kdoctools5
+             librsvg
+             opus)
 optdepends=('opus: OGG plugin')
-groups=(kde-applications kde-multimedia)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8da7e627595ec2e3be61455a488d51d1c6822ef012696ffcee796d49ba649b6d'
+groups=(kde-applications
+        kde-multimedia)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('39c4c4a3068eee656f40af83fe1065ab1550d77e9e485779ccc6352165f64845'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

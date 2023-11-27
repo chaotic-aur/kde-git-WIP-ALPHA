@@ -3,19 +3,53 @@
 # Contributor: Georg Grabler <ggrabler@gmail.com>
 
 pkgname=ktorrent
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A powerful BitTorrent client for KDE'
 arch=(x86_64)
 url='https://apps.kde.org/ktorrent/'
 license=(GPL2)
-depends=(libktorrent kcmutils5 knotifyconfig5 kparts5 phonon-qt5 qt5-webengine)
-makedepends=(extra-cmake-modules kdoctools5 boost plasma-workspace kdnssd5 taglib syndication5 kplotting5 geoip)
-optdepends=('plasma-workspace: shutdown plugin' 'kdnssd5: zeroconf plugin' 'taglib: mediaplayer plugin' 'geoip: info widget plugin'
-            'syndication5: syndication plugin' 'kplotting5: statistics plugin')
-groups=(kde-applications kde-network)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c8d8d32b23d96d1f0e42ffd2aaad93da5a91131b0cbf9c5d9f994b1941f25ab5'
+depends=(gcc-libs
+         glibc
+         karchive5
+         kcmutils5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         kdbusaddons5
+         ki18n5
+         kiconthemes5
+         kio5
+         knotifications5
+         knotifyconfig5
+         kparts5
+         ktextwidgets5
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         libktorrent
+         phonon-qt5
+         qt5-base
+         qt5-webengine)
+makedepends=(boost
+             extra-cmake-modules
+             geoip
+             kdnssd5
+             kdoctools5
+             kplotting5
+             syndication5
+             taglib)
+optdepends=('geoip: info widget plugin'
+            'kdnssd5: zeroconf plugin'
+            'kplotting5: statistics plugin'
+            'syndication5: syndication plugin'
+            'taglib: mediaplayer plugin')
+groups=(kde-applications
+        kde-network)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('ab7c9a97555200877e2164afc1cbf039d8ea6d24818c0eaa34984731d9121657'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

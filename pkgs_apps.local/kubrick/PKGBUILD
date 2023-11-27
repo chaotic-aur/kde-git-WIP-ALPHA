@@ -3,17 +3,33 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kubrick
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc="Based on the famous Rubik's Cube"
 url='https://apps.kde.org/kubrick/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames glu hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('82b072f843bf4691a50c7acba9a61657ac6330f92b1d325ed8ccb4320706f04f'
+depends=(gcc-libs
+         glibc
+         glu
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kwidgetsaddons
+         kxmlgui
+         libglvnd
+         libkdegames
+         qt6-base
+         qt6-svg)
+makedepends=(extra-cmake-modules
+             kdoctools
+             kio)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('bd5513a68d7c3740358813befe9ed4e6aa53703bfe11cc8dd929139b91ea908f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

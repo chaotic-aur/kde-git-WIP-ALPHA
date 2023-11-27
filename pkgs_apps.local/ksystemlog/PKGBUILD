@@ -3,17 +3,36 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksystemlog
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='System log viewer tool'
 url='https://apps.kde.org/ksystemlog/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-system)
-depends=(ktextwidgets kio5)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1c18797e3ea7b70c1e939fe039a2c759c46c9b15a063fce917903042a751d627'
+depends=(ktextwidgets audit
+         gcc-libs
+         glibc
+         karchive
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         ki18n
+         kio
+         kitemviews
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
+         qt6-5compat
+         qt6-base
+         systemd-libs)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-system)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('2a0fe1af3de88d86ea4c85458f4d880556b00cfd8c7d50233c533ede8ee022c3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

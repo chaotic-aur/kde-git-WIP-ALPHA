@@ -3,17 +3,29 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcharselect
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Character Selector'
 url='https://apps.kde.org/kcharselect/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(kbookmarks5)
-makedepends=(extra-cmake-modules kdoctools5)
-groups=(kde-applications kde-utilities)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('66267de8aecc781964d89d64367fa4320bc8adce8eeb62e53158074538c2ea0b'
+depends=(gcc-libs
+         glibc
+         kbookmarks
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kwidgetsaddons
+         kxmlgui
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-utilities)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('443e3b4cc1a44d72b4359c55d37d123750080ceb69c302d3d22bf58682d27c1c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
