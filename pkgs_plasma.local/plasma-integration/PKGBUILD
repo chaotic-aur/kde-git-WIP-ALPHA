@@ -2,8 +2,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=plasma-integration
-pkgname=(plasma-integration
-         plasma5-integration)
+pkgname=(plasma-integration)
+#         plasma5-integration)
 pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
@@ -36,20 +36,20 @@ depends=(xdg-desktop-portal-kde noto-fonts noto-fonts-emoji gcc-libs
          qt6-wayland
          wayland)
 makedepends=(extra-cmake-modules
-             plasma-wayland-protocols
-             kconfig5
-             ki18n5
-             kiconthemes5
-             kio5
-             knotifications5
-             kwayland5
-             kwindowsystem5
-             kxmlgui5
-             qt5-base
-             qt5-declarative
-             qt5-quickcontrols2
-             qt5-wayland
-             qt5-x11extras)
+             plasma-wayland-protocols)
+             #kconfig5
+             #ki18n5
+             #kiconthemes5
+             #kio5
+             #knotifications5
+             #kwayland5
+             #kwindowsystem5
+             #kxmlgui5
+             #qt5-base
+             #qt5-declarative
+             #qt5-quickcontrols2
+             #qt5-wayland
+             #qt5-x11extras)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 #sha256sums=('9313415b8f51b61069f2505bb27490e6caafab1cbc32e7cf36dae66a1fd7467a'
@@ -65,10 +65,10 @@ build() {
     -DBUILD_QT5=OFF
   cmake --build build
 
-  cmake -B build5 -S $pkgname \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QT6=OFF
-  cmake --build build5
+  #cmake -B build5 -S $pkgname \
+  #  -DBUILD_TESTING=OFF \
+  #  -DBUILD_QT6=OFF
+  #cmake --build build5
 }
 
 package_plasma-integration() {
@@ -78,39 +78,39 @@ package_plasma-integration() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-package_plasma5-integration() {
-  pkgdesc='Qt5 Platform Theme integration plugins for the Plasma workspaces'
-  depends=(gcc-libs
-           glibc
-           kcompletion5
-           kconfig5
-           kconfigwidgets5
-           kcoreaddons5
-           ki18n5
-           kiconthemes5
-           kio5
-           kjobwidgets5
-           knotifications5
-           kservice5
-           kwayland5
-           kwidgetsaddons5
-           kwindowsystem5
-           kxmlgui5
-           libxcb
-           libxcursor
-           qt5-base
-           qt5-declarative
-           qt5-quickcontrols2
-           qt5-wayland
-           qt5-x11extras
-           wayland)
-  conflicts=('plasma-integration<5.27.80')
-  replaces=('plasma-integration<5.27.80')
-  groups=()
-
-  DESTDIR="$pkgdir" cmake --install build5
-  rm -r "$pkgdir"/usr/share
-}
+#package_plasma5-integration() {
+#  pkgdesc='Qt5 Platform Theme integration plugins for the Plasma workspaces'
+#  depends=(gcc-libs
+#           glibc
+#           kcompletion5
+#           kconfig5
+#           kconfigwidgets5
+#           kcoreaddons5
+#           ki18n5
+#           kiconthemes5
+#           kio5
+#           kjobwidgets5
+#           knotifications5
+#           kservice5
+#           kwayland5
+#           kwidgetsaddons5
+#           kwindowsystem5
+#           kxmlgui5
+#           libxcb
+#           libxcursor
+#           qt5-base
+#           qt5-declarative
+#           qt5-quickcontrols2
+#           qt5-wayland
+#           qt5-x11extras
+#           wayland)
+#  conflicts=('plasma-integration<5.27.80')
+#  replaces=('plasma-integration<5.27.80')
+#  groups=()
+#
+#  DESTDIR="$pkgdir" cmake --install build5
+#  rm -r "$pkgdir"/usr/share
+#}
 
 # sums-already-applied
 sha256sums=('SKIP')
