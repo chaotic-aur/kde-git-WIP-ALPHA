@@ -1,17 +1,25 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kontactinterface
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Kontact Plugin Interface Library'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kparts5)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-provides=(kontactinterface5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f4211c7131c597eb38e6735095ad8337551aad4dd238e79c6450bce68e95177b'
+depends=(gcc-libs
+         glibc
+         kcoreaddons
+         kio
+         kparts
+         kwindowsystem
+         kxmlgui
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('722fd19f1225fcb58737966d80e95a9803f76f8ebc83141a241803a4700472a2'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

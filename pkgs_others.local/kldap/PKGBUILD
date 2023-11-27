@@ -1,16 +1,29 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kldap
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='LDAP access API for KDE'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kio5 qtkeychain-qt5)
-makedepends=(extra-cmake-modules kdoctools5 doxygen qt5-tools)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e55bc8af7007927bc77d75ed6e64160944bde3c44fffa9220bde5045b774e1f7'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kcoreaddons
+         ki18n
+         kio
+         kwidgetsaddons
+         libldap
+         libsasl
+         qt6-base
+         qtkeychain-qt6)
+makedepends=(doxygen
+             extra-cmake-modules
+             kdoctools
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('62af7fb978999a9263351179709f2047c4f08304f5abe5c7235c3aec4779969c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

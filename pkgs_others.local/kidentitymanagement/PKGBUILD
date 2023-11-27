@@ -1,17 +1,34 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kidentitymanagement
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
-pkgdesc='KDE PIM libraries'
+pkgdesc='Library to assist in handling user identities'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kpimtextedit)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-provides=(kidentitymanagement5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7f3483b82dd701f200297d5e6272e8fbb6df5f83438475b511668324e3aadbdd'
+depends=(gcc-libs
+         glibc
+         kcodecs
+         kcompletion
+         kconfig
+         kcoreaddons
+         ki18n
+         kio
+         kpimtextedit
+         ktextaddons
+         kwidgetsaddons
+         kxmlgui
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             kirigami-addons
+             ktextwidgets
+             qt6-tools)
+optdepends=('kirigami-addons: QML bindings'
+            'qt6-declarative: QML bindings')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d7b08b49ef55770d9276eb46e8c17759a442a471b6331d1b99a56612a384569e'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

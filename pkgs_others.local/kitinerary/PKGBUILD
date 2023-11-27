@@ -1,16 +1,35 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kitinerary
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Data model and extraction system for travel reservation information'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kmime kpkpass kcalendarcore5 kcontacts5 poppler libphonenumber zxing-cpp)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f4e4bbb1de2b1d5fe7b67bc3d3014048d0b6b0b8c25d04ba9fe9769a608f9d98'
+depends=(gcc-libs
+         glibc
+         karchive
+         kcalendarcore
+         kcodecs
+         kcontacts
+         ki18n
+         kmime
+         kpkpass
+         libphonenumber
+         libxml2
+         openssl
+         poppler
+         qt6-base
+         qt6-declarative
+         zlib
+         zxing-cpp)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-doc
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('c9170c04ae4424d1bc6a856f29f2a7c0933c5462872a932acceb9de96db3e714'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

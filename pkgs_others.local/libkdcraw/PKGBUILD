@@ -3,19 +3,22 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgbase=libkdcraw
-pkgname=(libkdcraw5)
-pkgver=23.08.3
+pkgname=(libkdcraw
+         libkdcraw5)
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A C++ interface used to decode RAW picture'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(qt5-base libraw)
-makedepends=(extra-cmake-modules)
-conflicts=('libkdcraw<24')
-replaces=('libkdcraw<24')
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgbase-$pkgver.tar.xz{,.sig})
-#sha256sums=('5406fbbbaded4af8001581dbdb0b85fd9e8ba88df162212a4683e2e9206df32f'
+depends=(gcc-libs
+         glibc
+         libraw)
+makedepends=(extra-cmake-modules
+             qt5-base
+             qt6-base)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgbase-$pkgver.tar.xz{,.sig})
+#sha256sums=('36fe6fee8d7bb02be7b90344a9b60405a2b954e68de92ef1ae1eabc392b69870'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -23,12 +26,25 @@ replaces=('libkdcraw<24')
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
+
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build5
 }
 
-package() {
+package_libkdcraw() {
+  depends+=(qt6-base)
+
   DESTDIR="$pkgdir" cmake --install build
+}
+
+package_libkdcraw5() {
+  depends+=(qt5-base)
+
+  DESTDIR="$pkgdir" cmake --install build5
 }
 
 # sums-already-applied

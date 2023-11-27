@@ -5,15 +5,30 @@
 
 pkgbase=akonadi
 pkgname=(akonadi libakonadi)
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='PIM layer, which provides an asynchronous API to access all kind of PIM data'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-makedepends=(extra-cmake-modules postgresql qt5-tools kitemmodels5 kaccounts-integration doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c4209f1240f03ab8f299f2799ea5ac2e6adf80268591851bbbcceb3b46fb3e41'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kcoreaddons
+         ki18n
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             postgresql
+             qt6-tools
+             kconfigwidgets
+             kiconthemes
+             kio
+             kitemmodels
+             kxmlgui)
+# kaccounts-integration
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('3a581bebd515215c7001e32c7183481e53c91fa566ad078d7214656c06e17464'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -28,15 +43,24 @@ build() {
 
 package_libakonadi() {
   pkgdesc='Libraries used by applications based on Akonadi'
-  depends=(kitemmodels5 kaccounts-integration)
-  provides=(libakonadi5)
+  depends+=(kcolorscheme
+            kconfigwidgets
+            kiconthemes
+            kio
+            kitemmodels
+            kwidgetsaddons
+            kxmlgui
+            libxml2
+            xz)
 
   DESTDIR="$pkgdir" cmake --install build
   rm -r "$pkgdir"/usr/bin # Provided by akonadi
 }
 
 package_akonadi() {
-  depends=(libakonadi mariadb)
+  depends+=(kcrash
+            libakonadi
+            mariadb)
   optdepends=('postgresql: PostgreSQL backend')
 
   DESTDIR="$pkgdir" cmake --install build

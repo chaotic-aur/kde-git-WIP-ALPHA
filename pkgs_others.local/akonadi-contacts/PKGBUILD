@@ -1,17 +1,40 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-contacts
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Libraries and daemons to implement Contact Management in Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(libakonadi kcontacts5 kmime prison5 grantleetheme)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-provides=(akonadi-contacts5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('19ec13cab213dad13854da82712eb6439a602d4afcc688dc2969f5e9a14bc94d'
+depends=(gcc-libs
+         glibc
+         grantleetheme
+         ki18n
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcontacts
+         kcoreaddons
+         kiconthemes
+         kio
+         kmime
+         ktextaddons
+         ktexttemplate
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
+         libakonadi
+         prison
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-doc
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('1a6ac4d9d0f9ccc6a1d718068c7326873a7bd144a26478853b59080306d3557b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

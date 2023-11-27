@@ -2,17 +2,30 @@
 
 pkgname=kdiagram
 pkgver=2.8.0
-pkgrel=1
-pkgdesc="Powerful libraries for creating business diagrams"
+pkgrel=3
+_commit=d83d8de758b4c6718c2f788acff3fdc770477332
+pkgdesc='Powerful libraries for creating business diagrams'
 arch=(x86_64)
-url="https://www.kde.org/"
+url='https://www.kde.org/'
 license=(GPL2)
-depends=(qt5-svg)
-makedepends=(extra-cmake-modules qt5-tools qt5-doc doxygen)
-#source("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-#sha256sums=('579dad3bd1ea44b5a20c0f133ebf47622e38960f9c7c8b3a316be30a369f431f'
-#            'SKIP')
+depends=(gcc-libs
+         glibc
+         qt6-base
+         qt6-svg)
+makedepends=(doxygen
+             extra-cmake-modules
+             git
+             qt6-doc
+             qt6-tools)
+#source=(git+https://invent.kde.org/graphics/kdiagram#commit=$_commit
+#        rename-include-dir.patch)
+#sha256sums=('SKIP'
+#            '1502b0d6396c1524c5ea954f2e4cc684dafc33c430321ac0683346cb28c0145d')
 #validpgpkeys=(42A60D06F449E895F40F09C01638B8A616108B8A) # Dag Andersen <danders@get2net.dk>
+
+prepare() {
+  patch -d $pkgname -p1 < rename-include-dir.patch
+}
 
 build() {
   cmake -B build -S $pkgname \
@@ -23,6 +36,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  rm -r "$pkgdir"/usr/share/locale # Conflicts with Qt5 version
 }
 
 # sums-already-applied
