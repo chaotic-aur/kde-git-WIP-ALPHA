@@ -46,7 +46,7 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/sddm/${pkgname})
     
 # pkgver-already-applied
 
