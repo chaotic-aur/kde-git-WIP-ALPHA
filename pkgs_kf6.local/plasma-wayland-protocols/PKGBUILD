@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo "9999.r$(git rev-list --count HEAD).c$(git rev-parse --short=8 HEAD).${pkgrel}"
+	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
 }
 
 
