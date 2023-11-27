@@ -10,7 +10,7 @@ pkgdesc='KDE File Manager'
 arch=(x86_64)
 url='https://apps.kde.org/dolphin/'
 license=(LGPL)
-depends=(ktextwidgets baloo
+depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets baloo
          baloo-widgets
          gcc-libs
          glibc
@@ -67,7 +67,7 @@ groups=(kde-applications
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < 2cd3d58e.patch # Drop kmoretools dependency
-  patch -d $pkgname-$pkgver -p1 < find-kactivities.patch
+  #patch -d $pkgname-$pkgver -p1 < find-kactivities.patch
 }
 
 build() {

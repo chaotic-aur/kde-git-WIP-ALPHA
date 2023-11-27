@@ -4,7 +4,7 @@
 
 pkgname=gwenview
 pkgver=24.01.75
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and easy to use image viewer'
 url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
@@ -35,7 +35,7 @@ depends=(baloo5
          kxmlgui5
          lcms2
          libjpeg-turbo
-         libkdcraw
+         libkdcraw5
          libpng
          libtiff
          libx11

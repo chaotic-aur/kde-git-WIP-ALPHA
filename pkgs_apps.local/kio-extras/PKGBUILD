@@ -4,7 +4,7 @@
 
 pkgname=kio-extras
 pkgver=24.01.75
-pkgrel=1
+pkgrel=2
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
@@ -77,6 +77,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  #rm "$pkgdir"/usr/share/applications/kcm_trash.desktop # Conflicts with kio5
 }
 
 # sums-already-applied
