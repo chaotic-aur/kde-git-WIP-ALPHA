@@ -12,6 +12,7 @@ export def "main group" [
 	--fetch(-g)=false: bool # fetch and generate arch PKGBUILDS
 	--dryrun(-n)=false: bool
 	--force(-f)=false: bool
+	--rebuild(-r)=false: bool
 	--threads(-t)=1: number # number of threads to build at the same time
 ] {
 	
@@ -24,8 +25,9 @@ export def "main group" [
 		if ($fetch == true) {/home/alexjp/work-kde-git/fetcher.nu pkg $group $p}
 		let dryrun_string = (if ($dryrun) {"--dryrun=true"} else {"--dryrun=false"})
 		let force_string = (if ($force) {"--force=true"} else {"--force=false"})
+		let rebuild_string = (if ($rebuild) {"--rebuild=true"} else {"--rebuild=false"})
 		#print $"run-external builder.nu ($p) ($dryrun_string)"
-		run-external "/home/alexjp/work-kde-git/builder.nu" $group $p $dryrun_string $force_string
+		run-external "/home/alexjp/work-kde-git/builder.nu" $group $p $dryrun_string $force_string $rebuild_string
 	}
 
 }
