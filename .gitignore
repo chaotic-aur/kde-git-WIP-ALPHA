@@ -1,1 +1,12 @@
 *.zst
+
+pkgs_others.local/akonadi-notes5/
+pkgs_others.local/baloo5/
+pkgs_others.local/grantleetheme5/
+pkgs_others.local/kglobalaccel5/
+pkgs_others.local/kidentitymanagement5/
+pkgs_others.local/kmime5/
+pkgs_others.local/kontactinterface5/
+pkgs_others.local/kpimtextedit5/
+pkgs_others.local/libakonadi5/
+pkgs_others.local/plasma-framework5/

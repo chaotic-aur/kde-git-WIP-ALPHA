@@ -3,18 +3,21 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=breeze-icons
-pkgver=5.112.0
+pkgver=5.245.0
 pkgrel=1
-pkgdesc='Breeze icon themes'
+pkgdesc='Breeze icon theme'
 arch=(any)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-groups=(kf5)
-makedepends=(extra-cmake-modules qt5-base python-lxml)
-#source(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('69dc51befe11f1431dd5b58b6be304e9ac394f6a4801a9351cf64341946c7d58'
+makedepends=(extra-cmake-modules
+             python-lxml
+             qt6-base)
+groups=(kf6)
+#source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('25f536613bb49049c9559928a167148a45a4b8d7d8cda03c9b9e31ed30ae038c'
 #            'SKIP')
-#validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+#validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
+#              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 
 build() {
   cmake -B build -S $pkgname \
