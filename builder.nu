@@ -108,7 +108,7 @@ export def main [
 	
 	run-external "bash" "-c" $"chaotic mkd ($package)"
 	let errors = chaotic-db-error-texts	
-	if not (open $"($package).log" | find $errors.0 $errors.1 $errors.2 | is-empty ) {
+	if not (open $"($package).log" | find $errors.0 $errors.1 $errors.2 $errors.3 | is-empty ) {
 		print $"(ansi red_bold)(ansi bl)ERROR: (ansi reset)(ansi red_bold)retrying after 30 seconds!!(ansi reset)"
 	  sleep 10sec
 	  ^cp -r $build_folder_pkg_copy $build_folder_pkg
