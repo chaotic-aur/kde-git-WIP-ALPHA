@@ -3,18 +3,36 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=audiocd-kio
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Kioslave for accessing audio CDs'
 url='https://apps.kde.org/kio_audiocd/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(kcmutils5 libkcddb5 libkcompactdisc lame)
-makedepends=(extra-cmake-modules kdoctools5)
+depends=(cdparanoia
+         flac
+         gcc-libs
+         glibc
+         kcmutils
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         ki18n
+         kio
+         lame
+         libkcddb
+         libkcompactdisc
+         libogg
+         libvorbis
+         qt6-5compat
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
 optdepends=('opus-tools: encoding to opus format')
-groups=(kde-applications kde-multimedia)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7bcff5d44bdc46682825fc972b6c60b767e8814e606330298e66379b609d78b7'
+groups=(kde-applications
+        kde-multimedia)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e41fae2c3fc62a9a71670ea4804cc83b7597f78e30b76f73146321fc14b2db7a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

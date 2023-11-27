@@ -3,17 +3,34 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kompare
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Graphical file differences tool'
 url='https://apps.kde.org/kompare/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kdesdk)
-depends=(libkomparediff2 ktexteditor5 hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e8469f91c005f090c42a4845411e40c31df1eb9618e8d6619840345f18a89cbd'
+depends=(gcc-libs
+         glibc
+         kcodecs5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         ki18n5
+         kio5
+         kjobwidgets5
+         kparts5
+         ktexteditor5
+         kwidgetsaddons5
+         kxmlgui5
+         libkomparediff2
+         qt5-base)
+makedepends=(extra-cmake-modules
+             kdoctools5)
+groups=(kde-applications
+        kdesdk)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('fd2a1b2135476ec7aa407f7a368c1174f5bc01e8659fe4f7ed5774509798c07d'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

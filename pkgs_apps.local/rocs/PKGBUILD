@@ -3,17 +3,39 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=rocs
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Graph Theory IDE'
 url='https://apps.kde.org/rocs/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-education)
-depends=(grantlee ktexteditor5 qt5-xmlpatterns qt5-script hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5 boost)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('112007e89bef94692d48ce1a0e5514da0d6b4d10d6d88731af0f1ea2d1d7b30d'
+depends=(gcc-libs
+         glibc
+         grantlee
+         karchive5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kcrash5
+         ki18n5
+         kitemviews5
+         ktexteditor5
+         ktextwidgets5
+         kparts5
+         kwidgetsaddons5
+         kxmlgui5
+         qt5-base
+         qt5-declarative
+         qt5-script
+         qt5-xmlpatterns)
+makedepends=(boost
+             extra-cmake-modules
+             kdoctools5)
+groups=(kde-applications
+        kde-education)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('570e6bc28b9422f35c7e4d3aa727ac5a1d6cf891414f010b7e12f371e5065454'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

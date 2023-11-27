@@ -3,17 +3,29 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbruch
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Exercise Fractions'
 url='https://apps.kde.org/kbruch/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-education)
-depends=(kxmlgui5 hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4b7a4df99580ae501591a90dbc7a47a678c7c6c90e513b946c83681375c2e45d'
+depends=(gcc-libs
+         glibc
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kwidgetsaddons
+         kxmlgui
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-education)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d2fb7505df2b5fe0e225e0974b0fbf15a64a40809dfcbccfc6223c35460f81b7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

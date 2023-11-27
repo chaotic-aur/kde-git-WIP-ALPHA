@@ -5,17 +5,42 @@
 # Contributor: leeghoofd <abcdefg@solcon.nl>
 
 pkgname=yakuake
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A drop-down terminal emulator based on KDE konsole technology'
 arch=(x86_64)
 url='https://apps.kde.org/yakuake/'
 license=(GPL)
-depends=(konsole kwayland5 hicolor-icon-theme)
+depends=(gcc-libs
+         glibc
+         karchive
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         ki18n
+         kiconthemes
+         kio
+         knewstuff
+         knotifications
+         knotifyconfig
+         konsole
+         kparts
+         kstatusnotifieritem
+         kwayland
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libx11
+         qt6-base)
 makedepends=(extra-cmake-modules)
-groups=(kde-applications kde-utilities)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d9b84ed35a3b602da70bb5e2eeb0f87fca5546def476bf73a20dcbfeadfa039a'
+groups=(kde-applications
+        kde-utilities)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('4c9baa3058c4dbb6f365d1f827f813eb5c6ab263f898855b740f72bc91efbc9b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -3,17 +3,35 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kigo
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='An open-source implementation of the popular Go game'
 url='https://apps.kde.org/kigo/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-games)
-depends=(libkdegames gnugo hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools5)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('00b877057cd8cfc98904734d46ff91820504e6492dc9400d9df8de9645a557ab'
+depends=(gcc-libs
+         glibc
+         gnugo
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kio
+         knewstuff
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
+         libkdegames
+         qt6-base
+         qt6-svg)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-games)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('fe48d802671a1950c1fd7f07874c2a61e9cc6f0241806f6bd378e101641ab964'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

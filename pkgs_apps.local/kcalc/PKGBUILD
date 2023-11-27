@@ -3,17 +3,34 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcalc
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Scientific Calculator'
 url='https://apps.kde.org/kcalc/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(mpfr kxmlgui5 knotifications5)
-makedepends=(extra-cmake-modules kdoctools5)
-groups=(kde-applications kde-utilities)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('79be775ca711c3aed643edb5a65d08368bf056279651c5a43f9c7d1711c27638'
+depends=(gcc-libs
+         glibc
+         gmp
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kguiaddons
+         ki18n
+         knotifications
+         kwidgetsaddons
+         kxmlgui
+         mpfr
+         qt6-5compat
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-utilities)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d934dbca9fcb6ee1b3261b8bc35184f27208ee0258959cc613a497ba816b7d0c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

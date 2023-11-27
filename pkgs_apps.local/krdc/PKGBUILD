@@ -3,21 +3,42 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=krdc
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Remote Desktop Client'
 url='https://apps.kde.org/krdc/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-groups=(kde-applications kde-network)
-depends=(kcmutils5 kdnssd5 knotifyconfig5 kactivities5)
-makedepends=(extra-cmake-modules libvncserver freerdp kdoctools5)
+depends=(gcc-libs
+         glibc
+         kactivities5
+         kbookmarks5
+         kcmutils5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kdnssd5
+         ki18n5
+         knotifications5
+         knotifyconfig5
+         kwidgetsaddons5
+         kwindowsystem5
+         kwallet5
+         kxmlgui5
+         qt5-base)
+makedepends=(extra-cmake-modules
+             freerdp
+             kdoctools5
+             libvncserver)
 optdepends=('libvncserver: VNC support'
             'libssh: VNC support'
             'freerdp: RDP support'
             'keditbookmarks: to edit bookmarks')
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('fdec83b1e03775c08a9055feb5fa70b10173143eabc6223ea5668b2c38c06af2'
+groups=(kde-applications
+        kde-network)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('37a967ab28eb472f2ab19a01908a46fc97c96457e8cb94a040cc0acdf2251b2c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
