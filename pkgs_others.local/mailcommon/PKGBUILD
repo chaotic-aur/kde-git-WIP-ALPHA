@@ -1,16 +1,52 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=mailcommon
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='KDE PIM library providing support for mail applications'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(mailimporter messagelib phonon-qt5)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b9f874cad93b0f862792a19c7fa7abee0741f72d93333abe258160402b885549'
+depends=(akonadi-contacts
+         akonadi-mime
+         gcc-libs
+         glibc
+         gpgme
+         karchive
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcontacts
+         kcoreaddons
+         ki18n
+         kiconthemes
+         kidentitymanagement
+         kio
+         kitemviews
+         kmailtransport
+         kmime
+         ktextaddons
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
+         libakonadi
+         libkdepim
+         libkleo
+         mailimporter
+         messagelib
+         phonon-qt6
+         pimcommon
+         qgpgme-qt6
+         qt6-base
+         syntax-highlighting)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-doc
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('376e4f93e6b56f44920bcf65fa02e531fe8fb25eda83dab73d59c6ef8c0df87c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

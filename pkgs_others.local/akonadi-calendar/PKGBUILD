@@ -1,16 +1,45 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-calendar
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Akonadi calendar integration'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kmailtransport kcalutils akonadi-contacts messagelib)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('2bdac61012cd361e52ec7bcc03c554752b64bbe61dd161e4c74241092a2030e5'
+depends=(akonadi-contacts
+         akonadi-mime
+         gcc-libs
+         glibc
+         gpgme
+         kcalendarcore
+         kcalutils
+         kcodecs
+         kconfig
+         kcontacts
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         kidentitymanagement
+         kio
+         kitemmodels
+         kmailtransport
+         kmime
+         knotifications
+         kservice
+         kwidgetsaddons
+         kxmlgui
+         libakonadi
+         libkleo
+         messagelib
+         qgpgme-qt6
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-doc
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('8cdab82cfaf6f91fe004eac575bb2790dbb89c48848f7e277227ff733ec29cfb'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -1,16 +1,28 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kcalutils
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='The KDE calendar utility library'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kcalendarcore5 kidentitymanagement grantlee)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1721ea7c9a04dc0f35939cab2d6af207317b7905f4b3a8c42c42011f027331b0'
+depends=(gcc-libs
+         glibc
+         kcalendarcore
+         kcodecs
+         kcoreaddons
+         ki18n
+         kiconthemes
+         kidentitymanagement
+         ktexttemplate
+         kwidgetsaddons
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('385bddc6c93f5d87a3cd862b57a6ce6cc0407f32e2a7861d0bc5a5a7cc3523df'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

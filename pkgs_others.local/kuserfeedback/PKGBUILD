@@ -35,7 +35,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm -r "$pkgdir"/usr/share/locale # Conflicts with Qt5
 }
 
 # sums-already-applied

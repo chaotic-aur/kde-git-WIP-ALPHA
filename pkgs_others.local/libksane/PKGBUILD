@@ -3,16 +3,23 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libksane
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='An image scanning library'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(ktextwidgets5 kwallet5 ksanecore)
+depends=(gcc-libs
+         glibc
+         ki18n5
+         ksanecore
+         ktextwidgets5
+         kwallet5
+         kwidgetsaddons5
+         qt5-base)
 makedepends=(extra-cmake-modules)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ce044c15a49c854fa5d447d018993cda587ae29546c740fd3f191d5cccced637'
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('3e0db801b17ed303fb04d3f233232140933f8a29eaf92123138f967748f50875'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

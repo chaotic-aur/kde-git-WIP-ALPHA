@@ -1,16 +1,24 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksmtp
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Job-based library to send email through an SMTP server'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kio5)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4b98a406d2ad278b43f57ec48cc7d53b981fe37758806ef90780fb7573f37f49'
+depends=(gcc-libs
+         glibc
+         kcoreaddons
+         ki18n
+         kio
+         libsasl
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('bf4bbe5261811ebd12947c6cf047e4d741fcba76776fc37815a7ca4c8f88a5aa'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

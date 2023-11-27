@@ -1,16 +1,25 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='Job-based API for interacting with IMAP servers'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-depends=(kmime kio5)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1470da81a5b3477612ffa56ef212c13756f873571f10272ab33aa176af46d5f3'
+depends=(gcc-libs
+         glibc
+         kcoreaddons
+         ki18n
+         kio
+         kmime
+         libsasl
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e66b0fb495f70f8b729fce90cc5004276e05158f4937deb59abee27cda36e23d'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

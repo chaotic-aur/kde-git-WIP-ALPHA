@@ -2,16 +2,23 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkgapi
-pkgver=23.08.3
+pkgver=24.01.75
 pkgrel=1
 pkgdesc='A KDE-based library for accessing various Google services via their public API'
 url='https://www.kde.org/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(kcalendarcore5 kcontacts5 kwallet5)
-makedepends=(extra-cmake-modules qt5-tools doxygen)
-#source(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7a0637e07b427e88950dc87e7e6fab2a55db829035144a9a565763c4c7488705'
+depends=(gcc-libs
+         glibc
+         kcalendarcore
+         kcontacts
+         kwallet
+         qt6-base)
+makedepends=(doxygen
+             extra-cmake-modules
+             qt6-tools)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('e47a046d8fe162841736021b76f1a1303056d2d2e2887f6e632bcd3058310be3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
