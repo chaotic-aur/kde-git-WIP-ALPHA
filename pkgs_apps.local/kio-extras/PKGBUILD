@@ -64,11 +64,11 @@ groups=(kde-applications
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-  sed -e 's|KF6ActivitiesStats ${KF_MIN_VERSION}|KF6ActivitiesStats|' -i $pkgname-kf6-$pkgver/CMakeLists.txt # Fix finding kactivities-stats
+  sed -e 's|KF6ActivitiesStats ${KF_MIN_VERSION}|KF6ActivitiesStats|' -i $pkgname/CMakeLists.txt # Fix finding kactivities-stats
 }
 
 build() {
-  cmake -B build -S $pkgname-kf6-$pkgver \
+  cmake -B build -S $pkgname -DBUILD_WITH_QT6=ON -DBUILD_QT5=OFF \
     -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
