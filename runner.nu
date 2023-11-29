@@ -1,10 +1,11 @@
-#!/run/current-system/sw/bin/env -S nu -n --no-std-lib
+#!/usr/bin/env -S nu -n --no-std-lib
 
-use ~/work-kde-git/lib.nu *
+use lib.nu *
+
 
 export def main [
-    --duration(-d)="8hr": string
-    --chaoticlw(-l)=true: bool
+    --duration(-d)="8hr": string # time to wait between cycles/re-runing
+    --chaoticlw(-l)=true: bool # chaotic specific, update the "lowerdir" with latest db and packages
     --clean_locks(-c)=false: bool # clean all locks
     --apps(-a)=true: bool # build kde apps
     --threads_kf6(-k)=1: number # number of threads
@@ -16,29 +17,23 @@ export def main [
     
     clean-locks -c $clean_locks 
     cd (work_folder)
-    #while true {
-        #./routine.nu group kf6-unstable -t $threads_kf6
-        #./routine.nu group kf6 -t $threads_kf6
-        #./routine.nu group extra -t $threads_extra
-        #./routine.nu group plasma-unstable -t $threads_plasma
-        #./routine.nu group plasma -t $threads_plasma
-        ./routine.nu group pkgs_kf6.local -t $threads_kf6
-        ./routine.nu group pkgs_others.local -t $threads_extra
-        ./routine.nu group pkgs_plasma.local -t $threads_plasma
-        if ($apps) {
-		#./routine.nu group kde-applications -t $threads_apps
-        	./routine.nu group pkgs_apps.local -t $threads_apps
+    ./routine.nu group pkgs_kf6.local -t $threads_kf6
+    ./routine.nu group pkgs_others.local -t $threads_extra
+    ./routine.nu group pkgs_plasma.local -t $threads_plasma
+    if ($apps) {
+    	./routine.nu group pkgs_apps.local -t $threads_apps
 	}
-        sleep ($duration | into duration)
-    #}
+    sleep ($duration | into duration)
     
-    exec /run/current-system/sw/bin/nu $"($env.CURRENT_FILE)" -c ($clean_locks | into string) -a ($apps | into string) -k $threads_kf6 -e $threads_extra -p $threads_plasma -t $threads_apps
+    
+    exec nu $"($env.CURRENT_FILE)" -c ($clean_locks | into string) -a ($apps | into string) -k $threads_kf6 -e $threads_extra -p $threads_plasma -t $threads_apps
 }
 
-def clean-locks [
-    lock_folder="/tmp/alexjp/locks": string
+def clean-locks [    
     --clean_all(-c)=false: bool
 ] {
+    
+    let lock_folder: string = (settings-open | get folders.locks)
 
     if not ($lock_folder | path exists) {mkdir $lock_folder}
 
