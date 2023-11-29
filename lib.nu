@@ -61,6 +61,7 @@ export def is_updated_source [group: string, package: string] [string, string] -
 	
 	let archive_folder = (settings-open | get folders.archive)
 	let pkgrel = (find_pkgrel_from_package $package)
+	if not ($archive_folder | path exists) {mkdir $archive_folder}
 	let built_packages = (ls $archive_folder | get name | find $package | find -v ".sig" | find $upstream_commit | ansi strip)
     let up_to_date = if ($built_packages | is-empty) {false} else {($built_packages | any {|p|
 		let index_commit = ($p | str index-of $upstream_commit)
