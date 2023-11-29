@@ -12,7 +12,7 @@ export def main [
 ] {
 
 	let settings = (settings-open)
-	let settings_folder_locks = (settings | get folders.locks)
+	let settings_folder_locks = ($settings | get folders.locks)
 
 	match $package {
 		"breeze5" => { exit 9}

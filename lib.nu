@@ -1,6 +1,6 @@
 
 export def settings-open [] {
-	let settings_file = "settings.toml"
+	let settings_file = $"(work_folder)/settings.toml"
 
     if not ($settings_file | path exists) {
         print "Please set locks folder in settings.toml"
