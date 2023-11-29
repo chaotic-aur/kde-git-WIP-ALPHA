@@ -2,7 +2,7 @@
 
 pkgname=kdiagram
 pkgver=2.8.0
-pkgrel=3
+pkgrel=1
 _commit=d83d8de758b4c6718c2f788acff3fdc770477332
 pkgdesc='Powerful libraries for creating business diagrams'
 arch=(x86_64)
