@@ -2,7 +2,7 @@
 
 pkgname=ktextaddons
 pkgver=1.5.2
-pkgrel=4
+pkgrel=1
 pkgdesc='Various text handling addons'
 arch=(x86_64)
 license=(GPL)
