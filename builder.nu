@@ -2,7 +2,7 @@
 
 use lib.nu *
 
-
+# builder of packages
 export def main [
 	group: string # package group: kf6, plasma, apps (use the folder name)
 	package: string # package to build
@@ -13,6 +13,7 @@ export def main [
 
 	let settings = (settings-open)
 	let settings_folder_locks = ($settings | get folders.locks)
+    let settings_build_cmd = ($settings | get build.cmd)
 
 	match $package {
 		"breeze5" => { exit 9}
@@ -110,7 +111,8 @@ export def main [
 		exit_clean 3 $lock_file
 	}
 	
-	run-external "bash" "-c" $"chaotic mkd ($package)"
+	#run-external "bash" "-c" $"chaotic mkd ($package)"
+	run-external "bash" "-c" $"($settings_build_cmd) ($package)"
 	let errors = chaotic-db-error-texts	
 	if not (open $"($package).log" | find $errors.0 $errors.1 $errors.2 $errors.3 | is-empty ) {
 		print $"(ansi red_bold)(ansi bl)ERROR: (ansi reset)(ansi red_bold)retrying after 30 seconds!!(ansi reset)"
