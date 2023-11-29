@@ -48,8 +48,7 @@ def engine [
 ] {
     if ($list | is-empty) {print "nothing to show!"; return}
     mut selected_file = ($list | input list -f 'Select which log to show')
-    while not ($selected_file | is-empty) {
-        #hx $"(daily_temp_folder)/($selected_file)"
+    while not ($selected_file | is-empty) {        
         hx $"($selected_file)"
 	    $selected_file = ($list | input list -f 'Select which log to show')
     }

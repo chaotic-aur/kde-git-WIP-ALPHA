@@ -1,6 +1,10 @@
-#!/run/current-system/sw/bin/env -S nu -n --no-std-lib
+#!/usr/bin/env -S nu -n --no-std-lib
 
-use ~/work-kde-git/lib.nu *
+
+# INFO: this is not currently being used!
+
+use lib.nu *
+
 
 # INFO: Main function, shows help
 export def main [] {

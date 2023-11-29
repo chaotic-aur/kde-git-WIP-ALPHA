@@ -1,0 +1,4 @@
+[folders]
+build = "/tmp/alexjp/kde-git"
+locks = "/tmp/alexjp/locks"
+archive = "/srv/http/repos/chaotic-aur-kde/x86_64"

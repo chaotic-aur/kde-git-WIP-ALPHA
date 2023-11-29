@@ -1,14 +1,18 @@
-#!/run/current-system/sw/bin/env -S nu -n --no-std-lib
+#!/usr/bin/env -S nu -n --no-std-lib
 
-use ~/work-kde-git/lib.nu *
+use lib.nu *
+
 
 export def main [
-	group: string # package group: kf6, plasma, apps
+	group: string # package group: kf6, plasma, apps (use the folder name)
 	package: string # package to build
 	--dryrun(-n)=false: bool # dry-run only
 	--force(-f)=false: bool # force build package, even if already build
     --rebuild(-r)=false: bool # rebuild package if in same version
 ] {
+
+	let settings = (settings-open)
+	let settings_folder_locks = (settings | get folders.locks)
 
 	match $package {
 		"breeze5" => { exit 9}
@@ -47,8 +51,8 @@ export def main [
 		exit 1
 	}
 
-	if not ("/tmp/alexjp/locks" | path exists) {mkdir "/tmp/alexjp/locks"}
-	let lock_file = ($"/tmp/alexjp/locks/($group)_($package).lock")
+	if not ($settings_folder_locks | path exists) {mkdir $settings_folder_locks}
+	let lock_file = ($"($settings_folder_locks)/($group)_($package).lock")
 	if ($lock_file | path exists) {
 		print $"LOCKFILE: ($package)"
 		exit 10
