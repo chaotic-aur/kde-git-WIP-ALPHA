@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kidentitymanagement
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Library to assist in handling user identities'
 arch=(x86_64)
@@ -23,12 +23,12 @@ depends=(gcc-libs
 makedepends=(doxygen
              extra-cmake-modules
              kirigami-addons
-             ktextwidgets
+             qt6-doc
              qt6-tools)
 optdepends=('kirigami-addons: QML bindings'
             'qt6-declarative: QML bindings')
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d7b08b49ef55770d9276eb46e8c17759a442a471b6331d1b99a56612a384569e'
+#sha256sums=('024c3c24549bc5b1504030724551d1ce126a163abae88bcb042cc99c8fbeb4d7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -49,13 +49,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

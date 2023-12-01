@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmix
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='KDE volume control program'
 url='https://apps.kde.org/kmix/'
@@ -27,12 +27,11 @@ depends=(alsa-lib
          kxmlgui5
          solid5)
 makedepends=(extra-cmake-modules
-             kcompletion5
              kdoctools5)
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('60b162eab80b5a00e45c30379aace6b4590cc598b239f10c4077b7e62a3dcd58'
+#sha256sums=('b0e00825b7e7e03635484b46250d7247e3168ee4e788f0703c0f07b2256e31a0'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -52,13 +51,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

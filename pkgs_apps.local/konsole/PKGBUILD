@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
@@ -11,8 +11,7 @@ pkgdesc='KDE terminal emulator'
 license=(GPL LGPL FDL)
 groups=(kde-applications
         kde-utilities)
-depends=(bash
-         glibc
+depends=(glibc
          gcc-libs
          icu
          kbookmarks
@@ -39,12 +38,13 @@ depends=(bash
          kxmlgui
          qt6-5compat
          qt6-base
-         qt6-multimedia)
+         qt6-multimedia
+         sh)
 makedepends=(extra-cmake-modules
              kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7d0385978c608a748e678612bb72f78d1c8636afcca3d2014ee720f12a2ce43d'
+#sha256sums=('55d166f23e40fe48bdd343655b0c14240260282cecd69d650a085d1713a34402'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -64,13 +64,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

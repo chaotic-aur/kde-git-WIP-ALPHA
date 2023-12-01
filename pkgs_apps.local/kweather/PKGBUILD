@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kweather
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Weather application for Plasma Mobile'
 url='https://apps.kde.org/kweather/'
@@ -14,19 +14,25 @@ depends=(gcc-libs
          ki18n
          kirigami-addons
          kweathercore
-         plasma-framework
+         libplasma
          qt6-base
          qt6-charts
          qt6-declarative)
 makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('650c8627d5870143223642f026d0463c0926d8fa862999ee3161e63c507afcc4'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        https://invent.kde.org/utilities/kweather/-/commit/851d28f0.patch)
+#sha256sums=('07e0432d0c415b8df64cc4b2fd3a00768a08616b948a048eb5aa2b08304f8230'
+#            'SKIP'
+#            'e151352860008fb7faf0479027ffa73f7389aa894450dad269a9df9f9642b82e')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < 851d28f0.patch # Fix build
+}
 
 build() {
   cmake -B build -S $pkgname \
@@ -42,13 +48,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

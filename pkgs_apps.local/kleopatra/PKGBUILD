@@ -1,0 +1,81 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kleopatra
+pkgver=24.01.80
+pkgrel=1
+pkgdesc='Certificate Manager and Unified Crypto GUI'
+arch=(x86_64)
+url='https://apps.kde.org/kleopatra/'
+license=(GPL LGPL FDL)
+depends=(akonadi-mime
+         gcc-libs
+         glibc
+         gpgme
+         kcmutils
+         kcodecs
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kiconthemes
+         kidentitymanagement
+         kio
+         kitemmodels
+         kmailtransport
+         kmime
+         kstatusnotifieritem
+         ktextwidgets
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libassuan
+         libgpg-error
+         libkleo
+         mimetreeparser
+         qgpgme-qt6
+         qt6-base
+         sh)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-pim)
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        akonadi.patch)
+#sha256sums=('ad81722598cef9510e9b8e0540f410bc55b2c956a13a9b716c5148b8fdb15e3b'
+#            'SKIP'
+#            '082e64db7d2ed97e80e25e3ad009e45f4c559a9fa7d4bca58cdb2c95dcef5180')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < akonadi.patch
+}
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+

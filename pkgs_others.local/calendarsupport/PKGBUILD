@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=calendarsupport
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Calendar support library'
 arch=(x86_64)
@@ -32,7 +32,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('432cff814c219831fef2aa956ead4ed97b5108b4e0eb4d1c120eba4b228c7bf3'
+#sha256sums=('7f6cbec5a4ff5979713698ec63018b730f49296701d0ee1d1835b2f93d849b58'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -53,13 +53,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

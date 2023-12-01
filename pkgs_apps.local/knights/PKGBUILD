@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=knights
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Chess board by KDE with XBoard protocol support'
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(gcc-libs
          kwidgetsaddons
          kxmlgui
          libkdegames
-         plasma-framework
+         libplasma
          qt6-5compat
          qt6-base
          qt6-speech)
@@ -32,7 +32,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('857f74fd988dc542ac1aaf7d333374e2e848913d913697e2c64b98a8697eface'
+#sha256sums=('07f93456838971b57baf2cdc5d1f15cd7f29c79a5238d64fde84fbefdac691ed'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -52,13 +52,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

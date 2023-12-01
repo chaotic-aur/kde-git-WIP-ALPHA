@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qmlkonsole
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Terminal app for Plasma Mobile'
 url='https://apps.kde.org/qmlkonsole/'
@@ -19,7 +19,7 @@ depends=(gcc-libs
          qt6-declarative)
 makedepends=(extra-cmake-modules)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('dd81250173b5da6bdd0b3ebc36cd10d1f90cfc05fe58d1632b5ce7e16c8793b2'
+#sha256sums=('14fdfeb44abfca0c4f8993eb1953b5c9d1a80dca21ef5230956f6336efde18b4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -39,13 +39,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

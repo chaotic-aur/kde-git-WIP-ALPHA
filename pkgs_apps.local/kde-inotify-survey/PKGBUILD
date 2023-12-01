@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-inotify-survey
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Tooling for monitoring inotify limits and informing the user when they have been or about to be reached'
 url='https://invent.kde.org/system/kde-inotify-survey'
@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-system)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('664c565e459d789a61841880ca6c93d45e95f887d637ae77687b40d73de914c8'
+#sha256sums=('5ba92af7ba479f0cac211ad4035af06b673943d2be8b929d7b80a2a5c60ac131'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -39,13 +39,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

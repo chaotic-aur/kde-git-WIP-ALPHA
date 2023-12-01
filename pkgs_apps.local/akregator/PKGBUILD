@@ -1,0 +1,75 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgname=akregator
+pkgver=24.01.80
+pkgrel=1
+pkgdesc='A Feed Reader by KDE'
+arch=(x86_64)
+url='https://apps.kde.org/akregator/'
+license=(GPL2)
+depends=(gcc-libs
+         glibc
+         grantleetheme
+         kcmutils
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         ki18n
+         kio
+         knotifications
+         knotifyconfig
+         kontactinterface
+         kparts
+         kstatusnotifieritem
+         ktextaddons
+         ktextwidgets
+         kuserfeedback
+         kwidgetsaddons
+         kxmlgui
+         libkdepim
+         messagelib
+         pimcommon
+         qt6-base
+         qt6-webengine
+         syndication)
+makedepends=(extra-cmake-modules
+             kdoctools)
+optdepends=('kdepim-addons: additional plugins')
+groups=(kde-applications
+        kde-pim)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('429ac9be92101855271d90de0a589969999c11cfebaa04ca3091e418ab3d052a'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+

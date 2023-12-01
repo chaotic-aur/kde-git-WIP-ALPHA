@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=klettres
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Learn The Alphabet'
 url='https://apps.kde.org/klettres/'
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-education)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('08ca43ebf98e68ec4e477066ad0f70d2b3f9c51d7ae42138f60ecef1899ce155'
+#sha256sums=('10cbf2b25ef738e9ad41f1cac524dc86818482a607540bc130942d76b19844a6'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,13 +46,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

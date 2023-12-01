@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktrip
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Public Transport Assistance for Mobile Devices'
 url='https://apps.kde.org/ktrip/'
@@ -21,18 +21,12 @@ makedepends=(extra-cmake-modules
              python)
 groups=(kde-applications
         kde-utilities)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        kitemmodels.patch)
-#sha256sums=('4a9007c6aca61d79a61fdef33733603ac54bac83e959847f34b25123b5136447'
-#            'SKIP'
-#            'fd633f41729f860bb659d5372944d60b212337b00a9285c5b7b41da2ba2dacaf')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d227c4becfc2e53dbf46e72f45a37dffd03ed05eea54f2a7298eef935d3a3554'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < kitemmodels.patch
-}
 
 build() {
   cmake -B build -S $pkgname \
@@ -48,13 +42,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

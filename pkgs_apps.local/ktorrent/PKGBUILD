@@ -3,7 +3,7 @@
 # Contributor: Georg Grabler <ggrabler@gmail.com>
 
 pkgname=ktorrent
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A powerful BitTorrent client for KDE'
 arch=(x86_64)
@@ -11,45 +11,47 @@ url='https://apps.kde.org/ktorrent/'
 license=(GPL2)
 depends=(gcc-libs
          glibc
-         karchive5
-         kcmutils5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         ki18n5
-         kiconthemes5
-         kio5
-         knotifications5
-         knotifyconfig5
-         kparts5
-         ktextwidgets5
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
+         karchive
+         kcmutils
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         ki18n
+         kiconthemes
+         kio
+         knotifications
+         knotifyconfig
+         kparts
+         kstatusnotifieritem
+         ktextwidgets
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libmaxminddb
          libktorrent
-         phonon-qt5
-         qt5-base
-         qt5-webengine)
+         phonon-qt6
+         qt6-5compat
+         qt6-base
+         qt6-webengine)
 makedepends=(boost
              extra-cmake-modules
-             geoip
-             kdnssd5
-             kdoctools5
-             kplotting5
-             syndication5
+             kdnssd
+             kdoctools
+             kplotting
+             syndication
              taglib)
-optdepends=('geoip: info widget plugin'
-            'kdnssd5: zeroconf plugin'
-            'kplotting5: statistics plugin'
-            'syndication5: syndication plugin'
+optdepends=('kdnssd: zeroconf plugin'
+            'kplotting: statistics plugin'
+            'syndication: syndication plugin'
             'taglib: mediaplayer plugin')
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ab7c9a97555200877e2164afc1cbf039d8ea6d24818c0eaa34984731d9121657'
+#sha256sums=('aa78d173e3aee70f85aa3ec62f705bd2c03225cf0d3ee6b98a26ac009905f10a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -68,13 +70,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -1,0 +1,46 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=kunifiedpush
+pkgver=git20231130
+pkgrel=1
+_commit=3eb8ff22949594e57b1cf18d8641c0f7306dc020
+pkgdesc='https://invent.kde.org/libraries/kunifiedpush'
+arch=(x86_64)
+url='https://www.kde.org'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         kcmutils
+         kcoreaddons
+         kservice
+         qt6-base
+         qt6-declarative
+         qt6-websockets)
+makedepends=(extra-cmake-modules
+             git)
+#source(git+https://invent.kde.org/libraries/kunifiedpush#commit=$_commit)
+#sha256sums('SKIP')
+
+build() {
+  cmake -B build -S $pkgname
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=krdc
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Remote Desktop Client'
 url='https://apps.kde.org/krdc/'
@@ -38,7 +38,7 @@ optdepends=('libvncserver: VNC support'
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('37a967ab28eb472f2ab19a01908a46fc97c96457e8cb94a040cc0acdf2251b2c'
+#sha256sums=('2a15631744f1383215d1dffe3fe1855e3454f3861cce2b15f1605f4780f17adc'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -58,13 +58,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

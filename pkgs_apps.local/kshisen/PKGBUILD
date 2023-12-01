@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kshisen
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A solitaire-like game played using the standard set of Mahjong tiles'
 url='https://apps.kde.org/kshisen/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0226e6c1b46c1646ce5b79f680b67fe355733d8ddc07c05e1229ef15a675319b'
+#sha256sums=('81a8e366436e7eb608bb1cce65b20d9560558a24c29b09179a35f1b03c1af3b7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -47,13 +47,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

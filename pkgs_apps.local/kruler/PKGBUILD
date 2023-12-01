@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kruler
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Screen Ruler'
 url='https://apps.kde.org/kruler/'
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-graphics)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ffde8b4e5d30284d316959b45ffc778db753d4c8dc7749aa530a3de5a3a418e8'
+#sha256sums=('f588130065a2d08b2cd2e950636dec78045bf3c38f543da20e40f57d44449fd1'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,13 +46,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

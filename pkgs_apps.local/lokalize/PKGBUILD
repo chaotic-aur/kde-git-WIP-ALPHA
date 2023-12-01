@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=lokalize
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Computer-Aided Translation System'
 url='https://apps.kde.org/lokalize/'
@@ -29,13 +29,13 @@ depends=(gcc-libs
          sonnet5)
 makedepends=(extra-cmake-modules
              kdoctools5)
-optdepends=('bash: for some scripts'
-            'languagetool: spell and grammar checking'
-            'python: for some scripts')
+optdepends=('languagetool: spell and grammar checking'
+            'python: for some scripts'
+            'sh: for some scripts')
 groups=(kde-applications
         kdesdk)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ca1e3fda1c3f1f584880a65b7bf5ade8ef632eb8d6a03e7c761c4d6ef4b71985'
+#sha256sums=('907ad3f1b9bc3883c4c6bb8f7f409d86680a9663412ec158625a6acc4e764498'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -55,13 +55,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -1,15 +1,13 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A simple music player aiming to provide a nice experience for its users'
 url='https://apps.kde.org/elisa/'
 arch=(x86_64)
 license=(LGPL3)
-groups=(kde-applications kde-multimedia)
-depends=(baloo
-         gcc-libs
+depends=(gcc-libs
          glibc
          kcolorscheme
          kconfig
@@ -34,7 +32,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('776914805696831a49670f5ba66e64d61ba01877fa527144fd5fe025b16cef9a'
+#sha256sums=('2b5e9bf25cd47c8021883a041847f9982873ecb2093056ee718102726c20e1e6'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -54,13 +52,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

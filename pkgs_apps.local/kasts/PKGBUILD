@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kasts
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Kirigami-based podcast player'
 url='https://apps.kde.org/kasts/'
@@ -22,11 +22,12 @@ depends=(gcc-libs
          taglib
          threadweaver
          vlc)
-makedepends=(extra-cmake-modules)
+makedepends=(extra-cmake-modules
+             python)
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7932a8c621b59206628625c424b126ff654e6a430b579fc583c0c9c251be9fe0'
+#sha256sums=('54cef5bfb2931a2142c1040cf28805054fa085d551581c7adcb3157fd988d6ef'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,13 +47,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

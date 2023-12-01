@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=akonadiconsole
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Akonadi management and debugging console'
 arch=(x86_64)
@@ -38,7 +38,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9f48e8adc1d585867ead086eb8e93afc2c534980f3ae864a08afff955ee62e1c'
+#sha256sums=('b0163103f22ac5c8d4800cc4c6aa1b1b964838ef657aad4bec6f0be4863c3645'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -58,13 +58,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kblackbox
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A game of hide and seek played on a grid of boxes'
 url='https://apps.kde.org/kblackbox/'
@@ -29,7 +29,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9054981dcb182034ddb208993b0899c4a1a66d9131b940853e0cbe8512eb97f2'
+#sha256sums=('aa11b3e0cdc61fd3a5c12de4769200b339ebad8f4cfc7760e8117f52f366e60c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -49,13 +49,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

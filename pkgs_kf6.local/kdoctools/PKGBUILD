@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdoctools
-pkgver=5.245.0
+pkgver=5.246.0
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(doxygen
              qt6-tools)
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('042084741bf79d527f0ad92afe9629e595c476a90fe85e946888192b3f89aff2'
+#sha256sums=('179b43429007da239d35ecfb880f7030c755124737bac45d073e7a55007641a9'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -45,13 +45,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

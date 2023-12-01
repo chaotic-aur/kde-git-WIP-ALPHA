@@ -4,7 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=dolphin
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='KDE File Manager'
 arch=(x86_64)
@@ -14,7 +14,6 @@ depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets ba
          baloo-widgets
          gcc-libs
          glibc
-         kactivities
          kbookmarks
          kcmutils
          kcodecs
@@ -41,6 +40,7 @@ depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets ba
          kwindowsystem
          kxmlgui
          phonon-qt6
+         plasma-activities
          qt6-base
          solid)
 makedepends=(extra-cmake-modules
@@ -55,19 +55,16 @@ optdepends=('ffmpegthumbs: video thumbnails'
 groups=(kde-applications
         kde-system)
 #source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        https://invent.kde.org/system/dolphin/-/commit/2cd3d58e.patch
-#        find-kactivities.patch)
-#sha256sums=('e6e8f1f9302c9c456c1f48822d04c9fa36c35f3604ceff99f02a9efee5bc8c8c'
+#        plasma-activities.patch)
+#sha256sums=('ab3c31fd7cf04b467473d68da5d8b13d2c9d646011e39adf0200df7147c8677e'
 #            'SKIP'
-#            'e7c5e2c9d758a4297a56eb5cda7b1ecb9172e0786d0717ede677dec4aae0b317'
-#            'de57335f11047cb3e37f0d20a014a1df1bbbe08faa2b06f67f40062067534b12')
+#            '17b4801b030407f66215d86bf1e69b7e993f24670e8b8a39eeecf53ccb6249fa')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-  patch -d $pkgname-$pkgver -p1 < 2cd3d58e.patch # Drop kmoretools dependency
-  #patch -d $pkgname-$pkgver -p1 < find-kactivities.patch
+  patch -d $pkgname-$pkgver -p1 < plasma-activities.patch
 }
 
 build() {
@@ -84,13 +81,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

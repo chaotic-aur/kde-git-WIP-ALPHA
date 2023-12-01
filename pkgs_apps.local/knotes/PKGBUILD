@@ -1,0 +1,83 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgname=knotes
+pkgver=24.01.80
+pkgrel=1
+pkgdesc='Popup notes'
+arch=(x86_64)
+url='https://apps.kde.org/knotes/'
+license=(GPL2)
+depends=(akonadi-notes
+         akonadi-search
+         gcc-libs
+         glibc
+         grantleetheme
+         kcalendarcore
+         kcalutils
+         kcmutils
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcontacts
+         kcoreaddons
+         kcrash
+         kdepim-runtime
+         kdnssd
+         kglobalaccel
+         ki18n
+         kiconthemes
+         kio
+         kitemmodels
+         kitemviews
+         kmime
+         knewstuff
+         knotifications
+         knotifyconfig
+         kontactinterface
+         kparts
+         kstatusnotifieritem
+         ktextaddons
+         ktextwidgets
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libakonadi
+         pimcommon
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-pim)
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('d2c9313e2a5183aec33194763c61b36509da4b19bc7756ef45faca2098079e2d'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+

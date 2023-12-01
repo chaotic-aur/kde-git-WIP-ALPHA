@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=killbots
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A simple game of evading killer robots'
 url='https://apps.kde.org/killbots/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0eb1e32e6bf5fdcd1a11c92b6e9f85789e61cadcb83656614d70d7276e7670d1'
+#sha256sums=('b0e54621314c857b3752c4e8ce587e87d40ba7d5042844f0aaefe008944a4a14'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -47,13 +47,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

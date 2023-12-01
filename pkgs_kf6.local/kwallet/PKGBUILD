@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet
-pkgver=5.245.0
+pkgver=5.246.0
 pkgrel=1
 pkgdesc='Secure and unified container for user passwords'
 arch=(x86_64)
@@ -33,7 +33,7 @@ optdepends=('kwalletmanager: Configuration GUI')
 provides=(org.freedesktop.secrets)
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('52eb887a2fed59dd9a1e828c31ae7851ae6e30df050e7027bcae1bc408c4b1c2'
+#sha256sums=('d54ac4b1a4a6e4c056b3d7fbb733d873f51860d38bd296efcd73860c9b93fc80'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -57,13 +57,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

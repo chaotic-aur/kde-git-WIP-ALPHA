@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmouth
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Speech Synthesizer Frontend'
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-accessibility)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('44f5bda6723f072568f2c0abb1d4ed1f93ec2a991d8eed0e73454f923f5b2896'
+#sha256sums=('c64c3a1828ceaa2035841779f73fb9cfa28945c1f096b6be314afdcaeedb545f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,13 +46,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

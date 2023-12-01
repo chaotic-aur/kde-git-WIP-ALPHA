@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kalzium
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Periodic Table of Elements'
 url='https://apps.kde.org/kalzium/'
@@ -33,14 +33,12 @@ makedepends=(eigen
              extra-cmake-modules
              facile
              kdoctools5
-             kparts5
              ocaml
-             python
-             verdict)
+             python)
 groups=(kde-applications
         kde-education)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('5f549da04fa2d6ee512cb47831631e7c9ad9235eb7f2bc86f4d4efef3896bb6b'
+#sha256sums=('9e19191111bd80f7789ff8ca0729cc0240ad082c36f34fe54af3ae796af4e3f4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -60,13 +58,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kfind
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Find Files/Folders'
 arch=(x86_64)
@@ -28,7 +28,7 @@ optdepends=('mlocate: search using mlocate index')
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8c3f16a37dbddd0695aaf1cf79ca876bc3205e6171c57c5dfad0bafcc8deff30'
+#sha256sums=('3109de88d0767bc5fcf99c5de592306c93f7ae753b9ff62a137cb01ca7c3e6fb'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -48,13 +48,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

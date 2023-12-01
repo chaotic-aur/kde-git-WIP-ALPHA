@@ -3,21 +3,21 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kde-dev-scripts
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Scripts and setting files useful during development of KDE software'
 url='https://www.kde.org/'
 arch=(any)
 license=(GPL LGPL FDL)
-depends=(bash
-         perl
-         python)
+depends=(perl
+         python
+         sh)
 makedepends=(extra-cmake-modules
              kdoctools5)
 groups=(kde-applications
         kdesdk)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3acf05f93d9b12bde884a503aba515fc7492f28784bc7179e522da615ea358f1'
+#sha256sums=('a949bd486b4031e2e7839db15049435660762dc5bcbfe4fb3561381f9970924d'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -47,13 +47,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

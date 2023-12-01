@@ -5,7 +5,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kdenlive
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A non-linear video editor for Linux using the MLT video framework'
 arch=(x86_64)
@@ -53,17 +53,19 @@ makedepends=(doxygen
 optdepends=('bigsh0t: VR360 effects'
             'dvgrab: for firewire capture'
             'ffmpeg: for FFmpeg plugin'
+            'kimageformats5: support for dds, xcf, exr, psd, and more image formats'
             'mediainfo: for technical clip information'
             'noise-suppression-for-voice: noise suppression effect'
             'opencv: for motion tracking'
             'opentimelineio: timeline export/import'
             'plasma-desktop: theme configuration'
             'python: for scripts'
+            'qt5-imageformats: support for tiff, webp, and more image formats'
             'recordmydesktop: for screen capture')
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3910b4b98051a15a52aa32bdf13f80d1c738509b7e3b684e7de6b6a79120c9b0'
+#sha256sums=('b3fabef81a72995a29f127fe9c28abe85eb829a8cfad8431c4ac4a73d8fe47ed'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -84,13 +86,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

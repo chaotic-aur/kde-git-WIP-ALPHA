@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkgapi
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A KDE-based library for accessing various Google services via their public API'
 url='https://www.kde.org/'
@@ -16,9 +16,10 @@ depends=(gcc-libs
          qt6-base)
 makedepends=(doxygen
              extra-cmake-modules
+             qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e47a046d8fe162841736021b76f1a1303056d2d2e2887f6e632bcd3058310be3'
+#sha256sums=('b24fefe51be3bdeee66bd2981925516d1fb56e6629352955170bcd4b8ca473a4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -40,13 +41,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

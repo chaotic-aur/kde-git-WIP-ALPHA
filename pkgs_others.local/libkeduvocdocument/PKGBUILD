@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkeduvocdocument
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Common libraries for KDE Edu applications'
 url='https://www.kde.org/'
@@ -20,7 +20,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ef963329273ea6af557c78346cd707c4a448f49e4d147f749eebfce56e58dbb8'
+#sha256sums=('6cb16bd30dfe59685572e1cfc6f906b34be4d635bb439ad7721b2686e2774836'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -40,13 +40,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=baloo-widgets
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Widgets for Baloo'
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('fc2ea6cc74a81ed5a3c4f094cad0360ea588c2c3d9ad6c195f7af895af4ca5b2'
+#sha256sums=('c48c6f24ae0f6088abf58251f4fbcd4afeca019d8ce4c48b7145e032c053c2fe'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -44,13 +44,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

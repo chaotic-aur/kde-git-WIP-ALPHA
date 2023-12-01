@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kpat
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Offers a selection of solitaire card games'
 url='https://apps.kde.org/kpat/'
@@ -33,7 +33,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ca6c9ea9b8f477249fbd75da2d5b52a60f9935fb372fa89530cdc424d05f7400'
+#sha256sums=('7a8202884baee04f2338e2a9733185c389feb4eb29ca909a334ea201a43dd1b3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -53,13 +53,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

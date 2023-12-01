@@ -5,7 +5,7 @@
 pkgbase=libkexiv2
 pkgname=(libkexiv2
          libkexiv2-qt5)
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A library to manipulate pictures metadata'
 url='https://www.kde.org/'
@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules
              qt6-5compat
              qt6-base)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8804f3aef570d97d5bf2e705c94d779d70f9d592688bd351dd72eee153cc8343'
+#sha256sums=('de4020225184ff1d3de36487ef5e957794c7a3dea90b45dba6f830b4896eb815'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -54,13 +54,13 @@ package_libkexiv2-qt5() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

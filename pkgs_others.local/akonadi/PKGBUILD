@@ -5,7 +5,7 @@
 
 pkgbase=akonadi
 pkgname=(akonadi libakonadi)
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='PIM layer, which provides an asynchronous API to access all kind of PIM data'
 arch=(x86_64)
@@ -20,6 +20,7 @@ depends=(gcc-libs
 makedepends=(doxygen
              extra-cmake-modules
              postgresql
+             qt6-doc
              qt6-tools
              kconfigwidgets
              kiconthemes
@@ -28,7 +29,7 @@ makedepends=(doxygen
              kxmlgui)
 # kaccounts-integration
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3a581bebd515215c7001e32c7183481e53c91fa566ad078d7214656c06e17464'
+#sha256sums=('19da79f8dd27dcb1ee0007cac6a606f3d85463c0dd0de42273532070ea33f3c4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -71,13 +72,13 @@ package_akonadi() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

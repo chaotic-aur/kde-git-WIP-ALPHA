@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kqtquickcharts
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A QtQuick plugin to render beautiful and interactive charts'
 url='https://www.kde.org/'
@@ -15,7 +15,7 @@ depends=(gcc-libs
          qt5-declarative)
 makedepends=(extra-cmake-modules)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f8e040838eb1bb737e3c8e23124ed90ca48d94bab7c6aaac6554285861e8ba83'
+#sha256sums=('a9cdbc0145df3fb3e54026907ad04a7a9ab259a397bd9a63269372de0d58f3bf'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -35,13 +35,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-mime
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Libraries and daemons to implement basic email handling'
 arch=(x86_64)
@@ -21,9 +21,10 @@ depends=(gcc-libs
 makedepends=(doxygen
              extra-cmake-modules
              kdoctools5
+             qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('28fbf21b2c6199e61ab83af002cc6cfef6b2b81f24ae89b6f3d1f1e503acfaf4'
+#sha256sums=('eee60e0d2b4d4277febfbadbe5c9fe861672a6b3afce3145e319b9213d9907ca'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -44,13 +45,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

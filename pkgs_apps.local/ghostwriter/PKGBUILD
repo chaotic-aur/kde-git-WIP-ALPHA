@@ -6,7 +6,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Aesthetic, distraction-free Markdown editor'
 arch=(x86_64)
@@ -32,7 +32,7 @@ optdepends=('cmark: processing and rendering CommonMark'
 groups=(kde-applications
         kde-office)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('10701edb4328771e23b5d169d617f214b7d44403327ce45fb52e7ad877787dac'
+#sha256sums=('1c54c6ea32fd78acd4138845c190cbcb6930ea6b2faafdd3a8e7d7d8b6ba13a0'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -60,13 +60,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

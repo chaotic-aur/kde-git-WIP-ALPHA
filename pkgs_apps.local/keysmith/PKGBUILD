@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=keysmith
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='OTP client for Plasma Mobile and Desktop'
 url='https://apps.kde.org/keysmith/'
@@ -21,7 +21,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b30a9dd723ae392f6f84ac57699d0085ad27701a8a32c4e3ad67c67488a6b31c'
+#sha256sums=('cfc6810a89ec4deb6789fef1126df69e6f25c37ba23092c0ba9629a659b93e40'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -41,13 +41,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

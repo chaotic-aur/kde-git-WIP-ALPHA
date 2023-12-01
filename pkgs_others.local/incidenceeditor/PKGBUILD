@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=incidenceeditor
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='KDE PIM incidence editor'
 arch=(x86_64)
@@ -42,16 +42,21 @@ makedepends=(doxygen
              extra-cmake-modules
              qt6-doc
              qt6-tools)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('58f5f38449cc9d4757ac7c73a9eea50e6b0bc2ce5d4c796a9d025c5177885c8a'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        https://invent.kde.org/pim/incidenceeditor/-/commit/d2bda9e3.patch
+#        https://invent.kde.org/pim/incidenceeditor/-/commit/c64502a9.patch)
+#sha256sums=('7497eaa42b37271f4dacbd983c0c93c2b5fcb25e56d391842e138c14bfa068d4'
+#            'SKIP'
+#            '8ae95349dea5d0af55982b1cf0d478c5f17ac7a489d916452f68e707d3b348bd'
+#            'a3cfbb648c4f269ee3d620ce93b1b63c859996ae973b2644cf0f08f9079ac089')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-# Port to new kdiagram name
-  sed -e 's|KGantt|KGantt6|' -i $pkgname-$pkgver/CMakeLists.txt -i $pkgname-$pkgver/src/CMakeLists.txt
+# Fix build
+  patch -d $pkgname-$pkgver -p1 < d2bda9e3.patch
+  patch -d $pkgname-$pkgver -p1 < c64502a9.patch
 }
 
 build() {
@@ -69,13 +74,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

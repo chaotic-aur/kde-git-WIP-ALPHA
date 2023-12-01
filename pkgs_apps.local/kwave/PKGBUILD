@@ -3,7 +3,7 @@
 # Contributor: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A sound editor'
 arch=(x86_64)
@@ -45,7 +45,7 @@ optdepends=('opus: OGG plugin')
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('39c4c4a3068eee656f40af83fe1065ab1550d77e9e485779ccc6352165f64845'
+#sha256sums=('e9ff5a037d5d45537fd3d1f017565f7721c0547ded0a84aeff565f48d1c108b8'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -65,13 +65,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

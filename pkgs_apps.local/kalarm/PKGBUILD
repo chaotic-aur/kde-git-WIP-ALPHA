@@ -1,0 +1,89 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgname=kalarm
+pkgver=24.01.80
+pkgrel=1
+pkgdesc='Personal alarm scheduler'
+arch=(x86_64)
+url='https://apps.kde.org/kalarm/'
+license=(GPL2)
+depends=(akonadi-contacts
+         akonadi-mime
+         gcc-libs
+         glibc
+         kauth
+         kcalendarcore
+         kcalutils
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcontacts
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         kguiaddons
+         kholidays
+         ki18n
+         kidentitymanagement
+         kio
+         kitemmodels
+         kmailtransport
+         kmime
+         knotifications
+         knotifyconfig
+         kstatusnotifieritem
+         ktextaddons
+         ktextwidgets
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libakonadi
+         phonon-qt6
+         qt6-5compat
+         qt6-base)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(kde-applications
+        kde-pim)
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        https://invent.kde.org/pim/kalarm/-/commit/d0998827.patch)
+#sha256sums=('7cf673560b85e6bd074becebfd3dec6bc3fffba1a504bb5923923a09aaa8f0e1'
+#            'SKIP'
+#            '6f64c2a99e7ceacde49a029d3f252cbfa10fad551f177afe1adc55d997309538')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < d0998827.patch # Fix build
+}
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+

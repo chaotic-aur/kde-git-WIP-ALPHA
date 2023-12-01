@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kdialog
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='A utility for displaying dialog boxes from shell scripts'
 arch=(x86_64)
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('2c75e49a8290f4f8c6e237c5b55bec31c0c612c124944c4f12107995ec5861d2'
+#sha256sums=('0ede0570dac89acd0a2c298cf25416942018add72b5f2b98f62d02d671fc5324'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,13 +46,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

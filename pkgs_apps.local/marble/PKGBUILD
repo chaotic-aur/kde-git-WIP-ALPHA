@@ -9,7 +9,7 @@ pkgname=(marble
          marble-common
          marble-maps
          marble-qt)
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Desktop Globe'
 arch=(x86_64)
@@ -29,7 +29,7 @@ makedepends=(extra-cmake-modules
              qt5-webengine
              shapelib)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgbase-$pkgver.tar.xz{,.sig})
-#sha256sums=('f8fe1d68b0b463e79be733b85c03e76f6404f9a238cc9346f271047ec9594ff8'
+#sha256sums=('f88959647ebbe77e1a5b6e62f813be4a01d67126f23943bea914cc588e25fda9'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -102,7 +102,8 @@ package_marble() {
            qt5-base
            qt5-declarative)
   optdepends=('krunner5: Krunner plugin')
-  groups=(kde-applications kde-education)
+  groups=(kde-applications
+          kde-education)
 
   DESTDIR="$pkgdir" cmake --install build/src/apps/marble-kde
   DESTDIR="$pkgdir" cmake --install build/src/plasma
@@ -127,13 +128,13 @@ package_marble-maps() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

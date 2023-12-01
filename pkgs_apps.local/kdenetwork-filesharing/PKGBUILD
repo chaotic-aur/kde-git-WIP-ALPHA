@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdenetwork-filesharing
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Properties dialog plugin to share a directory with the local network'
 url='https://apps.kde.org/kdenetwork_filesharing/'
@@ -11,20 +11,20 @@ arch=(x86_64)
 license=(GPL LGPL FDL)
 depends=(gcc-libs
          glibc
-         kauth5
-         kcoreaddons5
-         ki18n5
-         kio5
-         kwidgetsaddons5
-         qt5-base
-         qt5-declarative
+         kauth
+         kcoreaddons
+         ki18n
+         kio
+         kwidgetsaddons
+         qt6-base
+         qt6-declarative
          samba)
 makedepends=(extra-cmake-modules
-             qcoro-qt5)
+             qcoro-qt6)
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('40ef911bccda5941442fb363ea98c33c757a6a736b4fbe69f561bb129e7bced3'
+#sha256sums=('f25a0318a11ee457ceecf7fa6a214a34d633b1a114e76e0aeada719653cf7518'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -44,13 +44,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

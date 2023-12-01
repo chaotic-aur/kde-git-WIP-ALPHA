@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=audiocd-kio
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Kioslave for accessing audio CDs'
 url='https://apps.kde.org/kio_audiocd/'
@@ -32,7 +32,7 @@ optdepends=('opus-tools: encoding to opus format')
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e41fae2c3fc62a9a71670ea4804cc83b7597f78e30b76f73146321fc14b2db7a'
+#sha256sums=('f7bdb7eb1e7647f099221ca8b279348e274538ae8759446f9f44e6f2727ce9fb'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -52,13 +52,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

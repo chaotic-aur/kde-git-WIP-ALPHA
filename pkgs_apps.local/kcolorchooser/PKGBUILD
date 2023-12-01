@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcolorchooser
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Color Chooser'
 url='https://apps.kde.org/kcolorchooser/'
@@ -16,9 +16,10 @@ depends=(gcc-libs
          kxmlgui
          qt6-base)
 makedepends=(extra-cmake-modules)
-groups=(kde-applications kde-graphics)
+groups=(kde-applications
+        kde-graphics)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d1353beb00660f00b40c2d42d2a678ccc451342c6fbc042d12134fed991c1b43'
+#sha256sums=('639a15c53e62a1ad8890bdeb104ecf36ee60a97ff947c64eecbb9ac6d8ebb8cb'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -38,13 +39,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

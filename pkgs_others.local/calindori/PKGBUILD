@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=calindori
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Calendar for Plasma Mobile'
 url='https://apps.kde.org/calindori/'
@@ -23,7 +23,7 @@ depends=(gcc-libs
          qt5-svg)
 makedepends=(extra-cmake-modules)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e19354c516e3383eea36049226c95bdc938c2896a6249ca86d463cdcf0f8b95c'
+#sha256sums=('f5acc46632c66842dd39716fdd040cbd7e427756a877c58034529a912c476f30'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -43,13 +43,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

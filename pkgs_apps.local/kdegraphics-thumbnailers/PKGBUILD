@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdegraphics-thumbnailers
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Thumbnailers for various graphics file formats'
 url='https://apps.kde.org/kdegraphics_thumbnailers/'
@@ -22,18 +22,12 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-graphics)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        fix-raw-build.patch)
-#sha256sums=('754fbca23d124bef0dbd36c87f9f0f5786faba8eb9a6a31604aa1bb517b45a94'
-#            'SKIP'
-#            '19110876ae5d2ba5b553f5c7c4645d0c51ed53cabeebd1c8ddf87125a2316ef1')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('c1ecb2db47b473bb7287007ad9ff17cbee0d0c093cb481dce55791a501379f9a'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < fix-raw-build.patch
-}
 
 build() {
   cmake -B build -S $pkgname \
@@ -50,13 +44,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

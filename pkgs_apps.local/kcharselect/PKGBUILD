@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcharselect
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='Character Selector'
 url='https://apps.kde.org/kcharselect/'
@@ -25,7 +25,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('443e3b4cc1a44d72b4359c55d37d123750080ceb69c302d3d22bf58682d27c1c'
+#sha256sums=('13de78860f33331edf8e2728745eb28effbd1845334089c961c5ae9ecdede30f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -45,13 +45,13 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 

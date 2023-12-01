@@ -5,7 +5,7 @@
 pkgbase=libkcddb
 pkgname=(libkcddb
          libkcddb5)
-pkgver=24.01.75
+pkgver=24.01.80
 pkgrel=1
 pkgdesc='KDE CDDB library'
 url='https://www.kde.org/'
@@ -28,7 +28,7 @@ makedepends=(extra-cmake-modules
              kdoctools5
              kio5)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e62d6cd01917dbfcebbed8d7201fa1d2776cad6b83e643107f349980c04dd557'
+#sha256sums=('47c9d64db1ae4a886e4088c7b31f4d3b0454459da6ef1bfc832715e2461e1ab3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -73,13 +73,13 @@ package_libkcddb5() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname})
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 
