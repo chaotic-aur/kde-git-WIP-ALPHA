@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
@@ -13,7 +13,7 @@ license=(LGPL)
 depends=(breeze
          gcc-libs
          glibc
-         kactivities
+         plasma-activities
          kauth
          kcmutils
          kcolorscheme
@@ -26,6 +26,7 @@ depends=(breeze
          kdecoration
          kglobalaccel
          kglobalacceld
+         kguiaddons
          ki18n
          kidletime
          knewstuff
@@ -53,12 +54,13 @@ depends=(breeze
          libxkbcommon-x11
          mesa
          pipewire-session-manager
-         plasma-framework
+         libplasma
          qt6-base
          qt6-declarative
          qt6-multimedia
          qt6-sensors
          qt6-tools
+         qt6-wayland
          systemd-libs
          wayland
          xcb-util-cursor
@@ -74,7 +76,7 @@ optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 install=$pkgname.install
-#sha256sums=('dd172ed7ce93fe75d0470de4fcd6525091e207a7354d328e4861023318b54d7e'
+#sha256sums=('4866568edb9d2bae8e3570a7a492a36b2f2483f9d3a520eb88a62cbfdd54a5e1'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

@@ -1,15 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-sdk
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Applications useful for Plasma development'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(bash
-         gcc-libs
+depends=(gcc-libs
          glibc
          karchive
          kcolorscheme
@@ -25,16 +24,17 @@ depends=(bash
          kpackage
          ktexteditor
          kwidgetsaddons
-         plasma-framework
+         libplasma
          plasma5support
          qt6-5compat
          qt6-base
-         qt6-declarative)
+         qt6-declarative
+         sh)
 makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('71fdb26ff34fc1c2f10b3fdbbfbf771e9b8c4b993820b586d3f83a16706f439d'
+#sha256sums=('cd74dd7a8dc6c737d017786b19d33ff734e3159ecd75fccea549dda8ceb5575a'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

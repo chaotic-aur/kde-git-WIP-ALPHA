@@ -2,11 +2,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kactivities-stats
-_pkgver=5.27.80
-# fake version number to bypass conflicts with KF5
-pkgver=6.alpha.$_pkgver
-_dirver=$(echo $_pkgver | cut -d. -f1-3)
+pkgname=plasma-activities-stats
+pkgver=5.90.0
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='A library for accessing the usage data collected by the activities system'
 arch=(x86_64)
@@ -14,16 +12,18 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(gcc-libs
          glibc
-         kactivities
+         plasma-activities
          kconfig
          qt6-base)
 makedepends=(doxygen
              extra-cmake-modules
              qt6-doc
              qt6-tools)
+conflicts=(kactivities-stats)
+replaces=(kactivities-stats)
 groups=(plasma)
-#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$_pkgver.tar.xz{,.sig})
-#sha256sums=('8708277ccdde9bdd976b7178ad240e361c6da378fd18989deaec952b6a53cd50'
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('42c7ad00fa952ba3948fc49e135516afcd7e039467cc216df643766055349e3a'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

@@ -2,31 +2,49 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kactivities
-_pkgver=5.27.80
-# fake version number to bypass conflicts with KF5
-pkgver=6.alpha.$_pkgver
-_dirver=$(echo $_pkgver | cut -d. -f1-3)
+pkgname=libplasma
+pkgver=5.90.0
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='Core components for KDE Activities'
+pkgdesc='Plasma library and runtime components'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(gcc-libs
          glibc
+         plasma-activities
+         kcmutils
+         kcolorscheme
          kconfig
          kcoreaddons
-         qt6-base)
-makedepends=(boost
-             doxygen
+         kglobalaccel
+         ki18n
+         kiconthemes
+         kio
+         kirigami
+         knotifications
+         kpackage
+         ksvg
+         kwidgetsaddons
+         kwindowsystem
+         libglvnd
+         libx11
+         libxcb
+         qt6-base
+         qt6-declarative
+         qt6-wayland
+         wayland)
+makedepends=(doxygen
              extra-cmake-modules
-             qt6-declarative
+             kdoctools
+             plasma-wayland-protocols
              qt6-doc
              qt6-tools)
-optdepends=('qt6-declarative: QML bindings')
+conflicts=(plasma-framework)
+replaces=(plasma-framework)
 groups=(plasma)
-#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$_pkgver.tar.xz{,.sig})
-#sha256sums=('ef9f0051aabb8dc94deaa728a1f78678f1ccd11e4a96257b36a0438a3c0a41ba'
+#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('aa99703d6434816b669c2c37a031110df40facc022d803211d39805c6d4a78e0'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

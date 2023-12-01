@@ -5,7 +5,7 @@
 pkgbase=breeze
 pkgname=(breeze
          breeze5)
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 arch=(x86_64)
@@ -38,7 +38,7 @@ makedepends=(extra-cmake-modules
 optdepends=('breeze-gtk: Breeze widget style for GTK applications')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7b6c6909436254077556da45b17136e2e7777709b12bace376de1e56995c80cc'
+#sha256sums=('4cb72caf869687f841f86a652885ba21fd5db9c0c5e08accc98531457d0117a1'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

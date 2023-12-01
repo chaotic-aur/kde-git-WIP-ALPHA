@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kscreen
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE screen management software'
@@ -25,14 +25,14 @@ depends=(gcc-libs
          libx11
          libxcb
          libxi
-         plasma-framework
+         libplasma
          qt6-base
          qt6-declarative
          qt6-sensors)
 makedepends=(extra-cmake-modules)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('cf4c476663d09a3d592c73510329b45a6e9023a017a558c09dfb3b044cbeb644'
+#sha256sums=('31d61d108d0c400f2cece4650a77153a8fae9d761d482badd5b281686b29424e'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

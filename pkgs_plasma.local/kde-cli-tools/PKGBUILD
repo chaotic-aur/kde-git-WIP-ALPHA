@@ -3,15 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kde-cli-tools
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Tools based on KDE Frameworks 5 to better interact with the system'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(bash
-         gcc-libs
+depends=(gcc-libs
          glibc
          kcmutils
          kcompletion
@@ -26,12 +25,13 @@ depends=(bash
          kwidgetsaddons
          kwindowsystem
          qt6-base
-         qt6-svg)
+         qt6-svg
+         sh)
 makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('46bbfbc49190771ab8519044dd8c59e179c6535cff514650c2520a69a8797b4a'
+#sha256sums=('6a7e11387d97c8e4905fcbc37d8fc7226c631d06124ad2e134002ce087b9c22b'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

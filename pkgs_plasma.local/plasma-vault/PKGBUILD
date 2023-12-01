@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-vault
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Plasma applet and services for creating encrypted vaults'
@@ -10,7 +10,7 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(gcc-libs
          glibc
-         kactivities
+         plasma-activities
          kconfig
          kcoreaddons
          kdbusaddons
@@ -20,7 +20,7 @@ depends=(gcc-libs
          kwidgetsaddons
          libksysguard
          networkmanager-qt
-         plasma-framework
+         libplasma
          plasma-workspace
          qt6-base)
 makedepends=(extra-cmake-modules)
@@ -29,7 +29,7 @@ optdepends=('cryfs: to use cryFS for encryption'
             'gocryptfs: to use gocryptfs for encryption')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8e25c29051d03b51735453d7942208e9c9f94c5bc79208c0e002e2a9e6b9ac4d'
+#sha256sums=('360a5a96a52a2bbc5ea426838d08e415c8ad49fa0d5d3539aaf482e60b77a841'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

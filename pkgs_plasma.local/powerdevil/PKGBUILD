@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=powerdevil
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell'
@@ -13,7 +13,7 @@ license=(LGPL)
 depends=(ddcutil
          gcc-libs
          glibc
-         kactivities
+         plasma-activities
          kauth
          kcmutils
          kcompletion
@@ -24,7 +24,6 @@ depends=(ddcutil
          kglobalaccel
          ki18n
          kidletime
-         kio
          kirigami
          knotifyconfig
          kwidgetsaddons
@@ -45,7 +44,7 @@ optdepends=('kinfocenter: for the Energy Information KCM'
             'power-profiles-daemon: power profiles support')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('efaec5a55bd7c3a65427a8a45439722b5451aea3a372b16cf77e127bf433b1ee'
+#sha256sums=('540e1dfe5c906c78b5d198977dc28525da89f0b0934f3cb4c4adaeeeb1f6afff'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -55,7 +54,6 @@ groups=(plasma)
 build() {
   cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DHAVE_DDCUTIL=ON \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

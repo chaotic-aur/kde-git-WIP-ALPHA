@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-desktop
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
@@ -12,12 +12,12 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 depends=(baloo
-         bash
          gawk
          gcc-libs
          glibc
-         kactivities
-         kactivities-stats
+         icu
+         plasma-activities
+         plasma-activities-stats
          kauth
          kbookmarks
          kcmutils
@@ -34,6 +34,7 @@ depends=(baloo
          kiconthemes
          kio
          kirigami-addons # QML
+         kitemviews
          kjobwidgets
          kmenuedit
          knewstuff
@@ -42,6 +43,7 @@ depends=(baloo
          kpackage
          krunner
          kservice
+         ksvg
          kwidgetsaddons
          kwindowsystem
          kxmlgui
@@ -53,16 +55,15 @@ depends=(baloo
          libxi
          libxkbcommon
          libxkbfile
-         plasma-framework
+         libplasma
          plasma-workspace
          plasma5support
          polkit-kde-agent
          powerdevil
-         python
-         qt6-5compat
          qt6-base
          qt6-declarative
          qt6-wayland
+         sdl2
          solid
          sonnet
          systemsettings
@@ -88,7 +89,7 @@ makedepends=(extra-cmake-modules
              xorg-server-devel)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('67c2f5cf0046d0891d361cdc96d25b3783bd6ff961f255ffaa368a3687c86322'
+#sha256sums=('803a21727597b2cfa9a6b80f11f40c6da838b030915e02873091674da2ae3f39'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

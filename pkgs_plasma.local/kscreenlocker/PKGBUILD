@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreenlocker
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
@@ -32,7 +32,7 @@ depends=(gcc-libs
          libxi
          pam
          perl
-         plasma-framework
+         libplasma
          qt6-base
          qt6-declarative
          wayland
@@ -46,10 +46,10 @@ groups=(plasma)
 ##        kde.pam
 ##        kde-fingerprint.pam
 ##        kde-smartcard.pam)
-#        kde.pam
-#        kde-fingerprint.pam 
-#        kde-smartcard.pam)
-#sha256sums=('e60002f53aedd492346d67e30e60853714d6f4abfe3174109613eeab6d36b22a'
+        kde.pam
+        kde-fingerprint.pam 
+        kde-smartcard.pam)
+#sha256sums=('d10b64225cb17a264d2f7135ec64e1f06ce781434d2aab9e06171646b078c14a'
 #            'SKIP'
 #            'adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b'
 #            '84fa507a0051dc134f8e923c4560f5ca44348c328345cbe5f1fb273770c222fe'
@@ -75,13 +75,10 @@ package() {
 }
 
 # sums-already-applied
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#
-        kde.pam
-        kde-fingerprint.pam 
-        kde-smartcard.pam)
+source=(git+https://github.com/KDE/${pkgname})
     
 # pkgver-already-applied
 

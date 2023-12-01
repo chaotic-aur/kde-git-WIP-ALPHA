@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinfocenter
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
@@ -11,7 +11,6 @@ arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(aha
-         bash
          clinfo
          dmidecode
          gcc-libs
@@ -29,6 +28,7 @@ depends=(aha
          mesa-utils
          qt6-base
          qt6-declarative
+         sh
          solid
          systemsettings
          vulkan-tools
@@ -40,7 +40,7 @@ makedepends=(extra-cmake-modules
 optdepends=('fwupd: firmware security module')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('037f7b5f56a7bf480c3547c309a7c952f73ecbc04ca738b3e06341ba53088500'
+#sha256sums=('a1a70abe23345035761e5b337f419d0286f9eb8f3f679a1a4707103be4e34214'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

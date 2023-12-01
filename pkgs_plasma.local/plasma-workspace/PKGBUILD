@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
 pkgname=plasma-workspace
-pkgver=5.27.80
+pkgver=5.90.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -18,8 +18,8 @@ depends=(accountsservice
          gcc-libs
          glibc
          icu
-         kactivities
-         kactivities-stats
+         plasma-activities
+         plasma-activities-stats
          kactivitymanagerd
          karchive
          kauth
@@ -72,7 +72,6 @@ depends=(accountsservice
          libcanberra
          libice
          libkexiv2
-         libkscreen
          libksysguard
          libqalculate
          libsm
@@ -89,10 +88,9 @@ depends=(accountsservice
          perl
          phonon-qt6
          plasma-integration
-         plasma-framework
+         libplasma
          plasma5support
          prison
-         qt6-5compat
          qt6-base
          qt6-declarative
          qt6-shadertools # for QtGrphicalEffects
@@ -100,6 +98,7 @@ depends=(accountsservice
          qt6-tools # for qdbus
          qt6-virtualkeyboard # QML
          qt6-wayland
+         sh
          solid
          systemd-libs
          wayland
@@ -129,7 +128,7 @@ conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4082d4e61484d0a62c88a0ef04347e3ff1758477fdb313f1d82e4e770d9a5a6b'
+#sha256sums=('e3987220a0f4c635532687cc463368009320f3c96adac82725640296bc86d61a'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
