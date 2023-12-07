@@ -30,7 +30,7 @@ export def daily_temp_folder [] {
 	
 	let timestamp = (date now | format date "%s")
 	let date = (date now | format date "%Y-%m-%d")
-	$"(settings-open | get folders.locks)/($date)"
+	$"(settings-open | get folders.build)/($date)"
 }
 
 export def is_updated [group: string, package: string] [string, string] -> string {

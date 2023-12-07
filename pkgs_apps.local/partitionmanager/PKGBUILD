@@ -11,22 +11,22 @@ url='https://apps.kde.org/partitionmanager/'
 license=(GPL2)
 depends=(gcc-libs
          glibc
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         ki18n5
-         kio5
-         kjobwidgets5
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kio
+         kjobwidgets
          kpmcore
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
-         polkit-qt5
-         qt5-base)
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         polkit-qt6
+         qt6-base)
 makedepends=(extra-cmake-modules
-             kdoctools5)
+             kdoctools)
 groups=(kde-applications
         kde-system)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})

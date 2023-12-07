@@ -10,7 +10,7 @@ pkgdesc='KDE File Manager'
 arch=(x86_64)
 url='https://apps.kde.org/dolphin/'
 license=(LGPL)
-depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets baloo
+depends=(baloo
          baloo-widgets
          gcc-libs
          glibc
@@ -28,7 +28,7 @@ depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets ba
          ki18n
          kiconthemes
          kio
-         kio-extras
+#         kio-extras
          kjobwidgets
          knewstuff
          knotifications
@@ -63,9 +63,9 @@ groups=(kde-applications
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < plasma-activities.patch
-}
+#prepare() {
+#  patch -d $pkgname-$pkgver -p1 < plasma-activities.patch
+#}
 
 build() {
   cmake -B build -S $pkgname \

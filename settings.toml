@@ -4,4 +4,4 @@ locks = "/tmp/alexjp/locks"
 archive = "/srv/http/repos/chaotic-aur-kde/x86_64"
 
 [build]
-cmd = "chaotic mkd"
+cmd = "/run/wrappers/bin/chaotic mkd"
