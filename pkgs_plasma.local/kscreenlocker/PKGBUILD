@@ -84,7 +84,7 @@ source=(git+https://github.com/KDE/${pkgname}#
         kde-smartcard.pam)
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+#source=(git+https://github.com/KDE/${pkgname}#branch=master)
     
 # pkgver-already-applied
 
