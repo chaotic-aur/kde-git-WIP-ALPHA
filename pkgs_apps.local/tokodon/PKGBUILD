@@ -21,6 +21,7 @@ depends=(gcc-libs
          knotifications
          kwindowsystem
          mpv
+         mpvqt
          purpose
          qqc2-desktop-style
          qt6-base
