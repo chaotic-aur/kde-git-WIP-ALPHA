@@ -43,7 +43,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  rm "$pkgdir"/usr/share/qlogging-categories6/kde.renamecategories # Conflicts with kdebugsettings
+  #rm "$pkgdir"/usr/share/qlogging-categories6/kde.renamecategories # Conflicts with kdebugsettings
 }
 
 # sums-already-applied
