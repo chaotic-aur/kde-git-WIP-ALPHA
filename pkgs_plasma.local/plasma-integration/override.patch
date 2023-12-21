@@ -1,0 +1,18 @@
+--- PKGBUILD.orig	2023-12-21 15:52:23.124567689 +0000
++++ PKGBUILD	2023-12-21 15:52:36.149181301 +0000
+@@ -109,7 +109,7 @@
+   groups=()
+ 
+   DESTDIR="$pkgdir" cmake --install build5
+-  rm -r "$pkgdir"/usr/share
++  #rm -r "$pkgdir"/usr/share
+ }
+ 
+ # sums-already-applied
+@@ -128,4 +128,4 @@
+ 
+ 
+ # exception-already-applied
+-    
+\ Sem newline no fim do ficheiro
++    

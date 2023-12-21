@@ -1,0 +1,11 @@
+--- PKGBUILD.orig	2023-12-21 15:53:24.768382444 +0000
++++ PKGBUILD	2023-12-21 15:53:32.218707834 +0000
+@@ -51,7 +51,7 @@
+ # pkgver-already-applied
+ 
+ pkgver() {
+-	cd ${srcdir}/${pkgname}
++	cd ${srcdir}/${pkgname}-1
+ 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+ }
+ 

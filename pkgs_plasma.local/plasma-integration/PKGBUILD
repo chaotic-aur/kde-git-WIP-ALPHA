@@ -109,7 +109,7 @@ package_plasma5-integration() {
   groups=()
 
   DESTDIR="$pkgdir" cmake --install build5
-  rm -r "$pkgdir"/usr/share
+  #rm -r "$pkgdir"/usr/share
 }
 
 # sums-already-applied
