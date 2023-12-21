@@ -10,6 +10,7 @@ license=(GPL LGPL)
 depends=(gcc-libs
          glibc
          kirigami
+         kitemmodels # QML
          ksvg
          qt6-base
          qt6-declarative)

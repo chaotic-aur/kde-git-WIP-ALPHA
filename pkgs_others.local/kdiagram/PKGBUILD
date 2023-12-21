@@ -1,9 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdiagram
-pkgver=2.8.0
+pkgver=3.0.0
 pkgrel=1
-_commit=d83d8de758b4c6718c2f788acff3fdc770477332
 pkgdesc='Powerful libraries for creating business diagrams'
 arch=(x86_64)
 url='https://www.kde.org/'
@@ -14,18 +13,13 @@ depends=(gcc-libs
          qt6-svg)
 makedepends=(doxygen
              extra-cmake-modules
-             git
              qt6-doc
              qt6-tools)
-#source=(git+https://invent.kde.org/graphics/kdiagram#commit=$_commit
-#        rename-include-dir.patch)
-#sha256sums=('SKIP'
-#            '1502b0d6396c1524c5ea954f2e4cc684dafc33c430321ac0683346cb28c0145d')
-#validpgpkeys=(42A60D06F449E895F40F09C01638B8A616108B8A) # Dag Andersen <danders@get2net.dk>
-
-prepare() {
-  patch -d $pkgname -p1 < rename-include-dir.patch
-}
+#source(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('6d5f53dfdd019018151c0193a01eed36df10111a92c7c06ed7d631535e943c21'
+#            'SKIP')
+#validpgpkeys=(42A60D06F449E895F40F09C01638B8A616108B8A  # Dag Andersen <danders@get2net.dk>
+#              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 
 build() {
   cmake -B build -S $pkgname \
@@ -36,8 +30,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  rm -r "$pkgdir"/usr/share/locale # Conflicts with Qt5 version
 }
 
 # sums-already-applied

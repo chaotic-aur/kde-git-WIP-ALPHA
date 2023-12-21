@@ -33,7 +33,7 @@ depends=(bluedevil
          plasma-welcome
          kwayland-integration
          kwallet-pam
-         kgamma5
+         kgamma
          sddm-kcm
          breeze-gtk
          powerdevil
