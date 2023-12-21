@@ -42,8 +42,8 @@ depends=(accountsservice
          kiconthemes
          kidletime
          kio
-       # kio-extras 
-       # kio-fuse  
+         kio-extras 
+         kio-fuse  
          kitemmodels
          kjobwidgets
          knewstuff

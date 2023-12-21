@@ -21,7 +21,7 @@ depends=(gcc-libs
          libpulse
          perl
          plasma-workspace
-         pulseaudio
+         pulse-native-provider
          qt6-base
          qt6-declarative)
 makedepends=(extra-cmake-modules

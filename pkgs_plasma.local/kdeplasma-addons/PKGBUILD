@@ -41,6 +41,7 @@ makedepends=(extra-cmake-modules
              qt6-webengine)
 optdepends=('kirigami-addons: User list applet'
             'networkmanager-qt: POTD wallpaper'
+            'qt6-quick3d: desktop cube effect'
             'qt6-webengine: dictionary and webbrowser applets'
             'quota-tools: disk quota applet')
 groups=(plasma)

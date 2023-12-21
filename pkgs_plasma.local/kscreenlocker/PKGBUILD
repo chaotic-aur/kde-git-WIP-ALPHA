@@ -78,16 +78,13 @@ package() {
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
      
 # source-already-applied
+#source=(git+https://github.com/KDE/${pkgname})
 source=(git+https://github.com/KDE/${pkgname}#
         kde.pam
         kde-fingerprint.pam
         kde-smartcard.pam)
-    
-# source-already-applied
-#source=(git+https://github.com/KDE/${pkgname}#branch=master)
-    
-# pkgver-already-applied
 
+# pkgver-already-applied
 pkgver() {
 	cd ${srcdir}/${pkgname}
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'

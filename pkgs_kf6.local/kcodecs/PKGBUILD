@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcodecs
-pkgver=5.246.0
+pkgver=5.247.0
 pkgrel=1
 pkgdesc='Provide a collection of methods to manipulate strings using various encodings'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(doxygen
              qt6-tools)
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('a65678dde05f20490b868c4cdd29308cebce26d2fe2ba9a1b9800ee665897d6c'
+#sha256sums=('5f69d5d7bb7c883e8b88d121f243ff38d1e601a5d1e597ed0dcf61a7a244ec6b'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

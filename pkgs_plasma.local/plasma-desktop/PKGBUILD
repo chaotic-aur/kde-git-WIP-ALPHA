@@ -70,12 +70,14 @@ depends=(baloo
          wayland
          xcb-util-keysyms
          xdg-user-dirs)
-optdepends=('glib2: kimpanel IBUS support'
+optdepends=('bluedevil: Bluetooth applet'
+            'glib2: kimpanel IBUS support'
             'ibus: kimpanel IBUS support'
           # 'kaccounts-integration: OpenDesktop integration plugin'
             'kscreen: screen management'
             'packagekit-qt6: to install new krunner plugins'
             'plasma-nm: Network manager applet'
+            'plasma-pa: Audio volume applet'
             'scim: kimpanel SCIM support')
 makedepends=(extra-cmake-modules
            # kaccounts-integration

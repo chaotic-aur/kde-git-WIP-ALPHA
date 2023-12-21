@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktexttemplate
-pkgver=5.246.0
+pkgver=5.247.0
 pkgrel=1
 pkgdesc='Library to allow application developers to separate the structure of documents from the data they contain'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(doxygen
              qt6-tools)
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('493b88d3d48a8a1ba3cf337053257257ff8f38edbffd9b36307e9d5d1a99159a'
+#sha256sums=('f94a996e778d38d31802d24a23d4c46144c2fe2ac643fe367a90c360033d4174'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

@@ -1,24 +1,24 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=kdbusaddons
+pkgname=kuserfeedback
 pkgver=5.247.0
 pkgrel=1
-pkgdesc='Addons to QtDBus'
+pkgdesc='Framework for collecting user feedback for applications via telemetry and surveys'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(gcc-libs
          glibc
          qt6-base)
-makedepends=(doxygen
+makedepends=(clang
              extra-cmake-modules
-             qt6-doc
+             qt6-charts
+             qt6-declarative
+             qt6-svg
              qt6-tools)
-groups=(kf6)
+optdepends=('qt6-declarative: QML bindings')
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9e13871594d5951ced2ba88ea6c1b0f2f43ce4a94afb7ea84cbb0569178e6720'
+#sha256sums=('97eeb33392187f1bf7a655eefc5bb2c5af2976c8000d9b8684d728e405b91f4a'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -26,7 +26,10 @@ groups=(kf6)
 build() {
   cmake -B build -S $pkgname \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DQT_MAJOR_VERSION=6 \
+    -DENABLE_CONSOLE=OFF \
+    -DENABLE_CLI=OFF \
+    -DENABLE_DOCS=OFF
   cmake --build build
 }
 

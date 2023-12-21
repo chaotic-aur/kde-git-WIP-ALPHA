@@ -82,6 +82,7 @@ package_oxygen5() {
   groups=()
 
   DESTDIR="$pkgdir" cmake --install build5
+  rm -r "$pkgdir"/usr/share/kstyle
 }
 
 # sums-already-applied

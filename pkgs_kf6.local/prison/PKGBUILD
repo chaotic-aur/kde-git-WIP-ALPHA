@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=prison
-pkgver=5.246.0
+pkgver=5.247.0
 pkgrel=1
 pkgdesc='A barcode API to produce QRCode barcodes and DataMatrix barcodes'
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(doxygen
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('434cdf931446b3bf0802eaeacd8a6e7c20a054ff7243ecfb0edff8e32323e3e9'
+#sha256sums=('7f6d3ebd0a033bf3d483d574be7de7086eeb7e588ae927f9783668036cc678b7'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

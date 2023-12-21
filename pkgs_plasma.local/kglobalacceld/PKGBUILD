@@ -35,7 +35,8 @@ groups=(plasma)
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib
   cmake --build build
 }
 

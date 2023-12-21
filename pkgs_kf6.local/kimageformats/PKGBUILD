@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kimageformats
-pkgver=5.246.0
+pkgver=5.247.0
 pkgrel=1
 pkgdesc='Image format plugins for Qt 6'
 arch=(x86_64)
@@ -27,11 +27,17 @@ optdepends=('imath: EXR format support'
             'libraw: RAW format support'
             'openexr: EXR format support')
 groups=(kf6)
-#source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('0c1ef345d3e8617686e50471e2b3d197d5909a2b18b89ecee12bc36b62289016'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
+#        qt-6.7.patch)
+#sha256sums=('73c3326e50c8b5c4a31fe0dd46e1f74139cf4604cac3e6277a985c58d6ba23c4'
+#            'SKIP'
+#            'a46574654bb857b36c0cf9cc5d8d15d6bcc4ce3d8a48a9e284c313ffd3fc1b5f')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < qt-6.7.patch # Fix build with Qt 6.7
+}
 
 build() {
   cmake -B build -S $pkgname \
