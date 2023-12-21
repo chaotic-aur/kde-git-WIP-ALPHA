@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kalgebra
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Graph Calculator'
 url='https://apps.kde.org/kalgebramobile/'
@@ -31,7 +31,7 @@ optdepends=('kirigami: for KAlgebra Mobile')
 groups=(kde-applications
         kde-education)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4e19445c90469d190debdd10b1bf00b5d42a5688f3e9db29ee0d392c2cc9ccc9'
+#sha256sums=('b9eb85c6e4a2dc0c63295ee6fb69ab4d542a500fa4ca9c5f1647fd8cc141e65c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -57,7 +57,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

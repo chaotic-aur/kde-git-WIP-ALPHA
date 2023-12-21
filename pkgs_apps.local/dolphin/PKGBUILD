@@ -4,13 +4,13 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=dolphin
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='KDE File Manager'
 arch=(x86_64)
 url='https://apps.kde.org/dolphin/'
 license=(LGPL)
-depends=(baloo
+depends=(knewstuff kio kcmutils kparts kactivities kuserfeedback ktextwidgets baloo
          baloo-widgets
          gcc-libs
          glibc
@@ -28,7 +28,7 @@ depends=(baloo
          ki18n
          kiconthemes
          kio
-#         kio-extras
+         kio-extras
          kjobwidgets
          knewstuff
          knotifications
@@ -54,18 +54,12 @@ optdepends=('ffmpegthumbs: video thumbnails'
             'purpose: share context menu')
 groups=(kde-applications
         kde-system)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        plasma-activities.patch)
-#sha256sums=('ab3c31fd7cf04b467473d68da5d8b13d2c9d646011e39adf0200df7147c8677e'
-#            'SKIP'
-#            '17b4801b030407f66215d86bf1e69b7e993f24670e8b8a39eeecf53ccb6249fa')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('654173a509cffbc0bc8a332e95ec8653fd2526e18e90c5cc9ab8f5b81bac2c0d'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-#prepare() {
-#  patch -d $pkgname-$pkgver -p1 < plasma-activities.patch
-#}
 
 build() {
   cmake -B build -S $pkgname \
@@ -87,7 +81,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

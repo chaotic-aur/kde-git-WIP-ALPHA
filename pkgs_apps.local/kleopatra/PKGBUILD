@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kleopatra
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Certificate Manager and Unified Crypto GUI'
 arch=(x86_64)
@@ -42,18 +42,12 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(kde-applications
         kde-pim)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        akonadi.patch)
-#sha256sums=('ad81722598cef9510e9b8e0540f410bc55b2c956a13a9b716c5148b8fdb15e3b'
-#            'SKIP'
-#            '082e64db7d2ed97e80e25e3ad009e45f4c559a9fa7d4bca58cdb2c95dcef5180')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('6b452b91906d942b28b780dec9a80567ae6bafa420ad6774d5b64083d9b7a347'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < akonadi.patch
-}
 
 build() {
   cmake -B build -S $pkgname \
@@ -75,7 +69,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

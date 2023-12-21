@@ -9,7 +9,7 @@ pkgname=(marble
          marble-common
          marble-maps
          marble-qt)
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Desktop Globe'
 arch=(x86_64)
@@ -29,7 +29,7 @@ makedepends=(extra-cmake-modules
              qt5-webengine
              shapelib)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgbase-$pkgver.tar.xz{,.sig})
-#sha256sums=('f88959647ebbe77e1a5b6e62f813be4a01d67126f23943bea914cc588e25fda9'
+#sha256sums=('d534016f14d2408290ebf3c89bbbc911b310284df26c0a278560415589849343'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -134,7 +134,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

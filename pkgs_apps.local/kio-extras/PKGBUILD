@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-extras
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
@@ -57,7 +57,7 @@ optdepends=('icoutils: Windows executable thumbnails'
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c74b5b0efe9b85666dbe127d2c3e5f4735d67290908ff2dcd38945e2a15373d9'
+#sha256sums=('201db858e7efee876abef5fd6ab51156f35de6d506fc632ee7546fea9dc10da3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -73,8 +73,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  rm "$pkgdir"/usr/share/applications/kcm_trash.desktop # Conflicts with kio5
 }
 
 # sums-already-applied
@@ -87,7 +85,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//').1
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

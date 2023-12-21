@@ -1,13 +1,13 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=tokodon
-pkgver=24.01.75
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='A Mastodon client for Plasma'
 url='https://apps.kde.org/tokodon/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
-depends=(gcc-libs
+depends=(mpvqt gcc-libs
          glibc
          kcolorscheme
          kconfig
@@ -19,9 +19,11 @@ depends=(gcc-libs
          kirigami-addons # QML
          kitemmodels # QML
          knotifications
+         kservice
+         kunifiedpush
          kwindowsystem
-         mpv
          mpvqt
+         openssl
          purpose
          qqc2-desktop-style
          qt6-base
@@ -33,7 +35,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications 
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f94531409751e8c272b193df1c97fbacb363b075799afd0060d95cafa00bf6ac'
+#sha256sums=('202f80fc3029da619556855a845ca910e69754436ad79d9a5ba14b64a0e2b263'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -59,7 +61,11 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 
+
+# exception-already-applied
+    

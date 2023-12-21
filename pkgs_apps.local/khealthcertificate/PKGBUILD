@@ -1,0 +1,52 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=khealthcertificate
+pkgver=24.01.85
+pkgrel=1
+pkgdesc='Handling of digital vaccination, test and recovery certificates'
+arch=(x86_64)
+url='https://www.kde.org'
+license=(LGPL)
+depends=(gcc-libs
+         glibc
+         karchive5
+         kcodecs5
+         ki18n5
+         openssl
+         qt5-base
+         zlib)
+makedepends=(extra-cmake-modules
+             qt5-declarative)
+optdepends=('qt5-declarative: QML bindings')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('de0bb6f33aa751c06af746c940fa7358164546057376a35dc8bdeb3c0eab0553'
+#            'SKIP')
+#validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+#              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+#              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+build() {
+  cmake -B build -S $pkgname \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+# sums-already-applied
+sha256sums=('SKIP')
+    
+# source-already-applied
+source=(git+https://github.com/KDE/${pkgname}#branch=master)
+    
+# pkgver-already-applied
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
+}
+
+

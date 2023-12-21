@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kalk
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='A powerful cross-platform calculator application built with the Kirigami framework'
 url='https://apps.kde.org/kalk/'
@@ -9,6 +9,7 @@ arch=(x86_64)
 license=(GPL LGPL)
 depends=(gcc-libs
          glibc
+         kconfig
          kcoreaddons
          ki18n
          kirigami
@@ -20,7 +21,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d6f8fb8793a696e14eef47594cb6a93deb7fe22c47b9a7caed07c33e245c9877'
+#sha256sums=('a32340a121470eeaf5928fab6bc483a8c24c9032f0ea6a002a2514436824bcc8'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -46,7 +47,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

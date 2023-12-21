@@ -6,7 +6,7 @@
 # Contributor: Sergio Jovani Guzman <moret@paretux.org>
 
 pkgname=konversation
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='A user-friendly and fully-featured IRC client'
 arch=(x86_64)
@@ -50,7 +50,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1a199189b1977239cfac5457f947b180f886a53e82ee2d4e0ce68f24317e9bed'
+#sha256sums=('56965066942995254c63874927893433bff941ee9d4765c75ad9214098ee1ec1'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -76,7 +76,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

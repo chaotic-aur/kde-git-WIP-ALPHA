@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kalzium
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Periodic Table of Elements'
 url='https://apps.kde.org/kalzium/'
@@ -28,7 +28,8 @@ depends=(avogadrolibs
          openbabel
          qt5-base
          qt5-script
-         qt5-svg)
+         qt5-svg
+         zstd)
 makedepends=(eigen
              extra-cmake-modules
              facile
@@ -37,12 +38,18 @@ makedepends=(eigen
              python)
 groups=(kde-applications
         kde-education)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('9e19191111bd80f7789ff8ca0729cc0240ad082c36f34fe54af3ae796af4e3f4'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        ocaml-5.1.patch)
+#sha256sums=('150cd14ff9b31f26deb5125d3b8700d0efc0b42661e241174fcee318eb785af0'
+#            'SKIP'
+#            'b1497c7a48720a892f4e849606394031917f78d927026cb9655733bf8557f2a2')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < ocaml-5.1.patch # Fix build with ocaml 5.1
+}
 
 build() {
   cmake -B build -S $pkgname \
@@ -64,7 +71,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

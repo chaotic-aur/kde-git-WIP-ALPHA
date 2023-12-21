@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kontrast
-pkgver=24.01.80
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='Tool to check contrast for colors that allows verifying that your colors are correctly accessible'
 arch=(x86_64)
@@ -18,11 +18,12 @@ depends=(futuresql-qt6
          qt6-declarative)
 makedepends=(extra-cmake-modules
              kdoctools
+             python
              qcoro-qt6)
 groups=(kde-applications
         kde-accessibility)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('182f34175932a0061c34694f37afd91907f39259a206ae41871a0354ba829162'
+#sha256sums=('00f2af29f3e5dfb72cc7e90f88aa5c4ca2a754ee9fb7562df7766e49f531be7e'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -49,7 +50,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

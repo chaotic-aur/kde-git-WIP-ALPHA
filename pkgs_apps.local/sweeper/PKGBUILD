@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sweeper
-pkgver=24.01.75
+pkgver=24.01.85
 pkgrel=1
 pkgdesc='System Cleaner'
 url='https://apps.kde.org/sweeper/'
@@ -11,7 +11,6 @@ arch=(x86_64)
 license=(GPL LGPL FDL)
 depends=(gcc-libs
          glibc
-         kactivities-stats
          kbookmarks
          kconfig
          kconfigwidgets
@@ -21,23 +20,18 @@ depends=(gcc-libs
          ktextwidgets
          kwidgetsaddons
          kxmlgui
+         plasma-activities-stats
          qt6-base)
 makedepends=(extra-cmake-modules
              kdoctools)
 groups=(kde-applications
         kde-utilities)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        https://invent.kde.org/utilities/sweeper/-/commit/00d5a2e8.patch)
-#sha256sums=('32d8bec74c1081b43fe9cc36a7f235d81d7083d480fa4c1b433099e3fc05f43a'
-#            'SKIP'
-#            'a7548e2c711d546750ea44cb5ffbf1c14f71197ad7b886e650dafc05b160ec67')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('b22a8895bc9f7ac73243210928d5ed2834608ad243411331ae735a6c78878b59'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < 00d5a2e8.patch # Drop kio dependency
-}
 
 build() {
   cmake -B build -S $pkgname \
@@ -59,7 +53,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 
