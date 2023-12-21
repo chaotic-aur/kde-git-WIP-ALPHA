@@ -51,7 +51,7 @@ source=(git+https://github.com/KDE/${pkgname}-1#branch=master)
 # pkgver-already-applied
 
 pkgver() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}-1
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
