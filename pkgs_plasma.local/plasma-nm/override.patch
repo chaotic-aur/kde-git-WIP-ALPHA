@@ -1,0 +1,11 @@
+--- PKGBUILD.orig	2023-12-21 16:02:44.174705417 +0000
++++ PKGBUILD	2023-12-21 16:02:53.321933349 +0000
+@@ -48,7 +48,7 @@
+ #              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+ 
+ build() {
+-  cmake -B build -S $pkgname \
++  cmake -B build -S $pkgname -DBUILD_MOBILE=ON -DBUILD_OPENCONNECT=OFF \
+     -DBUILD_TESTING=OFF
+   cmake --build build
+ }

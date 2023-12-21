@@ -48,7 +48,7 @@ groups=(plasma)
 #              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build -S $pkgname \
+  cmake -B build -S $pkgname -DBUILD_MOBILE=ON -DBUILD_OPENCONNECT=OFF \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
