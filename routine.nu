@@ -11,6 +11,7 @@ export def main [] {
 
 # HACK: the way the param strings are done is nonsense, nushell has recently (2 or 3 versions ago) normalized the bool params issues
 
+# Runs a group of packages, available in a folder group, ordered by name (by ls command from nushell)
 export def "main group" [
 	group: string # package group: kf6, plasma, apps
 	--fetch(-g)=false: bool # fetch and generate arch PKGBUILDS
@@ -33,6 +34,7 @@ export def "main group" [
 
 }
 
+# Same as group (runs a group of packages), but from a list, and by that order
 export def "main list" [
 	group: string # package group: kf6, plasma, apps
 	--fetch(-g)=false: bool # fetch and generate arch PKGBUILDS
