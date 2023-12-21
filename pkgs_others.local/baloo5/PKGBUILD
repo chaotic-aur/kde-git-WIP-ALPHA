@@ -22,7 +22,7 @@ groups=(kf5)
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 build() {
-  cmake -B build -S $_name-$pkgver \
+  cmake -B build -S $_name \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_QCH=ON
@@ -31,19 +31,27 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  rm "$pkgdir"/etc/xdg/autostart/baloo_file.desktop
+  rm "$pkgdir"/usr/lib/systemd/user/kde-baloo.service
+  rm "$pkgdir"/usr/share/dbus-1/interfaces/org.kde.BalooWatcherApplication.xml
+  rm "$pkgdir"/usr/share/dbus-1/interfaces/org.kde.baloo.file.indexer.xml
+  rm "$pkgdir"/usr/share/dbus-1/interfaces/org.kde.baloo.fileindexer.xml
+  rm "$pkgdir"/usr/share/dbus-1/interfaces/org.kde.baloo.main.xml
+  rm "$pkgdir"/usr/share/dbus-1/interfaces/org.kde.baloo.scheduler.xml
 }
 
 # sums-already-applied
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+source=(git+https://github.com/KDE/baloo#branch=kf5)
     
 # pkgver-already-applied
 
 pkgver() {
-	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    cd ${srcdir}/baloo
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

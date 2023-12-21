@@ -6,6 +6,7 @@ kontactinterface5
 plasma-framework5
 kpublictransport5
 kweathercore
+kirigami-addons
 kdiagram
 kunifiedpush
 libquotient
@@ -17,9 +18,8 @@ kitinerary5
 akonadi-notes5
 libakonadi5
 ktextaddons
-kio-fuse
 kpimtextedit5
 baloo5
+kio-fuse
 akonadi-contacts5
 kidentitymanagement5
-kirigami-addons

@@ -42,7 +42,8 @@ source=(git+https://github.com/KDE/kglobalaccel#branch=kf5)
 
 pkgver() {
 	cd ${srcdir}/kglobalaccel
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

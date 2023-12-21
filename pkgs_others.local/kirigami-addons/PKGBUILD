@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules)
 #sha256sums=('e66efe30677be999ac6727a7c16d4e2b9e8811695b493f982dce71837135fcf3'
 #            'SKIP')
 #validpgpkeys=(0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D  # Bhushan Shah (mykolab address) <bshah@mykolab.com>
-              39FFA93CAE9C6AFC212AD00202325448204E452A) # Carl Schwan <carl@carlschwan.eu>
+#              39FFA93CAE9C6AFC212AD00202325448204E452A) # Carl Schwan <carl@carlschwan.eu>
 
 build() {
   cmake -B build -S $pkgname \
@@ -43,7 +43,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 
