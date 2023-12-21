@@ -9,8 +9,8 @@ export def main [
     --clean_locks(-c)=false: bool # clean all locks
     --apps(-a)=true: bool # build kde apps
     --threads_kf6(-k)=1: number # number of threads
-    --threads_extra(-e)=2: number # number of threads
-    --threads_plasma(-p)=2: number # number of threads
+    --threads_extra(-e)=3: number # number of threads
+    --threads_plasma(-p)=1: number # number of threads
     --threads_apps(-t)=3: number # number of threads
 ] {
     if ($chaoticlw) {chaotic lw}
