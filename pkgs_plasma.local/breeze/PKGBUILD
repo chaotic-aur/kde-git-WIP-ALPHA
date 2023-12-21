@@ -5,7 +5,7 @@
 pkgbase=breeze
 pkgname=(breeze
          breeze5)
-pkgver=5.90.0
+pkgver=5.91.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 arch=(x86_64)
@@ -37,13 +37,19 @@ makedepends=(extra-cmake-modules
              kwindowsystem5)
 optdepends=('breeze-gtk: Breeze widget style for GTK applications')
 groups=(plasma)
-#source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4cb72caf869687f841f86a652885ba21fd5db9c0c5e08accc98531457d0117a1'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
+#        qt-6.7.patch)
+#sha256sums=('3dcf63b7a0c3be9cace63b89758f11e30816e89f274a35bbeba5d0bce58218ca'
+#            'SKIP'
+#            'b8dfae9c383b12f4c5a94dc9a8dea3bd1126c3606a6256c0d6f6a0742e3c558e')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
 #              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
 #              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < qt-6.7.patch # Fix build with Qt 6.7
+}
 
 build() {
   cmake -B build -S $pkgname \
@@ -94,7 +100,8 @@ source=(git+https://github.com/KDE/${pkgname}#branch=master)
 
 pkgver() {
 	cd ${srcdir}/${pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

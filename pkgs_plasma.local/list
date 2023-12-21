@@ -1,16 +1,16 @@
 ocean-sound-theme
-polkit-kde-agent
 breeze-plymouth
 plasma-activities
 kwrited
 ksshaskpass
 kgamma
-kactivitymanagerd
 kdecoration
+kactivitymanagerd
+polkit-kde-agent
 plymouth-kcm
+plasma5support
 plasma-thunderbolt
 plasma-firewall
-plasma5support
 kpipewire
 flatpak-kcm
 discover
@@ -20,8 +20,8 @@ kwallet-pam
 kmenuedit
 drkonqi
 layer-shell-qt
-kwayland-integration
 libkscreen
+kwayland-integration
 kwayland
 kglobalacceld
 libksysguard
@@ -29,7 +29,9 @@ systemsettings
 plasma-activities-stats
 libplasma
 oxygen
+oxygen-sounds
 breeze
+breeze-gtk
 kde-gtk-config
 ksystemstats
 kinfocenter
@@ -54,4 +56,3 @@ plasma-pa
 plasma-browser-integration
 kdeplasma-addons
 plasma-desktop
-polkit-kde-agent

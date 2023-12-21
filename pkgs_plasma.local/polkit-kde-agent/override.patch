@@ -1,11 +1,18 @@
---- PKGBUILD.orig	2023-12-21 15:53:24.768382444 +0000
-+++ PKGBUILD	2023-12-21 15:53:32.218707834 +0000
+--- PKGBUILD.orig	2023-12-21 16:39:46.831921354 +0000
++++ PKGBUILD	2023-12-21 16:54:47.816300095 +0000
 @@ -51,7 +51,7 @@
  # pkgver-already-applied
  
  pkgver() {
 -	cd ${srcdir}/${pkgname}
 +	cd ${srcdir}/${pkgname}-1
- 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+ 	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+     echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y_%m_%d)"
  }
+@@ -59,4 +59,4 @@
  
+ 
+ # exception-already-applied
+-    
+\ Sem newline no fim do ficheiro
++    

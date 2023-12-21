@@ -1,21 +1,16 @@
-diff --git a/pkgs_plasma.local/kscreenlocker/PKGBUILD b/pkgs_plasma.local/kscreenlocker/PKGBUILD
-index 2ff0c17..22c5468 100644
---- a/pkgs_plasma.local/kscreenlocker/PKGBUILD
-+++ b/pkgs_plasma.local/kscreenlocker/PKGBUILD
-@@ -46,9 +46,9 @@ groups=(plasma)
+--- PKGBUILD.orig	2023-12-21 16:39:33.053698839 +0000
++++ PKGBUILD	2023-12-21 16:48:43.115508030 +0000
+@@ -46,9 +46,6 @@
  ##        kde.pam
  ##        kde-fingerprint.pam
  ##        kde-smartcard.pam)
 -        kde.pam
 -        kde-fingerprint.pam 
 -        kde-smartcard.pam)
-+#        kde.pam
-+#        kde-fingerprint.pam 
-+#        kde-smartcard.pam)
- #sha256sums=('d10b64225cb17a264d2f7135ec64e1f06ce781434d2aab9e06171646b078c14a'
+ #sha256sums=('b92084283bf477d1fd1c9ce5de2356d02297c9e4f7e955ae267d16fa61e2e26b'
  #            'SKIP'
  #            'adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b'
-@@ -75,10 +75,15 @@ package() {
+@@ -75,11 +72,11 @@
  }
  
  # sums-already-applied
@@ -23,13 +18,10 @@ index 2ff0c17..22c5468 100644
 +sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
      
  # source-already-applied
--source=(git+https://github.com/KDE/${pkgname})
-+#source=(git+https://github.com/KDE/${pkgname})
-+source=(git+https://github.com/KDE/${pkgname}#
-+        kde.pam
-+        kde-fingerprint.pam
-+        kde-smartcard.pam)
+-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+-    
++source=(git+https://github.com/KDE/${pkgname}#branch=master kde.pam kde-fingerprint.pam kde-smartcard.pam)
 +
-     
  # pkgver-already-applied
  
+ pkgver() {

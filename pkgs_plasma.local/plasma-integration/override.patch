@@ -1,18 +1,15 @@
---- PKGBUILD.orig	2023-12-21 15:52:23.124567689 +0000
-+++ PKGBUILD	2023-12-21 15:52:36.149181301 +0000
-@@ -109,7 +109,7 @@
-   groups=()
+--- PKGBUILD.orig	2023-12-21 16:58:38.167283420 +0000
++++ PKGBUILD	2023-12-21 16:58:45.440332017 +0000
+@@ -61,9 +61,9 @@
+ #              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+ #              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
  
-   DESTDIR="$pkgdir" cmake --install build5
--  rm -r "$pkgdir"/usr/share
-+  #rm -r "$pkgdir"/usr/share
- }
+-prepare() {
+-  patch -d $pkgname-$pkgver -p1 < qt-6.7.patch # Fix build with Qt 6.7
+-}
++#prepare() {
++#  patch -d $pkgname-$pkgver -p1 < qt-6.7.patch # Fix build with Qt 6.7
++#}
  
- # sums-already-applied
-@@ -128,4 +128,4 @@
- 
- 
- # exception-already-applied
--    
-\ Sem newline no fim do ficheiro
-+    
+ build() {
+   cmake -B build -S $pkgname \
