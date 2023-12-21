@@ -5,12 +5,12 @@ plasma-activities
 kwrited
 ksshaskpass
 kgamma
-kdecoration
 kactivitymanagerd
+kdecoration
 plymouth-kcm
-plasma5support
 plasma-thunderbolt
 plasma-firewall
+plasma5support
 kpipewire
 flatpak-kcm
 discover
@@ -21,8 +21,8 @@ kmenuedit
 drkonqi
 layer-shell-qt
 kwayland-integration
-kwayland
 libkscreen
+kwayland
 kglobalacceld
 libksysguard
 systemsettings
@@ -54,3 +54,4 @@ plasma-pa
 plasma-browser-integration
 kdeplasma-addons
 plasma-desktop
+polkit-kde-agent
