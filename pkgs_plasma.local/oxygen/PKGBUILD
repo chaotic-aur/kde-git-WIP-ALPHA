@@ -90,7 +90,7 @@ package_oxygen5() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+source=(git+https://github.com/KDE/${pkgname}#branch=Plasma/6.0)
     
 # pkgver-already-applied
 
