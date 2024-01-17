@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kde-gtk-config
-pkgver=5.91.0
+pkgver=5.92.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='GTK2 and GTK3 Configurator for KDE'
@@ -29,7 +29,7 @@ optdepends=('gtk3: GTK3 apps support'
             'xsettingsd: apply settings to GTK applications on the fly')
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7268d762553b8f63a4f3c1b0fc70523baa2afe373c65e7ded7e74562294487fd'
+#sha256sums=('d010a06954e4178bfed295301b8eb37f0c4cf0f77e5c3f79781ceb6cea3433d1'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

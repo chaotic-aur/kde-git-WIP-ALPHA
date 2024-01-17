@@ -1,32 +1,27 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-pkgname=kglobalacceld
+pkgname=qqc2-breeze-style
 pkgver=5.92.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
+pkgdesc='Applications useful for Plasma development'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 depends=(gcc-libs
          glibc
+         kcolorscheme
          kconfig
-         kcoreaddons
-         kcrash
-         kdbusaddons
-         kglobalaccel
-         kio
-         kjobwidgets
-         kservice
-         kwindowsystem
-         libx11
-         libxcb
+         kguiaddons
+         kiconthemes
+         kirigami
+         kquickcharts
          qt6-base
-         xcb-util-keysyms)
+         qt6-declarative)
 makedepends=(extra-cmake-modules)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('feb35c9b4a06bf9079a00d0d180ad170e69133e6a66670c2ce165cd8663224b4'
+#sha256sums=('d1f99b9fd5da2f0e792c22727b4d5ddd4c8fd369f170316a26144ab07b8e3636'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -35,8 +30,7 @@ groups=(plasma)
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 

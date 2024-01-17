@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff
-pkgver=5.247.0
+pkgver=5.248.0
 pkgrel=1
 pkgdesc='Support for downloading application assets from the network'
 arch=(x86_64)
@@ -29,7 +29,7 @@ optdepends=('kirigami: QML components'
             'qt6-declarative: QML components')
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d6d2dbacade38c8e762bf5d6337cb7dd2c11479eaa028f751584e8efc98da570'
+#sha256sums=('09fc01ee3b42a5ba816a608315e7381410575263a3112bcd63ef39eb28b49e37'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-desktop
-pkgver=5.91.0
+pkgver=5.92.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
@@ -12,12 +12,9 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 depends=(baloo
-         gawk
          gcc-libs
          glibc
          icu
-         plasma-activities
-         plasma-activities-stats
          kauth
          kbookmarks
          kcmutils
@@ -56,6 +53,8 @@ depends=(baloo
          libxkbcommon
          libxkbfile
          libplasma
+         plasma-activities
+         plasma-activities-stats
          plasma-workspace
          plasma5support
          polkit-kde-agent
@@ -73,14 +72,16 @@ depends=(baloo
 optdepends=('bluedevil: Bluetooth applet'
             'glib2: kimpanel IBUS support'
             'ibus: kimpanel IBUS support'
-          # 'kaccounts-integration: OpenDesktop integration plugin'
+            'kaccounts-integration: OpenDesktop integration plugin'
             'kscreen: screen management'
+            'libaccounts-qt: OpenDesktop integration plugin'
             'packagekit-qt6: to install new krunner plugins'
             'plasma-nm: Network manager applet'
             'plasma-pa: Audio volume applet'
             'scim: kimpanel SCIM support')
 makedepends=(extra-cmake-modules
-           # kaccounts-integration
+             intltool
+             kaccounts-integration
              kdoctools
              libibus
              packagekit-qt6
@@ -91,7 +92,7 @@ makedepends=(extra-cmake-modules
              xorg-server-devel)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8ad0903464e1eaa79446ec77f64b26b95b8ca2d078c035e54c13bf5f5f426160'
+#sha256sums=('4df4a24a6acd8962b5377685dfb4dae668a6e4c50a353f6ee84cf4ee1d96e823'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

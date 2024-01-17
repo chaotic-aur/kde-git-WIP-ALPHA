@@ -1,14 +1,16 @@
 # Maintainer:Antonio Rojas <arojas@archlinux.org>
 
 pkgname=purpose
-pkgver=5.247.0
+pkgver=5.248.0
 pkgrel=1
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(gcc-libs
+depends=(accounts-qml-module
+         gcc-libs
          glibc
+         kaccounts-integration
          kconfig
          kcoreaddons
          ki18n
@@ -16,10 +18,11 @@ depends=(gcc-libs
          kirigami
          knotifications
          kservice
+         libaccounts-qt
          qt6-base
          qt6-declarative)
-makedepends=(intltool
-             extra-cmake-modules)
+makedepends=(extra-cmake-modules
+             intltool)
 optdepends=('bluedevil: sharing via Bluetooth'
             'kdeclarative: Nextcloud and YouTube plugins'
             'kdeconnect: sharing to smartphone via KDE Connect'
@@ -27,7 +30,7 @@ optdepends=('bluedevil: sharing via Bluetooth'
             'telegram-desktop: sharing via Telegram')
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('8703ce59d6157d3760658e493b3fa95ece52ce843e392977b79283298bc18644'
+#sha256sums=('dd887c8533a38ff0dce4b31ca79479e36866811b8931d50c320842aa11d49bd6'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

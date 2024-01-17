@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes
-pkgver=5.247.0
+pkgver=5.248.0
 pkgrel=1
 pkgdesc='Support for icon themes'
 arch=(x86_64)
@@ -27,7 +27,7 @@ optdepends=('breeze-icons: fallback icon theme'
             'qt6-declarative: QML bindings')
 groups=(kf6)
 #source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b8f8dd4ab3af70d063845560fad12132c9b283c575ede71c944f8b1a96c4036c'
+#sha256sums=('f044756ff2733d16a5d6d73c29550e4ec8178e5e8e9bb50da820aaa62d8c89b7'
 #            'SKIP')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>

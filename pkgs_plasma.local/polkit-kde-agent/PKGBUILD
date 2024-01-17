@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=polkit-kde-agent
-pkgver=5.91.0
+pkgver=5.92.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
@@ -24,7 +24,7 @@ makedepends=(extra-cmake-modules
              kdoctools kwidgetsaddons kiconthemes)
 groups=(plasma)
 #source(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-1-$pkgver.tar.xz{,.sig})
-#sha256sums=('56c243998a294df1d1ffb210368fe66fd712b78daaf9510b7c65e6316114973e'
+#sha256sums=('1f36ee9b7ac2e766fa31182b6a2ac0e13f9aa8fbe5fceae7ab5aa39604b4f056'
 #            'SKIP')
 #validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
 #              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -53,7 +53,7 @@ source=(git+https://github.com/KDE/${pkgname}-1#branch=master)
 pkgver() {
 	cd ${srcdir}/${pkgname}-1
 	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y_%m_%d)"
+    echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
 
 

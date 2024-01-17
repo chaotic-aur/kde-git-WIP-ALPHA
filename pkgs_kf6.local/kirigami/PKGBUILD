@@ -1,15 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami
-pkgver=5.247.0
+pkgver=5.248.0
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
+license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs
          glibc
-         qt6-5compat
          qt6-base
          qt6-declarative
          qt6-svg)
@@ -19,11 +18,17 @@ makedepends=(doxygen
              qt6-shadertools
              qt6-tools)
 groups=(kf6)
-#source(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1f71abdcab2108b699881060cb723d8d9934c2e98b264901cccbf41d8e42b7d5'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/frameworks/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
+#        https://invent.kde.org/frameworks/kirigami/-/commit/6411c128.patch)
+#sha256sums=('2bed2aacd5427cae37164b7cc1f47c17bd238eeadc4272aa47b84d4a5ff66bfd'
+#            'SKIP'
+#            '2dd5e174fc09672f6ddcbe6847add410e44db787b12573cf2252a94b890cf20a')
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < 6411c128.patch # Fix top of pages cut off with Qt 6.7
+}
 
 build() {
   cmake -B build -S $pkgname \
