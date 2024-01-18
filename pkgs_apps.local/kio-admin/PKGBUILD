@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-admin
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Manage files as administrator using the admin:// KIO protocol'
 url='https://invent.kde.org/system/kio-admin'
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-system)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e971f2be0ada0e6895efb3a963be69e4410e13c376900acb04528639efd42193'
+#sha256sums=('de7fb8c1ca3ded27f36dbe8a060c8c8accb206212e51a87df062d483b287d2be'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkomparediff2
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Library to compare files and strings'
 url='https://www.kde.org/'
@@ -20,7 +20,7 @@ depends=(gcc-libs
          qt5-base)
 makedepends=(extra-cmake-modules)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d350684e4f61c9e0e664857cfc549331fd10e9cca38aa0c72979b48a1e4f4c67'
+#sha256sums=('d7c62a4ab8d5904bd0f295ed924c2466457d3bb226f4ab1588719d98a1638ea0'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

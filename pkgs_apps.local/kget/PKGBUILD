@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kget
-pkgver=24.01.80
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Download Manager'
 url='https://apps.kde.org/kget/'
@@ -12,27 +12,29 @@ license=(GPL LGPL FDL)
 depends=(gcc-libs
          glibc
          gpgme
-         qgpgme-qt5
-         kcmutils5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kdbusaddons5
-         kiconthemes5
-         ki18n5
-         kio5
-         kitemviews5
-         knotifications5
-         knotifyconfig5
-         kwallet5
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
-         qt5-base)
+         qgpgme-qt6
+         kcmutils
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kdbusaddons
+         kiconthemes
+         ki18n
+         kio
+         kitemviews
+         knotifications
+         knotifyconfig
+         kstatusnotifieritem
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         qt6-base)
 makedepends=(boost
              extra-cmake-modules
-             kdoctools5
+             kdoctools
              libktorrent
              libmms)
 optdepends=('libktorrent: torrent support'
@@ -40,7 +42,7 @@ optdepends=('libktorrent: torrent support'
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7fc93da740128771ba03daef31c053be12f45952f6bbad1ac4d3c319c7777b86'
+#sha256sums=('38250ca52db0727264369b9c396c6072ce9a0e800964287d8407cc868a8518a3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

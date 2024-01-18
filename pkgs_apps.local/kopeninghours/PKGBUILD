@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kopeninghours
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Library for parsing and evaluating OSM opening hours expressions'
 arch=(x86_64)
@@ -9,20 +9,21 @@ url='https://www.kde.org'
 license=(LGPL)
 depends=(gcc-libs
          glibc
-         kholidays5
-         ki18n5
-         qt5-base)
+         kholidays
+         ki18n
+         qt6-base)
 makedepends=(boost
              doxygen
              extra-cmake-modules
              python
-             qt5-doc
-             qt5-tools)
+             qt6-declarative
+             qt6-doc
+             qt6-tools)
 optdepends=('boost-libs: Python bindings'
             'python: Python bindings'
-            'qt5-declarative: QML bindings')
+            'qt6-declarative: QML bindings')
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('1118bf6301f9d5a8777801e241b1a4dc953ea322e3e429b8259ff1c5920eddf3'
+#sha256sums=('869a2071b12f2ae0f0e73d169d753aece767d42c439f87ae8f4db66d2fc3eabc'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -31,7 +32,8 @@ optdepends=('boost-libs: Python bindings'
 build() {
   cmake -B build -S $pkgname \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=ON \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
 }
 

@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kfind
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Find Files/Folders'
 arch=(x86_64)
@@ -28,7 +28,7 @@ optdepends=('mlocate: search using mlocate index')
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e6f12b7663dc2052a6c774c9b44c86aadb787e584df69f52d56ba70c4972bf18'
+#sha256sums=('9a5415bbee807fd59a75fc2de56066bf0669bc557be7abd8335db5f0651b2a0e'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcron
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Configure and schedule tasks'
 url='https://apps.kde.org/kcron/'
@@ -25,7 +25,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-system)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4d8df4b8bbb3df40b2ffdc7653a3a06df627637eeca89839b024a66c0c12b93f'
+#sha256sums=('d58984255d9db298ab9c1d52c815f3e1e0bbc3bdeba74deef4ce0a86efe56b9f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

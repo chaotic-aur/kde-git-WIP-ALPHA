@@ -1,16 +1,19 @@
---- PKGBUILD.orig	2023-12-21 16:39:33.053698839 +0000
-+++ PKGBUILD	2023-12-21 16:48:43.115508030 +0000
-@@ -46,9 +46,6 @@
+--- PKGBUILD.orig	2024-01-18 13:19:45.806899664 +0000
++++ PKGBUILD	2024-01-18 13:21:12.352553411 +0000
+@@ -46,9 +46,9 @@
  ##        kde.pam
  ##        kde-fingerprint.pam
  ##        kde-smartcard.pam)
 -        kde.pam
 -        kde-fingerprint.pam 
 -        kde-smartcard.pam)
- #sha256sums=('b92084283bf477d1fd1c9ce5de2356d02297c9e4f7e955ae267d16fa61e2e26b'
++#        kde.pam
++#        kde-fingerprint.pam 
++#        kde-smartcard.pam)
+ #sha256sums=('e568840af812976eae4ccc4dc8c42c80dce6950e120dec26ac409d49b380a597'
  #            'SKIP'
  #            'adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b'
-@@ -75,11 +72,11 @@
+@@ -75,11 +75,11 @@
  }
  
  # sums-already-applied

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbounce
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A single player arcade game with the elements of puzzle'
 url='https://apps.kde.org/kbounce/'
@@ -30,7 +30,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('633f2f224fd13288402da5d36e701a7e206bb2a1c63e20c2e2a85640a66f575b'
+#sha256sums=('942c63af7c7994b7cbc012875be16903a1e8c63c093aa1d79466eeb215099b2f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

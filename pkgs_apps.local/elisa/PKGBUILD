@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A simple music player aiming to provide a nice experience for its users'
 url='https://apps.kde.org/elisa/'
@@ -32,7 +32,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c259d3cca112fae99cc5154e2638119e0bb48a08e79575561e3c55a2e837d529'
+#sha256sums=('5d2857d2e09ef9f3fc770cf7f0eaa78f8db2edc849dc49dfed5b161cc31f8183'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

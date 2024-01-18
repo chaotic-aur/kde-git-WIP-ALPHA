@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiriki
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='An addictive and fun dice game'
 url='https://apps.kde.org/kiriki/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('525a110bdce22f592f695247b1d60457dd190e8d89801a810142c1a0db98839e'
+#sha256sums=('24aef7eddddf3e930b837600ec710cc633b734b9ef8e2daa6e9d895a7e00868f'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

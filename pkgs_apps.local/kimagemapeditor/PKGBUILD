@@ -4,7 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kimagemapeditor
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 arch=(x86_64)
 pkgdesc='HTML Image Map Editor'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-graphics)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('dd32b825ec18db330c880ca4cfc2239466522a6091f6b187ea13bfea6ced7c3b'
+#sha256sums=('6a453938c94c5028560c7612dd92a4c30e803eb45232ee618050c292aa46e2b6'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

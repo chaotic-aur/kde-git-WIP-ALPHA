@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kalgebra
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Graph Calculator'
 url='https://apps.kde.org/kalgebramobile/'
@@ -31,7 +31,7 @@ optdepends=('kirigami: for KAlgebra Mobile')
 groups=(kde-applications
         kde-education)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b9eb85c6e4a2dc0c63295ee6fb69ab4d542a500fa4ca9c5f1647fd8cc141e65c'
+#sha256sums=('5577b7abc75c8163c69cb904518b89b709d07fe5e4ebebe4fabad134ba1bd7ef'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

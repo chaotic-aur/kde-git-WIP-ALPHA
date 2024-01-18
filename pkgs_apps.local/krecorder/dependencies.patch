@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a63b1bf..6d68c32 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,7 +66,6 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+     I18n
+     CoreAddons
+-    WindowSystem
+ )
+ 
+ find_package(KF6Kirigami2 ${KF_MIN_VERSION})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 13df5ce..250d08d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -28,7 +28,6 @@ target_link_libraries(krecorder
+     Qt${QT_MAJOR_VERSION}::Svg
+     KF${KF_MAJOR_VERSION}::I18n
+     KF${KF_MAJOR_VERSION}::CoreAddons
+-    KF${KF_MAJOR_VERSION}::WindowSystem
+ )
+ 
+ target_include_directories(krecorder PRIVATE ${CMAKE_BINARY_DIR})

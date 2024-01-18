@@ -46,6 +46,9 @@ groups=(plasma)
 ##        kde.pam
 ##        kde-fingerprint.pam
 ##        kde-smartcard.pam)
+#        kde.pam
+#        kde-fingerprint.pam 
+#        kde-smartcard.pam)
 #sha256sums=('e568840af812976eae4ccc4dc8c42c80dce6950e120dec26ac409d49b380a597'
 #            'SKIP'
 #            'adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b'

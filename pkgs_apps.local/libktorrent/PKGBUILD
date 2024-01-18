@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libktorrent
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A BitTorrent protocol implementation'
 arch=(x86_64)
@@ -23,18 +23,12 @@ depends=(gcc-libs
 makedepends=(boost
              doxygen
              extra-cmake-modules)
-#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-#        qt5compat.patch)
-#sha256sums=('e364d48d4a09ac451c01f02c26faf6bca5f25ece964abd6ba987eb1165b1643d'
-#            'SKIP'
-#            'a60de6219d5ad0194c63f48faedb3f398ed341e2374fe5615e60fd0a2f7792b7')
+#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+#sha256sums=('8444c481acb5e8a7199b74143e575713be4ac32677e97a536e74bace39e4eead'
+#            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < qt5compat.patch # Add missing dependency on Core5Compat
-}
 
 build() {
   cmake -B build -S $pkgname

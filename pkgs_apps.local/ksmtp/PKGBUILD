@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksmtp
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Job-based library to send email through an SMTP server'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('5f858a89cc911cef5f0191dcd3b3ada423f48ef49b7032e9325becdf77c34524'
+#sha256sums=('0d0332c44a4c3af8b6f1c8e7b8d443f7490bbde5aad2a15e57830e37ca3e5d5b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

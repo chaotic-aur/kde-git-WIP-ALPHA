@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ark
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Archiving Tool'
 arch=(x86_64)
@@ -18,6 +18,7 @@ depends=(gcc-libs
          kcoreaddons
          kcrash
          kdbusaddons
+         kfilemetadata
          ki18n
          kio
          kjobwidgets
@@ -30,6 +31,7 @@ depends=(gcc-libs
          libarchive
          libzip
          qt6-base
+         sh
          zlib)
 makedepends=(extra-cmake-modules
              kdoctools)
@@ -42,7 +44,7 @@ optdepends=('arj: ARJ format support'
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('110e38ae4dd004ed394aa20c2c539e3c7cfd5afb692c70cc50f8d12f827ef31e'
+#sha256sums=('c28a6818f40904de0eae7cbc7d1f27e17b4cb0d4a05f4324ed53ca52d960ccb9'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

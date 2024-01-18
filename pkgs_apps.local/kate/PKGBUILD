@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kate
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 arch=(x86_64)
 license=(GPL LGPL FDL)
@@ -48,7 +48,7 @@ conflicts=(kwrite)
 provides=(kwrite)
 replaces=(kwrite)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('738c6dee23b084c0d7c91a7e4a40b908d094c92ded5baebc1282dbdcc9c0216d'
+#sha256sums=('dcd62c462e837d3af42a9cb16dd9b349ba5061d1451c2d36318221e8a0f20790'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

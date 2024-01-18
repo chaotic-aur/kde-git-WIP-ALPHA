@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kmail
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='KDE mail client'
 arch=(x86_64)
@@ -78,7 +78,7 @@ optdepends=('kdepim-addons: additional plugins'
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('693f833851578774cf5ddbc60360db351a05127a3fdc589eb785ac81e804e20d'
+#sha256sums=('71cb190d8f97da3b216a19d66435c2fc9fe569781257bba020ae327a19ce4a9a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

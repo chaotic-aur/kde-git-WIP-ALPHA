@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkeduvocdocument
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Common libraries for KDE Edu applications'
 url='https://www.kde.org/'
@@ -20,7 +20,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('276909c0484573ce718b5b2ba3a2d607f35e038aedbbf513d7637d8884b20e75'
+#sha256sums=('958ee3243cae86ebfe776d0da46280ee19df537d6bff20c7879f72f8c46c3087'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

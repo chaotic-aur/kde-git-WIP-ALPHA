@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktuberling
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A simple constructor game suitable for children and adults alike'
 url='https://apps.kde.org/ktuberling/'
@@ -30,7 +30,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('c13ec12aa6fcb9c6f18fd9ad1f3dcda9ed1b6f8267110d562f1641d679a1f8a9'
+#sha256sums=('b1bd27aa8d53af112b5cb409ab8f484d14b5b8e74335215de0f5f5d2265eb07b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

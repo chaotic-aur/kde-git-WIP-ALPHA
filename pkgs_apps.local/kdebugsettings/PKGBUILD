@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdebugsettings
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='An application to enable/disable qCDebug'
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4d50c6913c81a710de69bd37e50d49e8a292a50c8348eb871caeb64db39c66ac'
+#sha256sums=('b6b9024389b0f3cb63c92c96e57310a49982afe865d6dfcbb0a83c765dc6cae4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

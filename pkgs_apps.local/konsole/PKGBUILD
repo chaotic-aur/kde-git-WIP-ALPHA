@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=konsole
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
@@ -44,7 +44,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('691e96f07c3654cd8ff08276c2d01a24c4ad2d96c3265d4d6da2de9b05bf5d14'
+#sha256sums=('300b9c41bddb267d7a0cc260102c5bb0449a912699eea2a88cacbf8f4eccb231'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

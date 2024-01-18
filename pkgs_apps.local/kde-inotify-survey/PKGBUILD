@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-inotify-survey
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Tooling for monitoring inotify limits and informing the user when they have been or about to be reached'
 url='https://invent.kde.org/system/kde-inotify-survey'
@@ -9,17 +9,17 @@ arch=(x86_64)
 license=(GPL LGPL)
 depends=(gcc-libs
          glibc
-         kauth5
-         kcoreaddons5
-         kdbusaddons5
-         ki18n5
-         knotifications5
-         qt5-base)
+         kauth
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         knotifications
+         qt6-base)
 makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-system)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3438b5964cde382760a56eaf61b6c79c6c4c3d32145349315dd8b91c904c6386'
+#sha256sums=('ef20fc67ed633aa625cf10f91d02a42e0d478b8a8a1949eb6588965ffff15b85'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

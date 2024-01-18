@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmahjongg
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A tile matching game for one or two players'
 url='https://apps.kde.org/kmahjongg/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('a6762ef37aa3ce129682881fc0efa0ff08096a12d2c620c648efc077e049bb49'
+#sha256sums=('f40123ed766b9e1b8ca051c5f94c83ac897d6e31657ec790e4adba218296bf91'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

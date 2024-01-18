@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knavalbattle
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A ship sinking game'
 url='https://apps.kde.org/knavalbattle/'
@@ -28,7 +28,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b7d4085ce2485dd3b607ba56a5152db613c304ca58e80f070bd41d56ffa1cffe'
+#sha256sums=('b7613c42ff18105fa05efe5f827346d679e80188e6f1fe716c468921de206142'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

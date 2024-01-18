@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksirk
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A computerized version of a well known strategy game'
 url='https://apps.kde.org/ksirk/'
@@ -30,7 +30,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('55e135e1b7ca0ca0100e2313fdeca1cc0dd498b16f07fc1ebc797c762289b68d'
+#sha256sums=('b38ba1f663106645617a794dc98f1d9fc7b1e46bd57706a0f75a6f5a03aed8ec'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

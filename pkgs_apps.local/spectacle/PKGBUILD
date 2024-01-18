@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=spectacle
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
 arch=(x86_64)
@@ -42,7 +42,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-graphics)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('bc150108f192a92b1698ede213af9717f42ecbd05e437d44be3e34226c1fc78f'
+#sha256sums=('73f410eb8f0985404ca367d1b109cc3a54b3ae1ef212167771d052a2c410f5dd'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

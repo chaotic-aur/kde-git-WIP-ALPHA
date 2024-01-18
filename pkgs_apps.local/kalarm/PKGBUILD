@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kalarm
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Personal alarm scheduler'
 arch=(x86_64)
@@ -50,7 +50,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('6919a7e6e05a9866daf14fa11110279e2df408a4384223bc15a29a4b47a258c7'
+#sha256sums=('6f9ff6f8163c6958e6f1b1eb2f138e5dd05724d5645171fe5cc545308aa84760'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

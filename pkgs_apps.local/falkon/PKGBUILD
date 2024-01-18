@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=falkon
-pkgver=24.01.80
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Cross-platform QtWebEngine browser'
 arch=(x86_64)
@@ -35,7 +35,7 @@ optdepends=('kcoreaddons: KDE integration'
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('796f212194549eabb3eb774b25bf18fc483ed5075c1a899645675f5070c44a5c'
+#sha256sums=('ae186f56a903ffbeddb1e794050f099e47bda796373ef14e408f393e291bfb4c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

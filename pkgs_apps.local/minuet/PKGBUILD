@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=minuet
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A KDE Software for Music Education'
 url='https://apps.kde.org/minuet/'
@@ -22,7 +22,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-education)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b6444738dc558e9b3c73294492da022df8e4c8b1c30c121ac91ee9a740bc0e8d'
+#sha256sums=('a137ec813f4ccc5b6792d6a5e3fd85a14f4751028bccecaccbeb88b7994b2895'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

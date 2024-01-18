@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=katomic
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A fun and educational game built around molecular geometry'
 url='https://apps.kde.org/katomic/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('08c07ee048b5c014a1f38857dd278806eee9a0a6a9b9856b2f9640d58476cc89'
+#sha256sums=('5fdfd75a72c477c5561b1f1feab35b4a956e3ddb05c993d5c2c0ef000615b0c6'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libkleo
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='KDE PIM cryptographic library'
 arch=(x86_64)
@@ -27,7 +27,7 @@ makedepends=(boost
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('87bcdbd2d9644808686fcca26b48590a7c8f35949dfc0d30de391f5b3f9369c1'
+#sha256sums=('d337e287dfcc9c59b5e75f3f774b48ec35bd65239c40bba6823e16b64055347b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

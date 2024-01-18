@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdf
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 url='https://apps.kde.org/kdf/'
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3fe0033072608cf1944bfda410c6505d72795f68c2400e2d24369eb3ccde83df'
+#sha256sums=('c6c1efbeca214447176c3f80ad044e338de905436c08aeb42de28d41059ea8e4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

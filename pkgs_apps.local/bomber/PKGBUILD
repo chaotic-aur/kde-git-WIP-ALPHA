@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=bomber
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A single player arcade game'
 url='https://apps.kde.org/bomber/'
@@ -26,7 +26,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('cbab19317f372b6b862c510bb2e300c2d841978b04788ef28fea20da7f9e151a'
+#sha256sums=('da16d53cce6f5e4a50b9e34e20b40cb4f10471a14d4bd9413cae37ad609f6f96'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -6,7 +6,7 @@
 # Contributor: Sergio Jovani Guzman <moret@paretux.org>
 
 pkgname=konversation
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A user-friendly and fully-featured IRC client'
 arch=(x86_64)
@@ -14,43 +14,45 @@ url='https://apps.kde.org/konversation/'
 license=(GPL2 FDL)
 depends=(gcc-libs
          glibc
-         karchive5
-         kbookmarks5
-         kcodecs5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         kglobalaccel5
-         ki18n5
-         kidletime5
-         kio5
-         kitemviews5
-         knewstuff5
-         knotifications5
-         knotifyconfig5
-         kparts5
-         kservice5
-         ktextwidgets5
-         kwallet5
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
+         karchive
+         kbookmarks
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         ki18n
+         kidletime
+         kio
+         kitemviews
+         knewstuff
+         knotifications
+         knotifyconfig
+         kparts
+         kstatusnotifieritem
+         ktextwidgets
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
          perl
-         qca-qt5
-         qt5-base
-         qt5-multimedia
+         qca-qt6
+         qt6-5compat
+         qt6-base
+         qt6-multimedia
          sh)
 optdepends=('keditbookmarks: for managing bookmarks'
             'python: python scripting support')
 makedepends=(extra-cmake-modules
-             kdoctools5)
+             kdoctools)
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('56965066942995254c63874927893433bff941ee9d4765c75ad9214098ee1ec1'
+#sha256sums=('68666aa9319e71046ec13eda12dd10833bd356a4cc48022b77fc64e6297fdaf4'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

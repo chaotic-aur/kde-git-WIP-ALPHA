@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasmatube
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Kirigami YouTube video player based on QtMultimedia and youtube-dl'
 url='https://apps.kde.org/plasmatube/'
@@ -25,7 +25,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('68367b4c5771cc43ade4e927ce164bf55f4d01d375897560aae1980705d20976'
+#sha256sums=('4d776461713acf0b8aff0101b6fb4f24765b7cd02c151740b25afc43b37a522d'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

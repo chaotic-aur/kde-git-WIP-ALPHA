@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=juk
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A jukebox, tagger and music collection manager'
 url='https://apps.kde.org/juk/'
@@ -11,33 +11,33 @@ arch=(x86_64)
 license=(GPL LGPL FDL)
 depends=(gcc-libs
          glibc
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         kglobalaccel5
-         ki18n5
-         kiconthemes5
-         kio5
-         kjobwidgets5
-         knotifications5
-         ktextwidgets5
-         kwallet5
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
-         phonon-qt5
-         qt5-base
-         qt5-svg
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         ki18n
+         kiconthemes
+         kio
+         knotifications
+         kstatusnotifieritem
+         ktextwidgets
+         kwallet
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         phonon-qt6
+         qt6-base
+         qt6-svg
          taglib)
 makedepends=(extra-cmake-modules
-             kdoctools5)
+             kdoctools)
 groups=(kde-applications
         kde-multimedia)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('3c3d77bbbf7730b49c8a27e64f10e87914f41699b17cb552dbccc9a9238bca40'
+#sha256sums=('034babb291848a0e13cc194ac3762cc6bbe53ddd48b969a3e8732b8ab5555cae'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-mime
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Libraries and daemons to implement basic email handling'
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('bf5ab08b4d22df8c8094414926afed3e7ec97ccd040e181d4893ee9bb69fb804'
+#sha256sums=('70928eb60a3f58e5208e0e439c89c0c18bf4229790bbf4afd126489c98728f80'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

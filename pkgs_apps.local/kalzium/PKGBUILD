@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=kalzium
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Periodic Table of Elements'
 url='https://apps.kde.org/kalzium/'
@@ -40,7 +40,7 @@ groups=(kde-applications
         kde-education)
 #source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
 #        ocaml-5.1.patch)
-#sha256sums=('150cd14ff9b31f26deb5125d3b8700d0efc0b42661e241174fcee318eb785af0'
+#sha256sums=('d19be75e998cdd5f42bfd4490a072f5f32c38dc00e9c0522edc3a0683a683ee5'
 #            'SKIP'
 #            'b1497c7a48720a892f4e849606394031917f78d927026cb9655733bf8557f2a2')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>

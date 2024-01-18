@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=mailimporter
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Mail importer library'
 arch=(x86_64)
@@ -23,7 +23,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('4e1b6d610a2bf354d74a18647bec8921a04f6bc6b162b350a4837e8a73fa9ab9'
+#sha256sums=('6fc2deb1e976e2a36a2a2c11a440b584b8cc558df838979818c7f04b56c0324c'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

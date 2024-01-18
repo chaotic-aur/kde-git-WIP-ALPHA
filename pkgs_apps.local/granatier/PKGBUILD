@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=granatier
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A clone of the classic Bomberman game'
 url='https://apps.kde.org/granatier/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f536359ceec15d3845c4977c32cfd499803d979f6456283b323ba6f35acb5a2b'
+#sha256sums=('96eabb0adcb808a6e97cc30cff9bda0159e3b6180559cfe7a767f94cca74a273'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

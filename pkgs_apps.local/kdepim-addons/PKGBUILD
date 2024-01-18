@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdepim-addons
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Addons for KDE PIM applications'
 arch=(x86_64)
@@ -72,7 +72,7 @@ makedepends=(corrosion
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('f00bb13ef67b11540534e0c45f2f3bcc95f7a55de3c4993b49d7b5595c7e56bb'
+#sha256sums=('eed3e3a3d4eb3390d2914fb68bc26f93241a578cdfdd1c75e68bb78e13978403'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kpimtextedit
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A textedit with PIM-specific features'
 arch=(x86_64)
@@ -26,7 +26,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('caaca75cf705247c05829175dff1ed61d4c4dc7639520584a861d97e4b04c8b8'
+#sha256sums=('6c42139f5d8a6c89cbb796ba30bbca7d998551f3d0dc0720392349dccdd3e247'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

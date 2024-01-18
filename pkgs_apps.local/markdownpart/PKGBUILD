@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=markdownpart
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='KPart for rendering Markdown content'
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e89f8e8523ed2f94ca1671b396e1a0e709316e97cfbb8314d4184d6e97b5aba9'
+#sha256sums=('8eee4fd201a18722ef640b48a46f3cf112005b88a833ddfd00b4b781ca588127'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kigo
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='An open-source implementation of the popular Go game'
 url='https://apps.kde.org/kigo/'
@@ -31,7 +31,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('7c913d97d25522f7a482e3bb684911e77c91bcdf539998d9df68a57403e5aaac'
+#sha256sums=('d61228ce781bae3e80c88374a0806908caefed8d4334ff59cdd63a2aa6a7bb8a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

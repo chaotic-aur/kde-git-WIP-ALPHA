@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=knotes
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Popup notes'
 arch=(x86_64)
@@ -51,7 +51,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('5d184f728b88f8354deeba77524a12c9aa50ce535a2fed3bb53bfda2a62f7de8'
+#sha256sums=('d0eb939188750f5c564b5173ba1ab740d1117edd6efc4c9cfeae96c1e21f4be3'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

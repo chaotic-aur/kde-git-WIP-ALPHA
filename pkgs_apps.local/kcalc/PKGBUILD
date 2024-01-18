@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcalc
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Scientific Calculator'
 url='https://apps.kde.org/kcalc/'
@@ -30,7 +30,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('e63a28e79c5aaad2348f9dac3d19d98c2ea5087dc6f90885256da1eb09311159'
+#sha256sums=('3122c2aedae4c03c5b437f1e6dd966ff043f94a50d4de2a5177d19c053a7e26a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

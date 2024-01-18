@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=calendarsupport
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Calendar support library'
 arch=(x86_64)
@@ -32,7 +32,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('6e3a2ce7d27b47571012e051c4ef44198fa3061a6be85723b23b5f45c691d3d7'
+#sha256sums=('bdbebe72e89803fb4b947614084811587948053e8b1a4ccc452606f5150542e7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

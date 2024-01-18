@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kubrick
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc="Based on the famous Rubik's Cube"
 url='https://apps.kde.org/kubrick/'
@@ -28,7 +28,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b5a73f5dd4fdba4faa309102ec78189181a46d7becd965028349d9e18c84250a'
+#sha256sums=('d5e6e4a77d6cac8f3c05a535901171456e3c1a78114a71f0424e7c91f81b72ce'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

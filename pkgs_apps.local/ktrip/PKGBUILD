@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktrip
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Public Transport Assistance for Mobile Devices'
 url='https://apps.kde.org/ktrip/'
@@ -22,7 +22,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('bae586cc9eacbedaa181c9297cf92f51c265af35715f9b8b6b56f98c4475b9a7'
+#sha256sums=('04aa4023b38a1f17ab4a042807fdb15858be772edc24d6a69ea1a55c11d937be'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

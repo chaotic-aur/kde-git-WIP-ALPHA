@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kde-dev-scripts
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Scripts and setting files useful during development of KDE software'
 url='https://www.kde.org/'
@@ -17,7 +17,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kdesdk)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b6422d15c47dd32c2e6ab02191ada5a3fdf8e3f02878f2303d38c95e7a1c4200'
+#sha256sums=('bd82355ba19723620b0b1a09b167747b76a9f96cace717be0244c4bc85e44725'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

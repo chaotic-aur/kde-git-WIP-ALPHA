@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=baloo-widgets
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Widgets for Baloo'
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('74b8a9a66146e903bcf3192f33ef96b770db1c841cacf04306975c697305296d'
+#sha256sums=('15ed315947dc988db665f510754b81bbaa965708c256c0bfe8570ce66e68b110'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

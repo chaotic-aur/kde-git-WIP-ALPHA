@@ -5,7 +5,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kdenlive
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A non-linear video editor for Linux using the MLT video framework'
 arch=(x86_64)
@@ -15,61 +15,66 @@ depends=(breeze-icons
          frei0r-plugins
          gcc-libs
          glibc
-         karchive5
-         kbookmarks5
-         kcodecs5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         kdbusaddons5
-         kfilemetadata5
-         kguiaddons5
-         ki18n5
-         kiconthemes5
-         kio5
-         kitemviews5
-         kjobwidgets5
-         knewstuff5
-         knotifications5
-         knotifyconfig5
-         ktextwidgets5
-         kwidgetsaddons5
-         kxmlgui5
+         karchive
+         kbookmarks
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kfilemetadata
+         kguiaddons
+         ki18n
+         kiconthemes
+         kio
+         kitemviews
+         knewstuff
+         knotifications
+         knotifyconfig
+         ktextwidgets
+         kwidgetsaddons
+         kxmlgui
          mlt
-         purpose5
-         qt5-base
-         qt5-declarative
-         qt5-multimedia
-         qt5-networkauth
-         qt5-quickcontrols2
-         qt5-svg
-         solid5)
+         purpose
+         qt6-base
+         qt6-declarative
+         qt6-multimedia
+         qt6-networkauth
+         qt6-svg
+         solid)
 makedepends=(doxygen
              extra-cmake-modules
-             kdoctools5
-             qt5-tools)
+             kdoctools
+             qt6-tools)
 optdepends=('bigsh0t: VR360 effects'
             'dvgrab: for firewire capture'
             'ffmpeg: for FFmpeg plugin'
-            'kimageformats5: support for dds, xcf, exr, psd, and more image formats'
+            'kimageformats: support for dds, xcf, exr, psd, and more image formats'
             'mediainfo: for technical clip information'
             'noise-suppression-for-voice: noise suppression effect'
             'opencv: for motion tracking'
             'opentimelineio: timeline export/import'
             'plasma-desktop: theme configuration'
             'python: for scripts'
-            'qt5-imageformats: support for tiff, webp, and more image formats'
+            'qt6-imageformats: support for tiff, webp, and more image formats'
             'recordmydesktop: for screen capture')
 groups=(kde-applications
         kde-multimedia)
-#source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('bf64f840f115a806ee118211715cabb7d6fe23398bca02e5ec61f1f7446070c1'
-#            'SKIP')
+#source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+#        mlt-no-qt5.patch)
+#sha256sums=('8440d949d5f6ac7bef5da04da12c5545868f9171f1251aa666c3f5b76f6e3f11'
+#            'SKIP'
+#            'd946fddbe366e641e3172b601db7de474719588696bace25fa8643b67bc82f9b')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < mlt-no-qt5.patch # Blacklist MLT Qt5 module to prevent crashes
+}
 
 build() {
   cmake -B build -S $pkgname \

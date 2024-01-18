@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-extras
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
@@ -57,7 +57,7 @@ optdepends=('icoutils: Windows executable thumbnails'
 groups=(kde-applications
         kde-network)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('201db858e7efee876abef5fd6ab51156f35de6d506fc632ee7546fea9dc10da3'
+#sha256sums=('d9a8b50e974ce51b0e4f49a3d9422a6f763121bb7a7e8d79e43e65b10e8458a0'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

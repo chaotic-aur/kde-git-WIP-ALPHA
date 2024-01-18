@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-contacts
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Libraries and daemons to implement Contact Management in Akonadi'
 arch=(x86_64)
@@ -34,7 +34,7 @@ makedepends=(doxygen
              qt6-doc
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('91aa12ec33647a804b6bfcc7d2940a0ba2dd12c0d9da9565f4d5225035ee8fec'
+#sha256sums=('d3acda8e7a5c5a607d70abb13dd3892b4038697a47f95d90a870945fe1fef5f1'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

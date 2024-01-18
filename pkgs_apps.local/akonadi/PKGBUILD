@@ -5,7 +5,7 @@
 
 pkgbase=akonadi
 pkgname=(akonadi libakonadi)
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='PIM layer, which provides an asynchronous API to access all kind of PIM data'
 arch=(x86_64)
@@ -16,20 +16,21 @@ depends=(gcc-libs
          kconfig
          kcoreaddons
          ki18n
+         libaccounts-qt
          qt6-base)
 makedepends=(doxygen
              extra-cmake-modules
              postgresql
              qt6-doc
              qt6-tools
+             kaccounts-integration
              kconfigwidgets
              kiconthemes
              kio
              kitemmodels
              kxmlgui)
-# kaccounts-integration
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('232c4e4d9167cefbf29d41d878266ccf9faa15eef0157726bca991f3206a553d'
+#sha256sums=('72d11f016d9dd114be5d3dcb4b749095e550060325e919dcd1b90fe86db526cf'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -44,7 +45,8 @@ build() {
 
 package_libakonadi() {
   pkgdesc='Libraries used by applications based on Akonadi'
-  depends+=(kcolorscheme
+  depends+=(kaccounts-integration
+            kcolorscheme
             kconfigwidgets
             kiconthemes
             kio

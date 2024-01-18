@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kde-dev-utils
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Small utilities for developers using KDE/Qt libs/frameworks'
 url='https://www.kde.org/'
@@ -11,21 +11,21 @@ arch=(x86_64)
 license=(GPL LGPL FDL)
 depends=(gcc-libs
          glibc
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         ki18n5
-         kio5
-         kparts5
-         kwidgetsaddons5
-         kxmlgui5
-         qt5-base
-         qt5-tools)
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         ki18n
+         kio
+         kparts
+         kwidgetsaddons
+         kxmlgui
+         qt6-base
+         qt6-tools)
 makedepends=(extra-cmake-modules)
 groups=(kde-applications
         kdesdk)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('15d6c98b20060a16be5507d11790861c75f887ad99c8b8674ef90d3fef43607a'
+#sha256sums=('17e618be7e153824620ef1bee060111687b12ef1280d33011f34ba987cb3475b'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kclock
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Clock app for Plasma Mobile'
 url='https://apps.kde.org/kclock/'
@@ -25,7 +25,7 @@ makedepends=(extra-cmake-modules)
 groups=(kde-applications
         utilities)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('d28ef390381c468c0f96063f8793fcd58504e6e1da2727ce3a25c03fc72a9159'
+#sha256sums=('cc9e9320f046d10717c491e82dab5fd86d37f0119c426c49053a7cfa935ac4ca'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

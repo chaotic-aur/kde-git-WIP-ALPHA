@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kpublictransport
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Library to assist with accessing public transport timetables and other data'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(doxygen
              protobuf
              qt6-tools)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('93104897d2e857dde1312c8f7c72cde00ee775a0e5edaa8a757c1ce9460853aa'
+#sha256sums=('2f2e67ad1510275acd42564c36ee480b9dc4e05d3e01fbb1137417e8d1f396e5'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

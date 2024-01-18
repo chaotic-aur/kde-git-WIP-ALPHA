@@ -4,7 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kdepim-runtime
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim'
 arch=(x86_64)
@@ -59,7 +59,7 @@ makedepends=(boost
 #            libetebase)
 optdepends=('libetebase: EteSync resource')
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('b6360aa6116bca4d6c4f685a9509bdb09ad1892b15972d8300feb19d4053aed3'
+#sha256sums=('a8d3512d50a93ddf26149eff13f719603659286bd0b765c27766eb5dc39d5b5a'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

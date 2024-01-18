@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kpat
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Offers a selection of solitaire card games'
 url='https://apps.kde.org/kpat/'
@@ -33,7 +33,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('fc80e52babc5f12bf15669d26cc7119d2ceb93d4de369c734901caff5635d773'
+#sha256sums=('238ecefd783c691b1d20d20e2f7a716777c8d9b9d8d4b725a2889474c595e8c7'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

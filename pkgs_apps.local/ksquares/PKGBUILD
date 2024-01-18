@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksquares
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='A game modeled after the well known pen and paper based game of Dots and Boxes'
 url='https://apps.kde.org/ksquares/'
@@ -27,7 +27,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-games)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('ab224a1ed75561fb4371c1309269e42f579db02a218e4aa3cf81761e6887791b'
+#sha256sums=('99eaca174a8577c121854851d18df28df1b4ba117a0d21ed1d9df1e4764b3a78'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>

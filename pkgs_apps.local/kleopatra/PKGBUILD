@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kleopatra
-pkgver=24.01.85
+pkgver=24.01.90
 pkgrel=1
 pkgdesc='Certificate Manager and Unified Crypto GUI'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-pim)
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-#sha256sums=('6b452b91906d942b28b780dec9a80567ae6bafa420ad6774d5b64083d9b7a347'
+#sha256sums=('6eb8d15f478ffd461b8f986a82b442f8d06e3e5f12e24721ef8e956908a374bb'
 #            'SKIP')
 #validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
