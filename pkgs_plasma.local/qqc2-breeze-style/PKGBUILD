@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Applications useful for Plasma development'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL-2.0-or-later)
+license=(LGPL)
 depends=(gcc-libs
          glibc
          kcolorscheme
@@ -15,7 +15,7 @@ depends=(gcc-libs
          kguiaddons
          kiconthemes
          kirigami
-         kquickcharts
+         kquickcharts # QML
          qt6-base
          qt6-declarative)
 makedepends=(extra-cmake-modules)
