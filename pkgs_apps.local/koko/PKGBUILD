@@ -59,7 +59,7 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master https://sources.archlinux.org/other/packages/koko/cities1000-2024-01-18.zip https://sources.archlinux.org/other/packages/koko/admin1CodesASCII-2024-01-18.txt https://sources.archlinux.org/other/packages/koko/admin2Codes-2024-01-18.txt)
+source=(git+https://github.com/KDE/${pkgname}#branch=release/24.02 https://sources.archlinux.org/other/packages/koko/cities1000-2024-01-18.zip https://sources.archlinux.org/other/packages/koko/admin1CodesASCII-2024-01-18.txt https://sources.archlinux.org/other/packages/koko/admin2Codes-2024-01-18.txt)
 
 # pkgver-already-applied
 

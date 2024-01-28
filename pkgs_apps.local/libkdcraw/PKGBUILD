@@ -51,7 +51,7 @@ package_libkdcraw5() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+source=(git+https://github.com/KDE/${pkgname}#branch=release/24.02)
     
 # pkgver-already-applied
 
