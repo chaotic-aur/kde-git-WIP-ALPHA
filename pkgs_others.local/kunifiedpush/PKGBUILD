@@ -43,3 +43,4 @@ pkgver() {
 	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   echo "$(git describe --long --all --abbrev=7 | sed 's,heads/,,g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
+options=(debug strip)

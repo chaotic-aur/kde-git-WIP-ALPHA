@@ -125,3 +125,4 @@ pkgver() {
 }
 
 
+options=(debug strip)

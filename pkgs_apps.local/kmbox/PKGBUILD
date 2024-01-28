@@ -48,3 +48,4 @@ pkgver() {
 }
 
 
+options=(debug strip)

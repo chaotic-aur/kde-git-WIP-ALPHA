@@ -71,4 +71,4 @@ pkgver() {
 
 
 # exception-already-applied
-    
+    options=(debug strip)
