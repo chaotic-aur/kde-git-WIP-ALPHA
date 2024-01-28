@@ -36,6 +36,9 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/share/locale
+  rm -r "$pkgdir"/usr/share/plasma5support
+  rm -r "$pkgdir"/usr/lib/qt6/plugins/plasma5support
 }
 
 # sums-already-applied
