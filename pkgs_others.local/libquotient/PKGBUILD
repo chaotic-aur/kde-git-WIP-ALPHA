@@ -15,7 +15,7 @@ makedepends=(cmake)
 #sha256sums('5e5539fe9616c9f63985b0aabfab1858f1626e3d71a14709eeedd85af0471c7c')
 
 build() {
-  cmake -B build -S libQuotient-$pkgver \
+  cmake -B build -S libQuotient \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DBUILD_SHARED_LIBS=ON \
@@ -31,7 +31,7 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
+source=(git+https://github.com/quotient-im/libQuotient#branch=dev)
     
 # pkgver-already-applied
 

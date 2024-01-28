@@ -9,13 +9,12 @@ license=(GPL)
 url='https://invent.kde.org/libraries/kweathercore'
 depends=(gcc-libs
          glibc
-         kholidays5
-         ki18n5
-         qt5-base
-         qt5-location)
+         kholidays
+         ki18n
+         qt6-base
+         qt6-positioning)
 makedepends=(doxygen
-             extra-cmake-modules
-             qt5-tools)
+             extra-cmake-modules)
 #source(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
 #sha256sums=('04dde83ae543163735776dc50edab3510247d4825432840a78fade9b237a79fd'
 #            'SKIP')
@@ -45,5 +44,3 @@ pkgver() {
 	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
     echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
-
-

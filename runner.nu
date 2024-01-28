@@ -21,7 +21,7 @@ export def main [
     ./routine.nu list pkgs_others.local -t $threads_extra
     ./routine.nu list pkgs_plasma.local -t $threads_plasma
     if ($apps) {
-    	./routine.nu group pkgs_apps.local -t $threads_apps
+    	./routine.nu list pkgs_apps.local -t $threads_apps
 	}
     sleep ($duration | into duration)
     

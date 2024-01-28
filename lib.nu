@@ -104,7 +104,7 @@ def find_source_from_package [
     --keepbranch=false: bool
 ] {
     let file = ($"($package)/PKGBUILD")
-    let url = (open $file | find "source=" | ansi strip | find "#source" --invert)
+    let url = (open $file | grep "source=" | lines | find "#source" --invert)
     let url_0 = ($url | get 0)
     let index = ($url | str index-of "http") | get 0
     let index_end = match $url_0 {

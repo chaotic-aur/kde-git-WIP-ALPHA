@@ -32,10 +32,7 @@ groups=(kde-applications
         kde-graphics)
 # update with ./download-data
 #source(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
-        https://sources.archlinux.org/other/packages/koko/cities1000-2023-11-14.zip
-        https://sources.archlinux.org/other/packages/koko/admin1CodesASCII-2023-11-14.txt
-        https://sources.archlinux.org/other/packages/koko/admin2Codes-2023-11-14.txt)
-#sha256sums=('0d6504722c2f34f8c04a32123ec36e304d8ab6a0573a2f7de49c126fe3a35fbc'
+sha256sums=('0d6504722c2f34f8c04a32123ec36e304d8ab6a0573a2f7de49c126fe3a35fbc'
 #            'SKIP'
 #            '68e71c0790b37ac1e102c49d5ed4bb28a8ef3106d92fd03764538db623167259'
 #            '14e12e9d94edac5c97bbc02869c051b2188b2ec2b4c7af18597a7b36167f211e'
@@ -45,7 +42,7 @@ groups=(kde-applications
 #              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-  cp -L cities1000-2023-11-14.zip admin1CodesASCII-2023-11-14.txt $pkgname-$pkgver/src
+  cp -L cities1000-2024-01-18.zip admin1CodesASCII-2024-01-18.txt $pkgname-$pkgver/src
 }
 
 build() {
@@ -62,8 +59,8 @@ package() {
 sha256sums=('SKIP')
     
 # source-already-applied
-source=(git+https://github.com/KDE/${pkgname}#branch=master)
-    
+source=(git+https://github.com/KDE/${pkgname}#branch=master https://sources.archlinux.org/other/packages/koko/cities1000-2024-01-18.zip https://sources.archlinux.org/other/packages/koko/admin1CodesASCII-2024-01-18.txt https://sources.archlinux.org/other/packages/koko/admin2Codes-2024-01-18.txt)
+
 # pkgver-already-applied
 
 pkgver() {

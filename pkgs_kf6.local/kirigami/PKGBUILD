@@ -26,9 +26,9 @@ groups=(kf6)
 #validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
 #              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < 6411c128.patch # Fix top of pages cut off with Qt 6.7
-}
+#prepare() {
+#  patch -d $pkgname-$pkgver -p1 < 6411c128.patch # Fix top of pages cut off with Qt 6.7
+#}
 
 build() {
   cmake -B build -S $pkgname \
@@ -55,5 +55,3 @@ pkgver() {
 	#git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
     echo "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')_$(date +%y%m%d)"
 }
-
-
